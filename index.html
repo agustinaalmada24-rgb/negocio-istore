@@ -328,9 +328,9 @@ tr:hover td{background:#fafafa}
         <strong>¿Cómo funciona?</strong> Registrá los gastos del hogar. El sistema los divide por 2 y muestra cuánto le corresponde aportar al negocio. Ese monto <strong>no se descuenta automáticamente</strong> — lo usás como referencia para saber cuánto retirar del negocio.
       </div>
       <div class="g3" style="margin-bottom:14px">
-        <div class="met"><div class="ml">Total hogar este mes</div><div class="mv" id="hog-total">USD 0</div></div>
-        <div class="met"><div class="ml">Aporte del negocio (50%)</div><div class="mv ta" id="hog-mitad">USD 0</div></div>
-        <div class="met"><div class="ml">Aporte tu sueldo (50%)</div><div class="mv" id="hog-sueldo">USD 0</div></div>
+        <div class="met"><div class="ml">Total hogar este mes</div><div class="mv" id="hog-total">$ 0</div></div>
+        <div class="met"><div class="ml">Aporte del negocio (50%)</div><div class="mv ta" id="hog-mitad">USD 0</div><div class="ms" id="hog-mitad-ars">$ 0</div></div>
+        <div class="met"><div class="ml">Aporte de Agus (50%)</div><div class="mv" id="hog-sueldo">$ 0</div></div>
       </div>
       <div class="card">
         <p class="st">Registrar gasto del hogar</p>
@@ -352,7 +352,7 @@ tr:hover td{background:#fafafa}
         </div>
         <div class="g2">
           <div><label>Descripción</label><input type="text" id="h-desc" placeholder="ej: Expensas enero"></div>
-          <div><label>Monto (USD)</label><input type="number" id="h-monto" placeholder="80" min="0"></div>
+          <div><label>Monto ($ pesos argentinos)</label><input type="number" id="h-monto" placeholder="ej: 50000" min="0"></div>
         </div>
         <button class="bp" onclick="regHogar()"><i class="ti ti-plus"></i> Agregar gasto del hogar</button>
       </div>
@@ -362,7 +362,7 @@ tr:hover td{background:#fafafa}
           <select id="fil-mes-h" onchange="renderHogar()" style="width:auto;margin:0;font-size:12px"><option value="">Todos</option></select>
         </div>
         <div class="tw"><table>
-          <thead><tr><th style="width:85px">Mes</th><th style="width:130px">Categoría</th><th>Descripción</th><th style="width:80px">Total</th><th style="width:75px">Tu 50%</th><th style="width:80px">Negocio 50%</th><th style="width:36px"></th></tr></thead>
+          <thead><tr><th style="width:85px">Mes</th><th style="width:120px">Categoría</th><th>Descripción</th><th style="width:90px">Total $</th><th style="width:100px">Negocio 50%</th><th style="width:90px">Agus 50%</th><th style="width:36px"></th></tr></thead>
           <tbody id="hog-tbody"></tbody>
         </table></div>
         <div id="hog-emp" class="emp" style="display:none">Sin gastos del hogar registrados</div>
@@ -939,11 +939,11 @@ window.generarReporte=function(){
     if(hogarMes.length===0){elRH.innerHTML='<div class="emp">Sin gastos del hogar registrados este mes</div>';}
     else{
       const bycat={};hogarMes.forEach(h=>{bycat[h.categoria]=(bycat[h.categoria]||0)+h.monto;});
-      elRH.innerHTML=Object.entries(bycat).sort((a,b)=>b[1]-a[1]).map(([c,m])=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">${CLH[c]||c}</span><span>USD ${m.toFixed(2)} <span style="color:#854f0b;font-size:11px">(negocio: USD ${(m/2).toFixed(2)})</span></span></div>`).join('')+
-      `<div style="display:flex;justify-content:space-between;padding:8px 0;flex-wrap:wrap;gap:6px;margin-top:4px;background:#fff8e1;border-radius:8px;padding:10px">
-        <span style="font-size:13px;color:#555">Total hogar: <strong>USD ${totHogar.toFixed(2)}</strong></span>
-        <span style="font-size:13px;color:#854f0b">Aporte negocio (50%): <strong>USD ${(totHogar/2).toFixed(2)}</strong></span>
-        <span style="font-size:13px;color:#555">Tu sueldo (50%): <strong>USD ${(totHogar/2).toFixed(2)}</strong></span>
+      elRH.innerHTML=Object.entries(bycat).sort((a,b)=>b[1]-a[1]).map(([c,m])=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">${CLH[c]||c}</span><span>$${Number(m).toLocaleString('es-AR')} <span style="color:#854f0b;font-size:11px">(negocio: $${(m/2).toLocaleString('es-AR')} = USD ${(m/2/cotiz).toFixed(2)})</span></span></div>`).join('')+
+      `<div style="display:flex;justify-content:space-between;padding:10px;flex-wrap:wrap;gap:8px;margin-top:8px;background:#fff8e1;border-radius:8px">
+        <span style="font-size:13px;color:#555">Total hogar: <strong>$${totHogar.toLocaleString('es-AR')}</strong></span>
+        <span style="font-size:13px;color:#854f0b">Aporte negocio (50%): <strong>$${(totHogar/2).toLocaleString('es-AR')} = USD ${(totHogar/2/cotiz).toFixed(2)}</strong></span>
+        <span style="font-size:13px;color:#555">Aporte de Agus (50%): <strong>$${(totHogar/2).toLocaleString('es-AR')}</strong></span>
       </div>`;
     }
   }
@@ -1007,7 +1007,7 @@ function updateHogarMetrics(){
   const el1=document.getElementById('hog-total');
   const el2=document.getElementById('hog-mitad');
   const el3=document.getElementById('hog-sueldo');
-  if(el1){el1.textContent=`USD ${tot.toFixed(2)}`;el2.textContent=`USD ${(tot/2).toFixed(2)}`;el3.textContent=`USD ${(tot/2).toFixed(2)}`;}
+  if(el1){el1.textContent=`$${tot.toLocaleString('es-AR')}`;el2.textContent=`USD ${(tot/2/cotiz).toFixed(2)}`;const el2b=document.getElementById('hog-mitad-ars');if(el2b)el2b.textContent=`$${(tot/2).toLocaleString('es-AR')}`;el3.textContent=`$${(tot/2).toLocaleString('es-AR')}`;}
 }
 
 window.renderHogar=function(){
@@ -1022,18 +1022,18 @@ window.renderHogar=function(){
     const mesActivo=f||new Date().toISOString().slice(0,7);
     const yaDescontado=(window.hogarDescontado||{})[mesActivo];
     totDiv.innerHTML=`<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">
-      <span style="color:#777">Total del hogar: <strong>USD ${tot.toFixed(2)}</strong></span>
-      <span style="color:#854f0b">Aporte negocio (50%): <strong>USD ${(tot/2).toFixed(2)}</strong></span>
-      <span style="color:#555">Tu sueldo (50%): <strong>USD ${(tot/2).toFixed(2)}</strong></span>
+      <span style="color:#777">Total del hogar: <strong>$${tot.toLocaleString('es-AR')}</strong></span>
+      <span style="color:#854f0b">Aporte negocio (50%): <strong>$${(tot/2).toLocaleString('es-AR')} = USD ${(tot/2/cotiz).toFixed(2)}</strong></span>
+      <span style="color:#555">Aporte de Agus (50%): <strong>$${(tot/2).toLocaleString('es-AR')}</strong></span>
     </div>
     ${yaDescontado
       ? `<div style="display:flex;align-items:center;gap:8px;background:#e8f5e9;border:1px solid #c8e6c9;border-radius:8px;padding:10px 14px;font-size:13px;color:#2e7d32">
           <i class="ti ti-circle-check" style="font-size:18px"></i>
-          <span>El 50% del hogar (<strong>USD ${(tot/2).toFixed(2)}</strong>) ya fue descontado del capital del negocio este mes.</span>
+          <span>El 50% del hogar (<strong>$${(tot/2).toLocaleString('es-AR')} = USD ${(tot/2/cotiz).toFixed(2)}</strong>) ya fue descontado del capital del negocio este mes.</span>
           <button class="bs bd" onclick="cancelarDescuentoHogar('${mesActivo}')" style="margin-left:auto;font-size:11px">Deshacer</button>
         </div>`
-      : `<button class="bp" onclick="descontarHogar('${mesActivo}',${(tot/2).toFixed(2)})" style="background:#f57f17;margin-top:0">
-          <i class="ti ti-arrow-down-circle"></i> Descontar 50% del negocio (USD ${(tot/2).toFixed(2)})
+      : `<button class="bp" onclick="descontarHogar('${mesActivo}',${(tot/2/cotiz).toFixed(2)},${(tot/2).toFixed(0)})" style="background:#f57f17;margin-top:0">
+          <i class="ti ti-arrow-down-circle"></i> Descontar 50% del negocio ($${(tot/2).toLocaleString('es-AR')} = USD ${(tot/2/cotiz).toFixed(2)})
         </button>`
     }`;
   }else{totDiv.style.display='none';}
@@ -1041,25 +1041,25 @@ window.renderHogar=function(){
     <td>${fmtMes(g.mes)}</td>
     <td><span class="tag" style="background:#f5f5f7;color:#555">${CLH[g.categoria]||g.categoria}</span></td>
     <td title="${g.desc}">${g.desc}</td>
-    <td style="font-weight:600">USD ${g.monto.toFixed(2)}</td>
-    <td style="color:#854f0b">USD ${(g.monto/2).toFixed(2)}</td>
-    <td style="color:#2e7d32">USD ${(g.monto/2).toFixed(2)}</td>
+    <td style="font-weight:600">$${Number(g.monto).toLocaleString('es-AR')}</td>
+    <td style="color:#854f0b">$${(g.monto/2).toLocaleString('es-AR')}<br><span style="font-size:10px;color:#aaa">USD ${(g.monto/2/cotiz).toFixed(2)}</span></td>
+    <td style="color:#555">$${(g.monto/2).toLocaleString('es-AR')}</td>
     <td><button class="bs bd" onclick="delHogar(${g.id})"><i class="ti ti-trash"></i></button></td>
   </tr>`).join('');
   updateHogarMetrics();
 };
 
 
-window.descontarHogar=function(mes, mitad){
-  if(!confirm(`¿Descontar USD ${mitad} del capital del negocio como aporte al hogar de ${fmtMes(mes)}?`))return;
+window.descontarHogar=function(mes, mitadUSD, mitadARS){
+  if(!confirm(`¿Descontar $${Number(mitadARS).toLocaleString('es-AR')} (USD ${mitadUSD}) del capital del negocio como aporte al hogar de ${fmtMes(mes)}?`))return;
   if(!window.hogarDescontado)window.hogarDescontado={};
-  window.hogarDescontado[mes]=mitad;
+  window.hogarDescontado[mes]=mitadUSD;
   localStorage.setItem('ip_hogar_desc',JSON.stringify(window.hogarDescontado));
-  capital.unshift({id:Date.now(),fecha:mes+'-01',tipo:'egreso',monto:mitad,desc:`Aporte hogar ${fmtMes(mes)} (50%)`});
+  capital.unshift({id:Date.now(),fecha:mes+'-01',tipo:'egreso',monto:Number(mitadUSD),desc:`Aporte hogar ${fmtMes(mes)} (50%) = $${Number(mitadARS).toLocaleString('es-AR')}`});
   scheduleSave();
   renderHogar();
   renderCapital();
-  alert(`✓ USD ${mitad} descontados del capital del negocio.`);
+  alert(`✓ USD ${mitadUSD} descontados del capital del negocio ($${Number(mitadARS).toLocaleString('es-AR')}).`);
 };
 
 window.cancelarDescuentoHogar=function(mes){
