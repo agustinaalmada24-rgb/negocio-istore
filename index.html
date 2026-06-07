@@ -132,6 +132,7 @@ tr:hover td{background:#fafafa}
               <option value="macbook">MacBook</option>
               <option value="ipad">iPad</option>
               <option value="applewatch">Apple Watch</option>
+              <option value="otros">Otros</option>
             </select>
           </div>
         </div>
@@ -253,6 +254,7 @@ tr:hover td{background:#fafafa}
             <option value="">Todas las categorías</option>
             <option value="iphone">iPhone</option><option value="macbook">MacBook</option>
             <option value="ipad">iPad</option><option value="applewatch">Apple Watch</option>
+          <option value="otros">Otros</option>
           </select>
           <select id="stk-fil-disp" onchange="renderStock()" style="width:auto;margin:0;font-size:12px">
             <option value="">Todos</option><option value="1">Solo disponibles</option><option value="0">Solo vendidos</option>
@@ -526,9 +528,9 @@ const CATALOGO = {
   ipad:['iPad A16','iPad Air','iPad Pro'],
   applewatch:['Apple Watch SE 3','Apple Watch Serie 11','Apple Watch Ultra']
 };
-const CAT_LABELS={iphone:'iPhone',macbook:'MacBook',ipad:'iPad',applewatch:'Watch'};
-const CAT_TAGS={iphone:'t-iph',macbook:'t-mac',ipad:'t-ipad',applewatch:'t-watch'};
-const CAT_COLORS={iphone:'#1976d2',macbook:'#7b1fa2',ipad:'#388e3c',applewatch:'#f57f17'};
+const CAT_LABELS={iphone:'iPhone',macbook:'MacBook',ipad:'iPad',applewatch:'Watch',otros:'Otros'};
+const CAT_TAGS={iphone:'t-iph',macbook:'t-mac',ipad:'t-ipad',applewatch:'t-watch',otros:'t-usd'};
+const CAT_COLORS={iphone:'#1976d2',macbook:'#7b1fa2',ipad:'#388e3c',applewatch:'#f57f17',otros:'#555'};
 const ML={efectivo_usd:'Efectivo USD',efectivo_pesos:'Efectivo $',transferencia:'Transferencia',cuenta_corriente:'Cta.Cte.USD'};
 const MT={efectivo_usd:'t-usd',efectivo_pesos:'t-ars',transferencia:'t-tra',cuenta_corriente:'t-cta'};
 const CL={community_manager:'Community Manager',publicidad:'Inversión publicitaria',impuestos:'Impuestos',otro:'Otros (negocio)'};
@@ -852,13 +854,32 @@ window.delCliente=function(cid){
   scheduleSave();renderClientes();
 };
 
+window.updateCapLabel=function(){
+  const moneda=document.getElementById('c-moneda').value;
+  document.getElementById('c-monto-label').textContent=moneda==='ars'?'Monto ($ pesos argentinos)':'Monto (USD)';
+  updateCapConversion();
+};
+window.updateCapConversion=function(){
+  const moneda=document.getElementById('c-moneda').value;
+  const monto=parseFloat(document.getElementById('c-monto').value)||0;
+  const conv=document.getElementById('c-conversion');
+  if(moneda==='ars'&&monto>0){
+    conv.style.display='block';
+    document.getElementById('c-conversion-val').textContent=`USD ${(monto/cotiz).toFixed(2)}`;
+  }else{conv.style.display='none';}
+};
 window.regCapital=function(){
   const fecha=document.getElementById('c-fecha').value,tipo=document.getElementById('c-tipo').value;
-  const monto=parseFloat(document.getElementById('c-monto').value),desc=document.getElementById('c-desc').value;
-  if(!fecha||isNaN(monto)||!desc){alert('Completá todos los campos.');return;}
-  capital.unshift({id:Date.now(),fecha,tipo,monto,desc});
+  const montoRaw=parseFloat(document.getElementById('c-monto').value),desc=document.getElementById('c-desc').value;
+  const moneda=document.getElementById('c-moneda').value;
+  if(!fecha||isNaN(montoRaw)||!desc){alert('Completá todos los campos.');return;}
+  const monto=moneda==='ars'?montoRaw/cotiz:montoRaw;
+  capital.unshift({id:Date.now(),fecha,tipo,monto,montoOriginal:montoRaw,moneda,desc});
   scheduleSave();renderCapital();
   document.getElementById('c-monto').value='';document.getElementById('c-desc').value='';
+  document.getElementById('c-conversion').style.display='none';
+  document.getElementById('c-moneda').value='usd';
+  document.getElementById('c-monto-label').textContent='Monto (USD)';
 };
 function renderCapital(){
   document.getElementById('cap-emp').style.display=capital.length===0?'block':'none';
