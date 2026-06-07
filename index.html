@@ -28,7 +28,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .g3{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:12px}
 .g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-@media(max-width:600px){.g2,.g3,.g4,.g5{grid-template-columns:1fr 1fr}.topbar-inner{gap:5px}}
+@media(max-width:600px){.g2,.g3,.g4,.g5{grid-template-columns:1fr 1fr}.topbar-inner{gap:5px}table{font-size:11px;}th,td{padding:5px 4px;}}
 @media(max-width:400px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
 label{font-size:12px;color:#777;display:block;margin-bottom:4px;font-weight:500}
 input,select{width:100%;margin-bottom:10px;padding:8px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px;background:#fff;color:#1d1d1f;outline:none}
@@ -49,10 +49,10 @@ input:focus,select:focus{border-color:#0071e3;box-shadow:0 0 0 3px rgba(0,113,22
 .t-mac{background:#f3e5f5;color:#6a1b9a}
 .t-ipad{background:#e8f5e9;color:#2e7d32}
 .t-watch{background:#fff8e1;color:#f57f17}
-.tw{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
 th{text-align:left;padding:7px 8px;font-size:11px;font-weight:600;color:#777;border-bottom:1px solid #e5e5e5;background:#f9f9f9}
-td{padding:8px;border-bottom:1px solid #f0f0f0;color:#1d1d1f;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+td{padding:8px;border-bottom:1px solid #f0f0f0;color:#1d1d1f;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:#fafafa}
 .st{font-size:14px;font-weight:600;margin-bottom:14px;color:#1d1d1f}
@@ -71,6 +71,17 @@ tr:hover td{background:#fafafa}
 .cli-sub{font-size:12px;color:#777}
 .cuota-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;background:#e8f5e9;color:#2e7d32}
 .emp{text-align:center;padding:2.5rem 1rem;color:#aaa;font-size:13px}
+
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal{background:#fff;border-radius:16px;padding:24px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
+.modal-title{font-size:16px;font-weight:600;margin-bottom:16px;color:#1d1d1f}
+.modal-footer{display:flex;gap:8px;margin-top:16px}
+.modal-footer .bp{margin:0}
+.btn-cancel{flex:1;padding:10px 18px;font-size:13px;font-weight:500;background:#f5f5f7;border:none;border-radius:8px;cursor:pointer;color:#555}
+.btn-cancel:hover{background:#e5e5e5}
+.be{padding:5px 10px;font-size:12px;background:#fff;border:1px solid #ddd;border-radius:8px;cursor:pointer;color:#1a73e8;border-color:#c5d9f7}
+.be:hover{background:#e8f0fe}
+
 .loading-screen{position:fixed;top:0;left:0;right:0;bottom:0;background:#f5f5f7;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999}
 .loading-logo{font-size:48px;margin-bottom:16px}
 .loading-text{font-size:16px;font-weight:500;color:#1d1d1f;margin-bottom:8px}
@@ -247,7 +258,7 @@ tr:hover td{background:#fafafa}
           </select>
         </div>
         <div class="tw"><table>
-          <thead><tr><th style="width:80px">Ingreso</th><th style="width:80px">Cat.</th><th>Modelo</th><th style="width:70px">Costo</th><th style="width:70px">Precio</th><th style="width:80px">Estado</th><th style="width:80px">Disp.</th><th style="width:36px"></th></tr></thead>
+          <thead><tr><th style="width:72px">Ingreso</th><th style="width:60px">Cat.</th><th>Modelo</th><th style="width:65px">Costo</th><th style="width:65px">Precio</th><th style="width:75px">Estado</th><th style="width:75px">Disp.</th><th style="width:32px"></th></tr></thead>
           <tbody id="stk-tbody"></tbody>
         </table></div>
         <div id="stk-emp" class="emp" style="display:none">Sin equipos</div>
@@ -269,7 +280,7 @@ tr:hover td{background:#fafafa}
           </div>
         </div>
         <div class="tw"><table>
-          <thead><tr><th style="width:80px">Fecha</th><th style="width:65px">Cat.</th><th>Modelo</th><th style="width:70px">Costo</th><th style="width:70px">Precio</th><th style="width:80px">Ganancia</th><th style="width:95px">Método</th><th style="width:36px"></th></tr></thead>
+          <thead><tr><th style="width:72px">Fecha</th><th style="width:58px">Cat.</th><th>Modelo</th><th style="width:62px">Costo</th><th style="width:62px">Precio</th><th style="width:72px">Ganancia</th><th style="width:85px">Método</th><th style="width:32px"></th></tr></thead>
           <tbody id="hist-tbody"></tbody>
         </table></div>
         <div id="hist-emp" class="emp" style="display:none"><i class="ti ti-inbox" style="font-size:28px;display:block;margin-bottom:6px"></i>Sin ventas</div>
@@ -336,6 +347,100 @@ tr:hover td{background:#fafafa}
       <div id="rep-emp" class="emp"><i class="ti ti-calendar" style="font-size:28px;display:block;margin-bottom:6px"></i>Seleccioná un mes y generá el reporte</div>
     </div>
   </div>
+
+<!-- MODAL EDITAR STOCK -->
+<div class="modal-overlay" id="modal-stock" style="display:none">
+  <div class="modal">
+    <p class="modal-title">✏️ Editar equipo</p>
+    <input type="hidden" id="edit-stk-id">
+    <div class="g2">
+      <div><label>Fecha</label><input type="date" id="edit-stk-fecha"></div>
+      <div><label>Categoría</label>
+        <select id="edit-stk-cat">
+          <option value="iphone">iPhone</option><option value="macbook">MacBook</option>
+          <option value="ipad">iPad</option><option value="applewatch">Apple Watch</option>
+        </select>
+      </div>
+    </div>
+    <div><label>Modelo</label><input type="text" id="edit-stk-modelo" placeholder="ej: iPhone 16 Pro 128GB"></div>
+    <div class="g2">
+      <div><label>Costo (USD)</label><input type="number" id="edit-stk-costo" min="0"></div>
+      <div><label>Precio estimado (USD)</label><input type="number" id="edit-stk-precio" min="0"></div>
+    </div>
+    <div class="g2">
+      <div><label>Estado</label>
+        <select id="edit-stk-est">
+          <option value="nuevo">Nuevo</option><option value="usado">Usado</option><option value="reacondicionado">Reacondicionado</option>
+        </select>
+      </div>
+      <div><label>Notas / IMEI</label><input type="text" id="edit-stk-notas"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal('modal-stock')">Cancelar</button>
+      <button class="bp" style="flex:1" onclick="saveEditStock()"><i class="ti ti-check"></i> Guardar cambios</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDITAR VENTA -->
+<div class="modal-overlay" id="modal-venta" style="display:none">
+  <div class="modal">
+    <p class="modal-title">✏️ Editar venta</p>
+    <input type="hidden" id="edit-v-id">
+    <div class="g2">
+      <div><label>Fecha</label><input type="date" id="edit-v-fecha"></div>
+      <div><label>Categoría</label>
+        <select id="edit-v-cat">
+          <option value="iphone">iPhone</option><option value="macbook">MacBook</option>
+          <option value="ipad">iPad</option><option value="applewatch">Apple Watch</option>
+        </select>
+      </div>
+    </div>
+    <div><label>Producto</label><input type="text" id="edit-v-producto" placeholder="ej: iPhone 16 Pro 128GB"></div>
+    <div class="g2">
+      <div><label>Costo (USD)</label><input type="number" id="edit-v-costo" min="0"></div>
+      <div><label>Precio de venta (USD)</label><input type="number" id="edit-v-precio" min="0"></div>
+    </div>
+    <div><label>Método de pago</label>
+      <select id="edit-v-met">
+        <option value="efectivo_usd">Efectivo dólares</option>
+        <option value="efectivo_pesos">Efectivo pesos</option>
+        <option value="transferencia">Transferencia bancaria</option>
+        <option value="cuenta_corriente">Cuenta corriente (cuotas USD)</option>
+      </select>
+    </div>
+    <div><label>Notas</label><input type="text" id="edit-v-notas"></div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal('modal-venta')">Cancelar</button>
+      <button class="bp" style="flex:1" onclick="saveEditVenta()"><i class="ti ti-check"></i> Guardar cambios</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDITAR CAPITAL -->
+<div class="modal-overlay" id="modal-capital" style="display:none">
+  <div class="modal">
+    <p class="modal-title">✏️ Editar movimiento</p>
+    <input type="hidden" id="edit-c-id">
+    <div class="g3">
+      <div><label>Fecha</label><input type="date" id="edit-c-fecha"></div>
+      <div><label>Tipo</label>
+        <select id="edit-c-tipo">
+          <option value="ingreso">Ingreso</option>
+          <option value="egreso">Egreso / retiro</option>
+          <option value="ajuste">Ajuste</option>
+        </select>
+      </div>
+      <div><label>Monto (USD)</label><input type="number" id="edit-c-monto" min="0"></div>
+    </div>
+    <div><label>Descripción</label><input type="text" id="edit-c-desc"></div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal('modal-capital')">Cancelar</button>
+      <button class="bp" style="flex:1" onclick="saveEditCapital()"><i class="ti ti-check"></i> Guardar cambios</button>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <script type="module">
@@ -634,7 +739,7 @@ function renderCapital(){
     <td><span class="tag ${c.tipo==='ingreso'?'t-ok':c.tipo==='egreso'?'t-pen':'t-ars'}">${c.tipo==='ingreso'?'Ingreso':c.tipo==='egreso'?'Egreso':'Ajuste'}</span></td>
     <td title="${c.desc}">${c.desc}</td>
     <td style="font-weight:600;color:${c.tipo==='ingreso'?'#2e7d32':c.tipo==='egreso'?'#c62828':'#f57f17'}">${c.tipo==='egreso'?'-':''}USD ${c.monto.toFixed(2)}</td>
-    <td><button class="bs bd" onclick="delCap(${c.id})"><i class="ti ti-trash"></i></button></td>
+    <td style="white-space:nowrap"><button class="be" onclick="editCap(${c.id})" style="margin-right:4px"><i class="ti ti-edit"></i></button><button class="bs bd" onclick="delCap(${c.id})"><i class="ti ti-trash"></i></button></td>
   </tr>`).join('');
   updateBadges();
 }
@@ -669,7 +774,7 @@ window.renderStock=function(){
     <td>USD ${s.costo}</td><td>USD ${s.precio}</td>
     <td><span class="tag" style="background:#f5f5f7;color:#555">${s.estado}</span></td>
     <td>${s.disponible?'<span class="tag t-ok">Disponible</span>':'<span class="tag t-pen">Vendido</span>'}</td>
-    <td>${s.disponible?`<button class="bs bd" onclick="delStock(${s.id})"><i class="ti ti-trash"></i></button>`:''}</td>
+    <td style="white-space:nowrap">${s.disponible?`<button class="be" onclick="editStock(${s.id})" style="margin-right:4px"><i class="ti ti-edit"></i></button><button class="bs bd" onclick="delStock(${s.id})"><i class="ti ti-trash"></i></button>`:`<button class="be" onclick="editStock(${s.id})"><i class="ti ti-edit"></i></button>`}</td>
   </tr>`).join('');
   updateBadges();
 };
@@ -692,7 +797,7 @@ window.renderHist=function(){
     <td>USD ${v.costo}</td><td>USD ${v.precio}</td>
     <td style="font-weight:600;color:${v.ganancia>=0?'#2e7d32':'#c62828'}">USD ${v.ganancia.toFixed(0)}</td>
     <td><span class="tag ${MT[v.metodo]}">${ML[v.metodo]}</span></td>
-    <td><button class="bs bd" onclick="delVenta(${v.id})"><i class="ti ti-trash"></i></button></td>
+    <td style="white-space:nowrap"><button class="be" onclick="editVenta(${v.id})" style="margin-right:4px"><i class="ti ti-edit"></i></button><button class="bs bd" onclick="delVenta(${v.id})"><i class="ti ti-trash"></i></button></td>
   </tr>`).join('');
 };
 window.delVenta=function(id){
@@ -792,6 +897,98 @@ window.exportCSV=function(){
 const Chart = (await import('https://cdn.jsdelivr.net/npm/chart.js@4.4.1/+esm')).Chart;
 Chart.register(...(await import('https://cdn.jsdelivr.net/npm/chart.js@4.4.1/+esm')).registerables);
 window.Chart = Chart;
+
+
+const CAT_LABELS_LOCAL={iphone:'iPhone',macbook:'MacBook',ipad:'iPad',applewatch:'Watch'};
+
+window.closeModal=function(id){document.getElementById(id).style.display='none';};
+document.addEventListener('click',function(e){
+  ['modal-stock','modal-venta','modal-capital'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&e.target===el)el.style.display='none';
+  });
+});
+
+window.editStock=function(id){
+  const s=stock.find(x=>x.id===id);if(!s)return;
+  document.getElementById('edit-stk-id').value=id;
+  document.getElementById('edit-stk-fecha').value=s.fecha;
+  document.getElementById('edit-stk-cat').value=s.categoria||'iphone';
+  document.getElementById('edit-stk-modelo').value=s.modelo;
+  document.getElementById('edit-stk-costo').value=s.costo;
+  document.getElementById('edit-stk-precio').value=s.precio;
+  document.getElementById('edit-stk-est').value=s.estado||'nuevo';
+  document.getElementById('edit-stk-notas').value=s.notas||'';
+  document.getElementById('modal-stock').style.display='flex';
+};
+window.saveEditStock=function(){
+  const id=parseInt(document.getElementById('edit-stk-id').value);
+  const idx=stock.findIndex(s=>s.id===id);if(idx<0)return;
+  const costo=parseFloat(document.getElementById('edit-stk-costo').value);
+  const precio=parseFloat(document.getElementById('edit-stk-precio').value);
+  if(isNaN(costo)||isNaN(precio)){alert('Verificá los montos.');return;}
+  stock[idx]={...stock[idx],
+    fecha:document.getElementById('edit-stk-fecha').value,
+    categoria:document.getElementById('edit-stk-cat').value,
+    modelo:document.getElementById('edit-stk-modelo').value,
+    costo,precio,
+    estado:document.getElementById('edit-stk-est').value,
+    notas:document.getElementById('edit-stk-notas').value
+  };
+  closeModal('modal-stock');scheduleSave();renderStock();buildModeloOpts();
+};
+
+window.editVenta=function(id){
+  const v=ventas.find(x=>x.id===id);if(!v)return;
+  document.getElementById('edit-v-id').value=id;
+  document.getElementById('edit-v-fecha').value=v.fecha;
+  document.getElementById('edit-v-cat').value=v.categoria||'iphone';
+  document.getElementById('edit-v-producto').value=v.producto;
+  document.getElementById('edit-v-costo').value=v.costo;
+  document.getElementById('edit-v-precio').value=v.precio;
+  document.getElementById('edit-v-met').value=v.metodo;
+  document.getElementById('edit-v-notas').value=v.notas||'';
+  document.getElementById('modal-venta').style.display='flex';
+};
+window.saveEditVenta=function(){
+  const id=parseInt(document.getElementById('edit-v-id').value);
+  const idx=ventas.findIndex(v=>v.id===id);if(idx<0)return;
+  const costo=parseFloat(document.getElementById('edit-v-costo').value);
+  const precio=parseFloat(document.getElementById('edit-v-precio').value);
+  if(isNaN(costo)||isNaN(precio)){alert('Verificá los montos.');return;}
+  ventas[idx]={...ventas[idx],
+    fecha:document.getElementById('edit-v-fecha').value,
+    categoria:document.getElementById('edit-v-cat').value,
+    producto:document.getElementById('edit-v-producto').value,
+    costo,precio,ganancia:precio-costo,
+    metodo:document.getElementById('edit-v-met').value,
+    notas:document.getElementById('edit-v-notas').value
+  };
+  closeModal('modal-venta');scheduleSave();renderHist();
+};
+
+window.editCap=function(id){
+  const c=capital.find(x=>x.id===id);if(!c)return;
+  document.getElementById('edit-c-id').value=id;
+  document.getElementById('edit-c-fecha').value=c.fecha;
+  document.getElementById('edit-c-tipo').value=c.tipo;
+  document.getElementById('edit-c-monto').value=c.monto;
+  document.getElementById('edit-c-desc').value=c.desc;
+  document.getElementById('modal-capital').style.display='flex';
+};
+window.saveEditCapital=function(){
+  const id=parseInt(document.getElementById('edit-c-id').value);
+  const idx=capital.findIndex(c=>c.id===id);if(idx<0)return;
+  const monto=parseFloat(document.getElementById('edit-c-monto').value);
+  if(isNaN(monto)){alert('Verificá el monto.');return;}
+  capital[idx]={...capital[idx],
+    fecha:document.getElementById('edit-c-fecha').value,
+    tipo:document.getElementById('edit-c-tipo').value,
+    monto,
+    desc:document.getElementById('edit-c-desc').value
+  };
+  closeModal('modal-capital');scheduleSave();renderCapital();
+};
 
 await loadData();
 </script>
