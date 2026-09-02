@@ -200,10 +200,25 @@ tr:hover td{background:#fafafa}
       </div>
       <div class="card">
         <p class="st">Registrar movimiento</p>
-        <div class="g3">
+        <div class="g2">
           <div><label>Fecha</label><input type="date" id="c-fecha"></div>
           <div><label>Tipo</label><select id="c-tipo"><option value="ingreso">Ingreso</option><option value="egreso">Egreso / retiro</option><option value="ajuste">Ajuste</option></select></div>
-          <div><label>Monto (USD)</label><input type="number" id="c-monto" placeholder="1000" min="0"></div>
+        </div>
+        <div class="g2">
+          <div>
+            <label>Moneda</label>
+            <select id="c-moneda" onchange="updateCapLabel()">
+              <option value="usd">USD (dólares)</option>
+              <option value="ars">$ (pesos argentinos)</option>
+            </select>
+          </div>
+          <div>
+            <label id="c-monto-label">Monto (USD)</label>
+            <input type="number" id="c-monto" placeholder="1000" min="0" oninput="updateCapConversion()">
+          </div>
+        </div>
+        <div id="c-conversion" style="display:none;font-size:12px;color:#777;margin-bottom:10px;padding:8px;background:#f9f9f9;border-radius:8px">
+          Equivalente: <strong id="c-conversion-val"></strong>
         </div>
         <div><label>Descripción</label><input type="text" id="c-desc" placeholder="ej: depósito inicial, retiro personal..."></div>
         <button class="bp" onclick="regCapital()"><i class="ti ti-plus"></i> Registrar</button>
@@ -869,17 +884,23 @@ window.updateCapConversion=function(){
   }else{conv.style.display='none';}
 };
 window.regCapital=function(){
-  const fecha=document.getElementById('c-fecha').value,tipo=document.getElementById('c-tipo').value;
-  const montoRaw=parseFloat(document.getElementById('c-monto').value),desc=document.getElementById('c-desc').value;
-  const moneda=document.getElementById('c-moneda').value;
-  if(!fecha||isNaN(montoRaw)||!desc){alert('Completá todos los campos.');return;}
-  const monto=moneda==='ars'?montoRaw/cotiz:montoRaw;
-  capital.unshift({id:Date.now(),fecha,tipo,monto,montoOriginal:montoRaw,moneda,desc});
-  scheduleSave();renderCapital();
-  document.getElementById('c-monto').value='';document.getElementById('c-desc').value='';
-  document.getElementById('c-conversion').style.display='none';
-  document.getElementById('c-moneda').value='usd';
-  document.getElementById('c-monto-label').textContent='Monto (USD)';
+  try{
+    const fecha=document.getElementById('c-fecha').value;
+    const tipo=document.getElementById('c-tipo').value;
+    const montoRaw=parseFloat(document.getElementById('c-monto').value);
+    const desc=document.getElementById('c-desc').value;
+    const monedaEl=document.getElementById('c-moneda');
+    const moneda=monedaEl?monedaEl.value:'usd';
+    if(!fecha||isNaN(montoRaw)||montoRaw<=0||!desc){alert('Completá fecha, monto y descripción.');return;}
+    const monto=moneda==='ars'?montoRaw/cotiz:montoRaw;
+    capital.unshift({id:Date.now(),fecha,tipo,monto,montoOriginal:montoRaw,moneda,desc});
+    scheduleSave();renderCapital();
+    document.getElementById('c-monto').value='';
+    document.getElementById('c-desc').value='';
+    try{const conv=document.getElementById('c-conversion');if(conv)conv.style.display='none';}catch(e){}
+    try{if(monedaEl)monedaEl.value='usd';}catch(e){}
+    try{const lbl=document.getElementById('c-monto-label');if(lbl)lbl.textContent='Monto (USD)';}catch(e){}
+  }catch(e){console.error('Error en regCapital:',e);alert('Error al registrar: '+e.message);}
 };
 function renderCapital(){
   document.getElementById('cap-emp').style.display=capital.length===0?'block':'none';
