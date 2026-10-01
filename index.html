@@ -825,7 +825,8 @@ window.calcGan=function(){
   }else{w.style.display='none';}
 };
 
-window.calcCuota=function(){
+window.calcCuota=function(){return;// deprecated
+  /*
   const n=parseInt(document.getElementById('cc-cuotas').value)||0;
   const tot=parseFloat(document.getElementById('cc-total').value)||0;
   const monedaEl=document.getElementById('cc-moneda');
@@ -858,11 +859,8 @@ window.calcCuota=function(){
     const conv=document.getElementById('cc-conversion');
     if(conv)conv.style.display='none';
   }
-};
-window.calcCuotaManual=function(){
-  // When user manually edits cuota value, update conversion display
-  calcCuota();
-};
+*/ };  
+window.calcCuotaManual=function(){};
 
 window.registrarVenta=function(){
   const fecha=document.getElementById('v-fecha').value;
@@ -893,15 +891,16 @@ window.registrarVenta=function(){
     const ccMonedaEl=document.getElementById('cc-moneda');
     const ccMoneda=ccMonedaEl?ccMonedaEl.value:'usd';
     const totalCobrarRaw=parseFloat(document.getElementById('cc-total').value)||precio;
-    const valCuotaRaw=parseFloat(document.getElementById('cc-valor').value)||(totalCobrarRaw/(parseInt(document.getElementById('cc-cuotas').value)||1));
-    const nCuotas=parseInt(document.getElementById('cc-cuotas').value)||1;
-    // Convert to USD if needed
     const totalCobrar=ccMoneda==='ars'?totalCobrarRaw/cotiz:totalCobrarRaw;
-    const valCuota=ccMoneda==='ars'?valCuotaRaw/cotiz:valCuotaRaw;
-    const totalCobrarOrig=totalCobrarRaw;
-    const valCuotaOrig=valCuotaRaw;
-    const cliente={id:Date.now()+1,ventaId:venta.id,nombre,tel:document.getElementById('cc-tel').value.trim(),dni:document.getElementById('cc-dni').value.trim(),email:document.getElementById('cc-email').value.trim(),notasCli:document.getElementById('cc-notas-cli').value.trim(),producto,categoria:cat,fecha,totalCobrar,nCuotas,valCuota,monedaCuotas:ccMoneda,totalCobrarOrig,valCuotaOrig,pagos:[]};
-    venta.clienteId=cliente.id;venta.nCuotas=nCuotas;venta.valCuota=valCuota;venta.totalCobrar=totalCobrar;
+    const cliente={id:Date.now()+1,ventaId:venta.id,nombre,
+      tel:document.getElementById('cc-tel').value.trim(),
+      dni:document.getElementById('cc-dni').value.trim(),
+      email:document.getElementById('cc-email').value.trim(),
+      notasCli:document.getElementById('cc-notas-cli').value.trim(),
+      producto,categoria:cat,fecha,
+      totalCobrar,totalCobrarOrig:totalCobrarRaw,monedaTotal:ccMoneda,
+      pagos:[]};
+    venta.clienteId=cliente.id;venta.totalCobrar=totalCobrar;
     clientes.unshift(cliente);
   }
   if(stockId!==null){const idx=stock.findIndex(s=>s.id===stockId);if(idx>=0)stock[idx].disponible=false;}
@@ -914,7 +913,8 @@ window.registrarVenta=function(){
   document.getElementById('gan-prev').style.display='none';
   document.getElementById('v-met').value='efectivo_usd';
   try{document.getElementById('v-moneda').value='usd';updateVentaMonedaLabel();}catch(e){}
-  try{document.getElementById('cc-moneda').value='usd';calcCuota();}catch(e){}
+  try{document.getElementById('cc-moneda').value='usd';}catch(e){}
+  try{document.getElementById('cc-total').value='';}catch(e){}
   document.getElementById('pagos-lista').innerHTML='';pagoRowCount=0;updateTotalPagos();
   document.getElementById('v-fecha').value=today();
   agregarPagoRow();
@@ -927,7 +927,6 @@ function renderClientes(){
   if(clientes.length===0){list.innerHTML='';emp.style.display='block';updateBadges();return;}
   emp.style.display='none';
 
-  // Sort: con saldo primero, saldados al final
   const sorted=[...clientes].sort((a,b)=>{
     const sa=a.totalCobrar-a.pagos.reduce((s,p)=>s+p.monto,0);
     const sb=b.totalCobrar-b.pagos.reduce((s,p)=>s+p.monto,0);
@@ -938,95 +937,83 @@ function renderClientes(){
     const pagado=cl.pagos.reduce((s,p)=>s+p.monto,0);
     const saldo=cl.totalCobrar-pagado;
     const pct=Math.min(100,(pagado/cl.totalCobrar*100));
-    const saldado=saldo<=0;
-    const cuotasPagadas=cl.pagos.length;
-    const cuotasPendientes=Math.max(0,cl.nCuotas-cuotasPagadas);
+    const saldado=saldo<=0.01;
     const progColor=saldado?'#34a853':pct>50?'#fbbc04':'#ea4335';
+    const totalOrig=cl.totalCobrarOrig||cl.totalCobrar;
+    const monedaTotal=cl.monedaTotal||'usd';
 
-    // Build cuotas grid: paid + pending
-    const todasCuotas=[];
-    for(let i=0;i<cl.nCuotas;i++){
-      if(i<cuotasPagadas){
-        const p=cl.pagos[i];
-        todasCuotas.push(`<div style="display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:6px;background:#f0faf0;border:1px solid #c8e6c9;font-size:12px">
-          <div style="width:20px;height:20px;border-radius:50%;background:#34a853;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">${i+1}</div>
-          <div style="flex:1;min-width:0">
-            <div style="font-weight:600;color:#2e7d32">USD ${p.monto.toFixed(2)}</div>
-            <div style="color:#aaa;font-size:10px">${p.fecha}${p.nota?' · '+p.nota:''}</div>
-          </div>
-          <button class="bs bd" style="padding:2px 6px;font-size:10px" onclick="delPago(${cl.id},${p.id})"><i class="ti ti-x"></i></button>
-        </div>`);
-      } else {
-        todasCuotas.push(`<div style="display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:6px;background:#fff8f8;border:1px solid #ffcdd2;font-size:12px">
-          <div style="width:20px;height:20px;border-radius:50%;background:#e0e0e0;color:#999;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">${i+1}</div>
-          <div style="flex:1">
-            <div style="color:#c62828;font-weight:600">USD ${cl.valCuota.toFixed(2)}</div>
-            <div style="color:#aaa;font-size:10px">Pendiente</div>
-          </div>
-        </div>`);
-      }
-    }
+    // Pagos list
+    const pagosHTML=cl.pagos.length>0?`
+      <div style="margin-top:10px;border-top:1px solid #f0f0f0;padding-top:10px">
+        <div style="font-size:12px;font-weight:600;color:#555;margin-bottom:6px">Pagos recibidos</div>
+        ${cl.pagos.map((p,i)=>`
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;background:${p.moneda==='ars'?'#fff8e1':'#f0faf0'};border:1px solid ${p.moneda==='ars'?'#ffe082':'#c8e6c9'};margin-bottom:4px;font-size:13px">
+            <div style="width:22px;height:22px;border-radius:50%;background:#34a853;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">${i+1}</div>
+            <span style="flex:1">${p.fecha}</span>
+            <span style="font-weight:600;color:${p.moneda==='ars'?'#f57f17':'#2e7d32'}">
+              ${p.moneda==='ars'?'$'+Number(p.montoOriginal||p.monto*cotiz).toLocaleString('es-AR'):'USD '+p.monto.toFixed(2)}
+              <span style="font-size:10px;color:#aaa;font-weight:400">${p.moneda==='ars'?' = USD '+p.monto.toFixed(2):' = $'+(p.monto*cotiz).toLocaleString('es-AR')}</span>
+            </span>
+            ${p.nota?`<span style="font-size:11px;color:#aaa">${p.nota}</span>`:''}
+            <button class="bs bd" style="padding:2px 6px;font-size:10px" onclick="delPago(${cl.id},${p.id})"><i class="ti ti-x"></i></button>
+          </div>`).join('')}
+      </div>`:'' ;
 
-    return`<div class="cli-card" style="${saldado?'opacity:0.75':''}">
-      <!-- HEADER -->
+    return`<div class="cli-card" style="${saldado?'opacity:0.8':''}">
       <div class="cli-head">
         <div class="avatar" style="background:${saldado?'#e8f5e9':'#f3e5f5'};color:${saldado?'#2e7d32':'#6a1b9a'}">${initials(cl.nombre)}</div>
         <div class="cli-info">
           <div class="cli-name">${cl.nombre}
             <span class="tag ${CAT_TAGS[cl.categoria]||'t-iph'}">${CAT_LABELS[cl.categoria]||''}</span>
-            ${saldado?'<span class="tag t-ok"> Saldado</span>':'<span class="tag t-pen"> Con saldo</span>'}
+            ${saldado?'<span class="tag t-ok">Saldado</span>':'<span class="tag t-pen">Con saldo</span>'}
           </div>
-          <div class="cli-sub">${cl.producto} · Venta: ${cl.fecha}${cl.tel?' · '+cl.tel:''}</div>
+          <div class="cli-sub">${cl.producto} · ${cl.fecha}${cl.tel?' · '+cl.tel:''}</div>
           ${cl.dni?`<div style="font-size:11px;color:#aaa">DNI: ${cl.dni}${cl.email?' · '+cl.email:''}</div>`:''}
           ${cl.notasCli?`<div style="font-size:11px;color:#aaa">${cl.notasCli}</div>`:''}
         </div>
-        <button class="bs bd" onclick="delCliente(${cl.id})" title="Eliminar cliente"><i class="ti ti-trash"></i></button>
+        <button class="bs bd" onclick="delCliente(${cl.id})"><i class="ti ti-trash"></i></button>
       </div>
 
-      <!-- RESUMEN FINANCIERO -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px">
+      <!-- RESUMEN -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px">
         <div style="background:#f9f9f9;border-radius:8px;padding:8px;text-align:center">
-          <div style="font-size:10px;color:#777;margin-bottom:2px">Total</div>
-          <div style="font-size:13px;font-weight:700">USD ${cl.totalCobrar.toFixed(0)}</div>
+          <div style="font-size:10px;color:#777;margin-bottom:2px">Total acordado</div>
+          <div style="font-size:13px;font-weight:700">${monedaTotal==='ars'?'$'+Number(totalOrig).toLocaleString('es-AR'):'USD '+cl.totalCobrar.toFixed(0)}</div>
+          <div style="font-size:10px;color:#aaa">${monedaTotal==='ars'?'USD '+cl.totalCobrar.toFixed(2):'$'+(cl.totalCobrar*cotiz).toLocaleString('es-AR')}</div>
         </div>
         <div style="background:#f0faf0;border-radius:8px;padding:8px;text-align:center">
-          <div style="font-size:10px;color:#777;margin-bottom:2px">Cobrado</div>
-          <div style="font-size:13px;font-weight:700;color:#2e7d32">USD ${pagado.toFixed(0)}</div>
+          <div style="font-size:10px;color:#777;margin-bottom:2px">Cobrado (USD)</div>
+          <div style="font-size:13px;font-weight:700;color:#2e7d32">USD ${pagado.toFixed(2)}</div>
+          <div style="font-size:10px;color:#aaa">$${(pagado*cotiz).toLocaleString('es-AR')}</div>
         </div>
-        <div style="background:${saldo>0?'#fff8f8':'#f0faf0'};border-radius:8px;padding:8px;text-align:center">
+        <div style="background:${saldo>0.01?'#fff8f8':'#f0faf0'};border-radius:8px;padding:8px;text-align:center">
           <div style="font-size:10px;color:#777;margin-bottom:2px">Saldo</div>
-          <div style="font-size:13px;font-weight:700;color:${saldo>0?'#c62828':'#2e7d32'}">USD ${saldo.toFixed(0)}</div>
-        </div>
-        <div style="background:#f9f9f9;border-radius:8px;padding:8px;text-align:center">
-          <div style="font-size:10px;color:#777;margin-bottom:2px">Cuotas</div>
-          <div style="font-size:13px;font-weight:700">${cuotasPagadas}<span style="color:#aaa;font-size:11px">/${cl.nCuotas}</span></div>
-          <div style="font-size:10px;color:${cuotasPendientes>0?'#c62828':'#2e7d32'}">${cuotasPendientes>0?cuotasPendientes+' pend.':'¡Al día!'}</div>
+          <div style="font-size:13px;font-weight:700;color:${saldo>0.01?'#c62828':'#2e7d32'}">USD ${saldo.toFixed(2)}</div>
+          <div style="font-size:10px;color:#aaa">$${(saldo*cotiz).toLocaleString('es-AR')}</div>
         </div>
       </div>
 
-      <!-- BARRA PROGRESO -->
+      <!-- BARRA -->
       <div class="prog-wrap" style="height:8px;margin-bottom:4px"><div class="prog-fill" style="width:${pct.toFixed(0)}%;background:${progColor}"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:11px;color:#aaa;margin-bottom:12px">
-        <span>${pct.toFixed(0)}% cobrado</span>
-        <span>USD ${cl.valCuota.toFixed(2)}/cuota</span>
-      </div>
+      <div style="font-size:11px;color:#aaa;margin-bottom:12px">${pct.toFixed(0)}% cobrado · ${cl.pagos.length} pago${cl.pagos.length!==1?'s':''} registrado${cl.pagos.length!==1?'s':''}</div>
 
-      <!-- GRILLA DE CUOTAS -->
-      <div style="font-size:12px;font-weight:600;color:#555;margin-bottom:6px">Detalle de cuotas</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-bottom:12px">
-        ${todasCuotas.join('')}
-      </div>
+      ${pagosHTML}
 
-      <!-- REGISTRAR PAGO -->
-      ${!saldado?`<div style="background:#f0f4ff;border:1px solid #c5cae9;border-radius:8px;padding:10px;margin-top:4px">
-        <div style="font-size:12px;font-weight:600;color:#3949ab;margin-bottom:8px"><i class="ti ti-plus" style="vertical-align:-2px"></i> Registrar cuota ${cuotasPagadas+1} de ${cl.nCuotas}</div>
+      <!-- REGISTRAR PAGO LIBRE -->
+      ${!saldado?`<div style="background:#f0f4ff;border:1px solid #c5cae9;border-radius:8px;padding:10px;margin-top:10px">
+        <div style="font-size:12px;font-weight:600;color:#3949ab;margin-bottom:8px"><i class="ti ti-plus" style="vertical-align:-2px"></i> Registrar pago</div>
         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
           <input type="date" id="pf-${cl.id}" style="width:130px;margin:0" value="${today()}">
-          <input type="number" id="pm-${cl.id}" placeholder="USD ${cl.valCuota.toFixed(2)}" value="${cl.valCuota.toFixed(2)}" style="width:110px;margin:0" min="0" step="0.01">
-          <input type="text" id="pn-${cl.id}" placeholder="nota (opcional)" style="flex:1;min-width:100px;margin:0">
+          <input type="number" id="pm-${cl.id}" placeholder="Monto" style="width:100px;margin:0" min="0" step="0.01">
+          <select id="pm-mon-${cl.id}" style="width:70px;margin:0;font-size:12px">
+            <option value="usd">USD</option>
+            <option value="ars">$ pesos</option>
+          </select>
+          <input type="text" id="pn-${cl.id}" placeholder="nota (opcional)" style="flex:1;min-width:80px;margin:0">
           <button class="bp" onclick="regPago(${cl.id})" style="width:auto;padding:8px 14px;margin:0;font-size:12px"><i class="ti ti-check"></i> Cobrar</button>
         </div>
-      </div>`:'<div style="text-align:center;padding:8px;font-size:12px;color:#2e7d32;background:#f0faf0;border-radius:8px"><i class="ti ti-circle-check"></i> Deuda saldada — gracias!</div>'}
+        <div id="pago-conv-${cl.id}" style="display:none;font-size:11px;color:#777;margin-top:4px"></div>
+      </div>`:`<div style="text-align:center;padding:8px;font-size:12px;color:#2e7d32;background:#f0faf0;border-radius:8px;margin-top:8px"><i class="ti ti-circle-check"></i> ¡Deuda saldada!</div>`}
     </div>`;
   }).join('');
   updateBadges();
@@ -1037,10 +1024,9 @@ window.regPago=function(cid){
   const fecha=document.getElementById('pf-'+cid).value;
   const montoRaw=parseFloat(document.getElementById('pm-'+cid).value);
   const monedaEl=document.getElementById('pm-mon-'+cid);
-  const moneda=monedaEl?monedaEl.value:(cl.monedaCuotas||'usd');
+  const moneda=monedaEl?monedaEl.value:'usd';
   const nota=document.getElementById('pn-'+cid).value.trim();
   if(!fecha||isNaN(montoRaw)||montoRaw<=0){alert('Ingresá fecha y monto del pago.');return;}
-  // Convert to USD for storage
   const montoUSD=moneda==='ars'?montoRaw/cotiz:montoRaw;
   const saldo=cl.totalCobrar-cl.pagos.reduce((s,p)=>s+p.monto,0);
   if(montoUSD>saldo+0.01){if(!confirm(`El monto supera el saldo (USD ${saldo.toFixed(2)}). ¿Continuar?`))return;}
