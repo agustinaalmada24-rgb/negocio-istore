@@ -658,10 +658,10 @@ window.editCotiz=function(){
 
 function capTotal(){
   let t=0;
-  capital.forEach(c=>{if(c.tipo==='ingreso')t+=c.monto;else if(c.tipo==='egreso')t-=c.monto;else t=c.monto;});
-  ventas.forEach(v=>{if(v.metodo!=='cuenta_corriente')t+=v.ganancia;});
-  gastos.forEach(g=>t-=g.monto);
-  clientes.forEach(cl=>{cl.pagos.forEach(p=>t+=p.monto);});
+  capital.forEach(c=>{if(c.moneda==='ars')return; if(c.tipo==='ingreso')t+=c.monto;else if(c.tipo==='egreso')t-=c.monto;else t=c.monto;});
+  ventas.forEach(v=>{if(v.metodo!=='cuenta_corriente'&&(!v.monedaOriginal||v.monedaOriginal==='usd'))t+=v.ganancia;});
+  gastos.forEach(g=>{if(!g.moneda||g.moneda==='usd')t-=g.monto;}); // solo gastos en USD
+  clientes.forEach(cl=>{cl.pagos.forEach(p=>{if(!p.moneda||p.moneda==='usd')t+=p.monto;});});
   return t;
 }
 function capStock(){return stock.filter(s=>s.disponible).reduce((a,s)=>a+s.costo,0);}
@@ -671,11 +671,20 @@ function totalCobrado(){return clientes.reduce((t,cl)=>t+cl.pagos.reduce((s,p)=>
 function updateBadges(){
   document.getElementById('dolar-display').textContent=`USD 1 = $${cotiz.toLocaleString('es-AR')}`;
   const ct=capTotal();
-  document.getElementById('cap-badge').textContent=`USD ${ct.toFixed(0)}`;
+  const arsT=capTotalARS();
+  const capBadge=document.getElementById('cap-badge');
+  if(arsT>0){capBadge.textContent=`USD ${ct.toFixed(0)} + $${Math.round(arsT).toLocaleString('es-AR')}`;}
+  else{capBadge.textContent=`USD ${ct.toFixed(0)}`;}
   document.getElementById('stk-badge').textContent=`${stock.filter(s=>s.disponible).length} equipos`;
   document.getElementById('cc-badge').textContent=`USD ${totalPorCobrar().toFixed(0)}`;
   const el=document.getElementById('cap-liq');
-  if(el){el.textContent=`USD ${ct.toFixed(2)}`;document.getElementById('cap-liq-ars').textContent=`$${(ct*cotiz).toLocaleString('es-AR')}`;document.getElementById('cap-stk').textContent=`USD ${capStock().toFixed(2)}`;}
+  if(el){
+    const arsTotal=capTotalARS();
+    el.textContent=`USD ${ct.toFixed(2)}`;
+    const el2=document.getElementById('cap-liq-ars2');
+    if(el2)el2.textContent=`$${Math.round(arsTotal).toLocaleString('es-AR')}`;
+    document.getElementById('cap-stk').textContent=`USD ${capStock().toFixed(2)}`;
+  }
   const sn=document.getElementById('stk-n');
   if(sn){const d=stock.filter(s=>s.disponible);sn.textContent=d.length;document.getElementById('stk-c').textContent=`USD ${d.reduce((a,s)=>a+s.costo,0).toFixed(0)}`;document.getElementById('stk-p').textContent=`USD ${d.reduce((a,s)=>a+s.precio,0).toFixed(0)}`;}
   const cc=document.getElementById('cli-count');
@@ -819,7 +828,40 @@ window.calcGan=function(){
 window.calcCuota=function(){
   const n=parseInt(document.getElementById('cc-cuotas').value)||0;
   const tot=parseFloat(document.getElementById('cc-total').value)||0;
-  if(n>0&&tot>0)document.getElementById('cc-valor').value=(tot/n).toFixed(2);
+  const monedaEl=document.getElementById('cc-moneda');
+  const moneda=monedaEl?monedaEl.value:'usd';
+  // Update labels
+  const tlbl=document.getElementById('cc-total-label');
+  const vlbl=document.getElementById('cc-valor-label');
+  if(tlbl)tlbl.textContent=moneda==='ars'?'Total a cobrar ($)':'Total a cobrar (USD)';
+  if(vlbl)vlbl.textContent=moneda==='ars'?'Valor por cuota ($)':'Valor por cuota (USD)';
+  // Calculate cuota value
+  if(n>0&&tot>0){
+    const valCuota=(tot/n).toFixed(2);
+    document.getElementById('cc-valor').value=valCuota;
+    // Show conversion
+    const conv=document.getElementById('cc-conversion');
+    const convTxt=document.getElementById('cc-conversion-txt');
+    if(conv&&convTxt){
+      conv.style.display='block';
+      if(moneda==='ars'){
+        const totUSD=(tot/cotiz).toFixed(2);
+        const cuotaUSD=(tot/n/cotiz).toFixed(2);
+        convTxt.innerHTML=`Total: <strong>USD ${totUSD}</strong> · Cuota: <strong>USD ${cuotaUSD}</strong> (cotización $${cotiz.toLocaleString('es-AR')})`;
+      }else{
+        const totARS=(tot*cotiz).toLocaleString('es-AR');
+        const cuotaARS=((tot/n)*cotiz).toLocaleString('es-AR');
+        convTxt.innerHTML=`Total: <strong>$${totARS}</strong> · Cuota: <strong>$${cuotaARS}</strong>`;
+      }
+    }
+  }else{
+    const conv=document.getElementById('cc-conversion');
+    if(conv)conv.style.display='none';
+  }
+};
+window.calcCuotaManual=function(){
+  // When user manually edits cuota value, update conversion display
+  calcCuota();
 };
 
 window.registrarVenta=function(){
@@ -848,10 +890,17 @@ window.registrarVenta=function(){
   if(metodo==='cuenta_corriente'){
     const nombre=document.getElementById('cc-nombre').value.trim();
     if(!nombre){alert('Ingresá el nombre del cliente para cuenta corriente.');return;}
-    const totalCobrar=parseFloat(document.getElementById('cc-total').value)||precio;
+    const ccMonedaEl=document.getElementById('cc-moneda');
+    const ccMoneda=ccMonedaEl?ccMonedaEl.value:'usd';
+    const totalCobrarRaw=parseFloat(document.getElementById('cc-total').value)||precio;
+    const valCuotaRaw=parseFloat(document.getElementById('cc-valor').value)||(totalCobrarRaw/(parseInt(document.getElementById('cc-cuotas').value)||1));
     const nCuotas=parseInt(document.getElementById('cc-cuotas').value)||1;
-    const valCuota=parseFloat(document.getElementById('cc-valor').value)||(totalCobrar/nCuotas);
-    const cliente={id:Date.now()+1,ventaId:venta.id,nombre,tel:document.getElementById('cc-tel').value.trim(),dni:document.getElementById('cc-dni').value.trim(),email:document.getElementById('cc-email').value.trim(),notasCli:document.getElementById('cc-notas-cli').value.trim(),producto,categoria:cat,fecha,totalCobrar,nCuotas,valCuota,pagos:[]};
+    // Convert to USD if needed
+    const totalCobrar=ccMoneda==='ars'?totalCobrarRaw/cotiz:totalCobrarRaw;
+    const valCuota=ccMoneda==='ars'?valCuotaRaw/cotiz:valCuotaRaw;
+    const totalCobrarOrig=totalCobrarRaw;
+    const valCuotaOrig=valCuotaRaw;
+    const cliente={id:Date.now()+1,ventaId:venta.id,nombre,tel:document.getElementById('cc-tel').value.trim(),dni:document.getElementById('cc-dni').value.trim(),email:document.getElementById('cc-email').value.trim(),notasCli:document.getElementById('cc-notas-cli').value.trim(),producto,categoria:cat,fecha,totalCobrar,nCuotas,valCuota,monedaCuotas:ccMoneda,totalCobrarOrig,valCuotaOrig,pagos:[]};
     venta.clienteId=cliente.id;venta.nCuotas=nCuotas;venta.valCuota=valCuota;venta.totalCobrar=totalCobrar;
     clientes.unshift(cliente);
   }
@@ -865,6 +914,7 @@ window.registrarVenta=function(){
   document.getElementById('gan-prev').style.display='none';
   document.getElementById('v-met').value='efectivo_usd';
   try{document.getElementById('v-moneda').value='usd';updateVentaMonedaLabel();}catch(e){}
+  try{document.getElementById('cc-moneda').value='usd';calcCuota();}catch(e){}
   document.getElementById('pagos-lista').innerHTML='';pagoRowCount=0;updateTotalPagos();
   document.getElementById('v-fecha').value=today();
   agregarPagoRow();
@@ -985,12 +1035,16 @@ function renderClientes(){
 window.regPago=function(cid){
   const cl=clientes.find(c=>c.id===cid);if(!cl)return;
   const fecha=document.getElementById('pf-'+cid).value;
-  const monto=parseFloat(document.getElementById('pm-'+cid).value);
+  const montoRaw=parseFloat(document.getElementById('pm-'+cid).value);
+  const monedaEl=document.getElementById('pm-mon-'+cid);
+  const moneda=monedaEl?monedaEl.value:(cl.monedaCuotas||'usd');
   const nota=document.getElementById('pn-'+cid).value.trim();
-  if(!fecha||isNaN(monto)||monto<=0){alert('Ingresá fecha y monto del pago.');return;}
+  if(!fecha||isNaN(montoRaw)||montoRaw<=0){alert('Ingresá fecha y monto del pago.');return;}
+  // Convert to USD for storage
+  const montoUSD=moneda==='ars'?montoRaw/cotiz:montoRaw;
   const saldo=cl.totalCobrar-cl.pagos.reduce((s,p)=>s+p.monto,0);
-  if(monto>saldo+0.01){if(!confirm(`El monto supera el saldo (USD ${saldo.toFixed(2)}). ¿Continuar?`))return;}
-  cl.pagos.push({id:Date.now(),fecha,monto,nota});
+  if(montoUSD>saldo+0.01){if(!confirm(`El monto supera el saldo (USD ${saldo.toFixed(2)}). ¿Continuar?`))return;}
+  cl.pagos.push({id:Date.now(),fecha,monto:montoUSD,montoOriginal:montoRaw,moneda,nota});
   scheduleSave();renderClientes();
 };
 window.delPago=function(cid,pid){
