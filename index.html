@@ -9,17 +9,15 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f7;color:#1d1d1f;min-height:100vh}
 .topbar{background:#fff;border-bottom:1px solid #e5e5e5;padding:10px 16px;position:sticky;top:0;z-index:100}
-.topbar-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.app-title{font-size:15px;font-weight:600;color:#1d1d1f;margin-right:8px}
+.topbar-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.app-title{font-size:15px;font-weight:600;color:#1d1d1f;margin-right:4px}
 .badge{display:inline-flex;align-items:center;gap:5px;background:#f5f5f7;border:1px solid #e5e5e5;border-radius:20px;padding:3px 10px;font-size:11px;color:#555;white-space:nowrap}
 .badge strong{color:#1d1d1f}
 .dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0}
 .dg{background:#34a853}.da{background:#fbbc04}.dr{background:#ea4335}
-.sync-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid #e5e5e5;background:#f5f5f7;color:#555}
-.sync-ok{color:#34a853}.sync-err{color:#ea4335}.sync-loading{color:#fbbc04}
-.main{max-width:900px;margin:0 auto;padding:16px}
+.main{max-width:960px;margin:0 auto;padding:16px}
 .nav{display:flex;gap:0;border-bottom:1px solid #e5e5e5;margin-bottom:20px;overflow-x:auto;background:#fff;border-radius:10px 10px 0 0;padding:0 4px}
-.nb{padding:10px 14px;font-size:12px;font-weight:500;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;color:#777;white-space:nowrap;transition:all .15s}
+.nb{padding:10px 13px;font-size:12px;font-weight:500;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;color:#777;white-space:nowrap;transition:all .15s}
 .nb.active{color:#1d1d1f;border-bottom-color:#1d1d1f}
 .nb:hover{color:#1d1d1f}
 .sec{display:none}.sec.active{display:block}
@@ -28,16 +26,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .g3{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:12px}
 .g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-@media(max-width:600px){.g2,.g3,.g4,.g5{grid-template-columns:1fr 1fr}.topbar-inner{gap:5px}table{font-size:11px;}th,td{padding:5px 4px;}}
+@media(max-width:640px){.g2,.g3,.g4,.g5{grid-template-columns:1fr 1fr}}
 @media(max-width:400px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
 label{font-size:12px;color:#777;display:block;margin-bottom:4px;font-weight:500}
 input,select{width:100%;margin-bottom:10px;padding:8px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px;background:#fff;color:#1d1d1f;outline:none}
-input:focus,select:focus{border-color:#0071e3;box-shadow:0 0 0 3px rgba(0,113,227,.15)}
-.bp{background:#1d1d1f;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:500;cursor:pointer;width:100%;margin-top:4px;transition:opacity .15s}
+input:focus,select:focus{border-color:#0071e3}
+.bp{background:#1d1d1f;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:500;cursor:pointer;width:100%;margin-top:4px}
 .bp:hover{opacity:.85}
-.bs{padding:5px 10px;font-size:12px;background:#fff;border:1px solid #ddd;border-radius:8px;cursor:pointer;color:#555;transition:background .15s}
+.bs{padding:5px 10px;font-size:12px;background:#fff;border:1px solid #ddd;border-radius:8px;cursor:pointer;color:#555}
 .bs:hover{background:#f5f5f7}
 .bd{color:#ea4335;border-color:#fdd}
+.be{padding:5px 10px;font-size:12px;background:#fff;border:1px solid #c5d9f7;border-radius:8px;cursor:pointer;color:#1a73e8}
 .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500}
 .t-usd{background:#e8f5e9;color:#2e7d32}
 .t-ars{background:#fff8e1;color:#f57f17}
@@ -49,10 +48,11 @@ input:focus,select:focus{border-color:#0071e3;box-shadow:0 0 0 3px rgba(0,113,22
 .t-mac{background:#f3e5f5;color:#6a1b9a}
 .t-ipad{background:#e8f5e9;color:#2e7d32}
 .t-watch{background:#fff8e1;color:#f57f17}
-.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-table{width:100%;border-collapse:collapse;font-size:13px;}
-th{text-align:left;padding:7px 8px;font-size:11px;font-weight:600;color:#777;border-bottom:1px solid #e5e5e5;background:#f9f9f9}
-td{padding:8px;border-bottom:1px solid #f0f0f0;color:#1d1d1f;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;}
+.t-tec{background:#e0f7fa;color:#00838f}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:7px 8px;font-size:11px;font-weight:600;color:#777;border-bottom:1px solid #e5e5e5;background:#f9f9f9;white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid #f0f0f0;color:#1d1d1f;vertical-align:middle}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:#fafafa}
 .st{font-size:14px;font-weight:600;margin-bottom:14px;color:#1d1d1f}
@@ -67,57 +67,48 @@ tr:hover td{background:#fafafa}
 .cli-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:14px;margin-bottom:10px}
 .cli-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .cli-info{flex:1;min-width:0}
-.cli-name{font-weight:600;font-size:14px;color:#1d1d1f}
+.cli-name{font-weight:600;font-size:14px;color:#1d1d1f;flex-wrap:wrap;display:flex;gap:4px;align-items:center}
 .cli-sub{font-size:12px;color:#777}
-.cuota-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;background:#e8f5e9;color:#2e7d32}
-.emp{text-align:center;padding:2.5rem 1rem;color:#aaa;font-size:13px}
-
+.emp{text-align:center;padding:2rem 1rem;color:#aaa;font-size:13px}
 .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px}
 .modal{background:#fff;border-radius:16px;padding:24px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
-.modal-title{font-size:16px;font-weight:600;margin-bottom:16px;color:#1d1d1f}
+.modal-title{font-size:16px;font-weight:600;margin-bottom:16px}
 .modal-footer{display:flex;gap:8px;margin-top:16px}
-.modal-footer .bp{margin:0}
 .btn-cancel{flex:1;padding:10px 18px;font-size:13px;font-weight:500;background:#f5f5f7;border:none;border-radius:8px;cursor:pointer;color:#555}
-.btn-cancel:hover{background:#e5e5e5}
-.be{padding:5px 10px;font-size:12px;background:#fff;border:1px solid #ddd;border-radius:8px;cursor:pointer;color:#1a73e8;border-color:#c5d9f7}
-.be:hover{background:#e8f0fe}
-
 .loading-screen{position:fixed;top:0;left:0;right:0;bottom:0;background:#f5f5f7;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999}
-.loading-logo{font-size:48px;margin-bottom:16px}
-.loading-text{font-size:16px;font-weight:500;color:#1d1d1f;margin-bottom:8px}
-.loading-sub{font-size:13px;color:#777}
 </style>
 </head>
 <body>
 
 <div class="loading-screen" id="loading-screen">
-  <div class="loading-logo"></div>
-  <div class="loading-text">Cargando tu negocio...</div>
-  <div class="loading-sub">Conectando con la base de datos</div>
+  <div style="font-size:48px;margin-bottom:16px"></div>
+  <div style="font-size:16px;font-weight:500;color:#1d1d1f;margin-bottom:8px">Cargando tu negocio...</div>
+  <div style="font-size:13px;color:#777">Conectando con Firebase</div>
 </div>
 
 <div id="main-app" style="display:none">
   <div class="topbar">
     <div class="topbar-inner">
       <span class="app-title"> iPhone Store</span>
-      <div class="badge"><span class="dot dg"></span><span id="dolar-display">USD 1 = $1200</span><button class="bs" onclick="editCotiz()" style="padding:2px 7px;font-size:11px;margin:0;border:none;background:transparent;color:#0071e3;cursor:pointer">Editar</button></div>
-      <div class="badge"><span class="dot dg"></span>Capital: <strong id="cap-badge">USD 0</strong></div>
+      <div class="badge"><span class="dot dg"></span><span id="dolar-display">USD 1 = $1540</span><button class="bs" onclick="editCotiz()" style="padding:2px 7px;font-size:11px;margin:0;border:none;background:transparent;color:#0071e3;cursor:pointer">Editar</button></div>
+      <div class="badge"><span class="dot dg"></span>USD: <strong id="cap-badge-usd">0</strong></div>
+      <div class="badge"><span class="dot da"></span>Pesos: <strong id="cap-badge-ars">$0</strong></div>
       <div class="badge"><span class="dot da"></span>Stock: <strong id="stk-badge">0</strong></div>
       <div class="badge"><span class="dot dr"></span>Por cobrar: <strong id="cc-badge">USD 0</strong></div>
-      <div class="sync-badge" id="sync-status"><span class="dot dg"></span><span>Sincronizado</span></div>
+      <div class="badge" id="sync-status"><span class="dot dg"></span><span>Sincronizado</span></div>
     </div>
   </div>
 
   <div class="main">
     <div class="nav">
-      <button class="nb active" onclick="sw('ventas',this)"><i class="ti ti-device-mobile"></i> Venta</button>
-      <button class="nb" onclick="sw('clientes',this)"><i class="ti ti-users"></i> Clientes</button>
-      <button class="nb" onclick="sw('capital',this)"><i class="ti ti-cash"></i> Capital</button>
-      <button class="nb" onclick="sw('stock',this)"><i class="ti ti-package"></i> Stock</button>
-      <button class="nb" onclick="sw('historial',this)"><i class="ti ti-list"></i> Historial</button>
-      <button class="nb" onclick="sw('gastos',this)"><i class="ti ti-receipt"></i> Gastos negocio</button>
-      <button class="nb" onclick="sw('hogar',this)"><i class="ti ti-home"></i> Finanzas hogar</button>
-      <button class="nb" onclick="sw('reporte',this)"><i class="ti ti-chart-bar"></i> Reporte</button>
+      <button class="nb active" onclick="sw('ventas',this)"> Venta</button>
+      <button class="nb" onclick="sw('clientes',this)"> Clientes</button>
+      <button class="nb" onclick="sw('capital',this)"> Capital</button>
+      <button class="nb" onclick="sw('stock',this)"> Stock</button>
+      <button class="nb" onclick="sw('historial',this)"> Historial</button>
+      <button class="nb" onclick="sw('gastos',this)"> Gastos negocio</button>
+      <button class="nb" onclick="sw('hogar',this)"> Finanzas hogar</button>
+      <button class="nb" onclick="sw('reporte',this)"> Reporte</button>
     </div>
 
     <!-- VENTA -->
@@ -132,28 +123,35 @@ tr:hover td{background:#fafafa}
               <option value="macbook">MacBook</option>
               <option value="ipad">iPad</option>
               <option value="applewatch">Apple Watch</option>
-              <option value="otros">Otros</option>
               <option value="serviciotecnico">Servicio Técnico</option>
+              <option value="otros">Otros</option>
             </select>
           </div>
         </div>
         <div class="g2">
           <div><label>Modelo</label><select id="v-modelo" onchange="onModeloChange()"></select></div>
-          <div id="v-man-wrap" style="display:none"><label>Detalle (color, etc.)</label><input type="text" id="v-man" placeholder="ej: negro, 512GB..."></div>
+          <div id="v-man-wrap" style="display:none"><label>Detalle</label><input type="text" id="v-man" placeholder="ej: cambio pantalla, color..."></div>
+        </div>
+        <div>
+          <label>Moneda de la venta</label>
+          <select id="v-moneda" onchange="updateVentaMonedaLabel()">
+            <option value="usd">USD (dólares)</option>
+            <option value="ars">$ (pesos argentinos)</option>
+          </select>
         </div>
         <div class="g2">
-          <div><label>Costo (USD)</label><input type="number" id="v-costo" placeholder="650" min="0" oninput="calcGan()"></div>
-          <div><label>Precio de venta (USD)</label><input type="number" id="v-precio" placeholder="750" min="0" oninput="calcGan()"></div>
+          <div><label id="v-costo-label">Costo (USD)</label><input type="number" id="v-costo" placeholder="650" min="0" oninput="calcGan()"></div>
+          <div><label id="v-precio-label">Precio de venta (USD)</label><input type="number" id="v-precio" placeholder="750" min="0" oninput="calcGan()"></div>
         </div>
         <div>
           <label>Métodos de pago <span style="font-size:11px;color:#777;font-weight:400">(podés combinar varios)</span></label>
           <div id="pagos-lista" style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px"></div>
-          <button type="button" class="bs" onclick="agregarPagoRow()" style="font-size:12px;width:100%;padding:7px"><i class="ti ti-plus"></i> Agregar método de pago</button>
+          <button type="button" class="bs" onclick="agregarPagoRow()" style="font-size:12px;width:100%;padding:7px"> + Agregar método de pago</button>
           <div id="v-total-pagos" style="display:none;font-size:12px;color:#777;margin-top:6px;padding:8px;background:#f9f9f9;border-radius:8px"></div>
         </div>
-        <div id="cc-wrap" style="display:none">
+        <div id="cc-wrap" style="display:none;margin-top:10px">
           <div style="background:#f3e5f5;border:1px solid #ce93d8;border-radius:10px;padding:12px;margin-bottom:12px">
-            <p style="font-size:12px;font-weight:600;color:#6a1b9a;margin-bottom:10px"><i class="ti ti-users" style="vertical-align:-2px"></i> Datos del cliente</p>
+            <p style="font-size:12px;font-weight:600;color:#6a1b9a;margin-bottom:10px"> Datos del cliente (cuenta corriente)</p>
             <div class="g2">
               <div><label>Nombre y apellido</label><input type="text" id="cc-nombre" placeholder="Juan García"></div>
               <div><label>Teléfono / WhatsApp</label><input type="text" id="cc-tel" placeholder="+54 9 11 xxxx-xxxx"></div>
@@ -164,10 +162,17 @@ tr:hover td{background:#fafafa}
             </div>
             <div><label>Notas del cliente</label><input type="text" id="cc-notas-cli" placeholder="dirección, referencia..."></div>
           </div>
-          <div class="g3">
-            <div><label>Cantidad de cuotas</label><input type="number" id="cc-cuotas" placeholder="6" min="1" max="48" oninput="calcCuota()"></div>
-            <div><label>Total a cobrar (USD)</label><input type="number" id="cc-total" placeholder="780" min="0" oninput="calcCuota()"></div>
-            <div><label>Valor por cuota (USD)</label><input type="number" id="cc-valor" placeholder="130" min="0"></div>
+          <div class="g2">
+            <div><label>Total a cobrar</label><input type="number" id="cc-total" placeholder="ej: 820" min="0"></div>
+            <div><label>Moneda del total</label>
+              <select id="cc-moneda">
+                <option value="usd">USD (dólares)</option>
+                <option value="ars">$ (pesos argentinos)</option>
+              </select>
+            </div>
+          </div>
+          <div style="font-size:12px;color:#777;padding:8px;background:#f0f4ff;border-radius:8px;margin-bottom:8px">
+             El cliente va pagando libremente — cada pago puede ser en pesos o dólares.
           </div>
         </div>
         <div id="gan-prev" style="background:#f0faf0;border:1px solid #c8e6c9;border-radius:8px;padding:10px 14px;margin-bottom:10px;display:none">
@@ -176,7 +181,7 @@ tr:hover td{background:#fafafa}
           <span id="gan-ars" style="font-size:12px;color:#777"></span>
         </div>
         <div><label>Notas de la venta</label><input type="text" id="v-notas" placeholder="garantía, accesorios, etc."></div>
-        <button class="bp" onclick="registrarVenta()"><i class="ti ti-check"></i> Registrar venta</button>
+        <button class="bp" onclick="registrarVenta()"> Registrar venta</button>
       </div>
     </div>
 
@@ -188,47 +193,52 @@ tr:hover td{background:#fafafa}
         <div class="met"><div class="ml">Total cobrado</div><div class="mv tc" id="cli-cobrado">USD 0</div></div>
       </div>
       <div id="clientes-list"></div>
-      <div id="cli-empty" class="emp"><i class="ti ti-users" style="font-size:28px;display:block;margin-bottom:6px"></i>Sin cuentas corrientes</div>
+      <div id="cli-empty" class="emp"> Sin cuentas corrientes</div>
     </div>
 
     <!-- CAPITAL -->
     <div class="sec" id="tab-capital">
-      <div class="g2" style="margin-bottom:14px">
-        <div class="met"><div class="ml">Capital líquido</div><div class="mv tc" id="cap-liq">USD 0</div><div class="ms" id="cap-liq-ars">$0</div></div>
-        <div class="met"><div class="ml">Invertido en stock</div><div class="mv ta" id="cap-stk">USD 0</div></div>
+      <div class="g3" style="margin-bottom:14px">
+        <div class="met"><div class="ml">Capital líquido (USD)</div><div class="mv tc" id="cap-liq">USD 0</div></div>
+        <div class="met"><div class="ml">Capital en pesos</div><div class="mv ta" id="cap-liq-ars">$ 0</div></div>
+        <div class="met"><div class="ml">Invertido en stock</div><div class="mv" style="color:#854f0b" id="cap-stk">USD 0</div></div>
       </div>
       <div class="card">
-        <p class="st">Registrar movimiento</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <p class="st" style="margin:0">Registrar movimiento</p>
+        </div>
         <div class="g2">
           <div><label>Fecha</label><input type="date" id="c-fecha"></div>
           <div><label>Tipo</label><select id="c-tipo"><option value="ingreso">Ingreso</option><option value="egreso">Egreso / retiro</option><option value="ajuste">Ajuste</option></select></div>
         </div>
         <div class="g2">
-          <div>
-            <label>Moneda</label>
+          <div><label>Moneda</label>
             <select id="c-moneda" onchange="updateCapLabel()">
               <option value="usd">USD (dólares)</option>
               <option value="ars">$ (pesos argentinos)</option>
             </select>
           </div>
-          <div>
-            <label id="c-monto-label">Monto (USD)</label>
-            <input type="number" id="c-monto" placeholder="1000" min="0" oninput="updateCapConversion()">
-          </div>
+          <div><label id="c-monto-label">Monto (USD)</label><input type="number" id="c-monto" placeholder="1000" min="0" oninput="updateCapConversion()"></div>
         </div>
-        <div id="c-conversion" style="display:none;font-size:12px;color:#777;margin-bottom:10px;padding:8px;background:#f9f9f9;border-radius:8px">
-          Equivalente: <strong id="c-conversion-val"></strong>
-        </div>
+        <div id="c-conversion" style="display:none;font-size:12px;color:#777;margin-bottom:10px;padding:8px;background:#f9f9f9;border-radius:8px">Equivalente: <strong id="c-conversion-val"></strong></div>
         <div><label>Descripción</label><input type="text" id="c-desc" placeholder="ej: depósito inicial, retiro personal..."></div>
-        <button class="bp" onclick="regCapital()"><i class="ti ti-plus"></i> Registrar</button>
+        <button class="bp" onclick="regCapital()"> + Registrar</button>
       </div>
       <div class="card">
-        <p class="st">Movimientos</p>
+        <p class="st">Movimientos en USD 💵</p>
         <div class="tw"><table>
-          <thead><tr><th style="width:90px">Fecha</th><th style="width:90px">Tipo</th><th>Descripción</th><th style="width:95px">Monto</th><th style="width:36px"></th></tr></thead>
-          <tbody id="cap-tbody"></tbody>
+          <thead><tr><th>Fecha</th><th>Tipo</th><th>Descripción</th><th>Monto</th><th></th></tr></thead>
+          <tbody id="cap-tbody-usd"></tbody>
         </table></div>
-        <div id="cap-emp" class="emp" style="display:none">Sin movimientos</div>
+        <div id="cap-emp-usd" class="emp" style="display:none">Sin movimientos en USD</div>
+      </div>
+      <div class="card">
+        <p class="st">Movimientos en pesos 🪙</p>
+        <div class="tw"><table>
+          <thead><tr><th>Fecha</th><th>Tipo</th><th>Descripción</th><th>Monto $</th><th></th></tr></thead>
+          <tbody id="cap-tbody-ars"></tbody>
+        </table></div>
+        <div id="cap-emp-ars" class="emp" style="display:none">Sin movimientos en pesos</div>
       </div>
     </div>
 
@@ -243,40 +253,38 @@ tr:hover td{background:#fafafa}
         <p class="st">Agregar equipo</p>
         <div class="g2">
           <div><label>Fecha de compra</label><input type="date" id="s-fecha"></div>
-          <div><label>Categoría</label><select id="s-cat" onchange="buildStockModeloOpts()">
-            <option value="iphone">iPhone</option>
-            <option value="macbook">MacBook</option>
-            <option value="ipad">iPad</option>
-            <option value="applewatch">Apple Watch</option>
-          </select></div>
+          <div><label>Categoría</label>
+            <select id="s-cat" onchange="buildStockModeloOpts()">
+              <option value="iphone">iPhone</option><option value="macbook">MacBook</option>
+              <option value="ipad">iPad</option><option value="applewatch">Apple Watch</option>
+              <option value="serviciotecnico">Servicio Técnico</option><option value="otros">Otros</option>
+            </select>
+          </div>
         </div>
         <div class="g2">
           <div><label>Modelo</label><select id="s-mod"></select></div>
           <div><label>Estado</label><select id="s-est"><option value="nuevo">Nuevo</option><option value="usado">Usado</option><option value="reacondicionado">Reacondicionado</option></select></div>
         </div>
         <div class="g2">
-          <div><label>Costo compra (USD)</label><input type="number" id="s-costo" placeholder="600" min="0"></div>
-          <div><label>Precio venta estimado (USD)</label><input type="number" id="s-precio" placeholder="720" min="0"></div>
+          <div><label>Costo (USD)</label><input type="number" id="s-costo" min="0"></div>
+          <div><label>Precio estimado (USD)</label><input type="number" id="s-precio" min="0"></div>
         </div>
-        <div><label>Notas / IMEI / Serial</label><input type="text" id="s-notas" placeholder="IMEI, color, serial..."></div>
-        <button class="bp" onclick="agregarStock()"><i class="ti ti-plus"></i> Agregar al stock</button>
+        <div><label>Notas / IMEI</label><input type="text" id="s-notas"></div>
+        <button class="bp" onclick="agregarStock()"> + Agregar al stock</button>
       </div>
       <div class="card">
         <p class="st">Equipos en stock</p>
         <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
           <select id="stk-fil-cat" onchange="renderStock()" style="width:auto;margin:0;font-size:12px">
-            <option value="">Todas las categorías</option>
-            <option value="iphone">iPhone</option><option value="macbook">MacBook</option>
-            <option value="ipad">iPad</option><option value="applewatch">Apple Watch</option>
-          <option value="otros">Otros</option>
-          <option value="serviciotecnico">Servicio Técnico</option>
+            <option value="">Todas</option><option value="iphone">iPhone</option><option value="macbook">MacBook</option>
+            <option value="ipad">iPad</option><option value="applewatch">Watch</option><option value="serviciotecnico">Serv.Tec.</option><option value="otros">Otros</option>
           </select>
           <select id="stk-fil-disp" onchange="renderStock()" style="width:auto;margin:0;font-size:12px">
-            <option value="">Todos</option><option value="1">Solo disponibles</option><option value="0">Solo vendidos</option>
+            <option value="">Todos</option><option value="1">Disponibles</option><option value="0">Vendidos</option>
           </select>
         </div>
         <div class="tw"><table>
-          <thead><tr><th style="width:72px">Ingreso</th><th style="width:60px">Cat.</th><th>Modelo</th><th style="width:65px">Costo</th><th style="width:65px">Precio</th><th style="width:75px">Estado</th><th style="width:75px">Disp.</th><th style="width:32px"></th></tr></thead>
+          <thead><tr><th>Fecha</th><th>Cat.</th><th>Modelo</th><th>Costo</th><th>Precio</th><th>Estado</th><th>Disp.</th><th></th></tr></thead>
           <tbody id="stk-tbody"></tbody>
         </table></div>
         <div id="stk-emp" class="emp" style="display:none">Sin equipos</div>
@@ -290,27 +298,27 @@ tr:hover td{background:#fafafa}
           <p class="st" style="margin:0">Historial de ventas</p>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <select id="fil-cat-h" onchange="renderHist()" style="width:auto;margin:0;font-size:12px">
-              <option value="">Todas</option><option value="iphone">iPhone</option>
-              <option value="macbook">MacBook</option><option value="ipad">iPad</option><option value="applewatch">Apple Watch</option>
+              <option value="">Todas</option><option value="iphone">iPhone</option><option value="macbook">MacBook</option>
+              <option value="ipad">iPad</option><option value="applewatch">Watch</option><option value="serviciotecnico">Serv.Tec.</option><option value="otros">Otros</option>
             </select>
             <select id="fil-mes" onchange="renderHist()" style="width:auto;margin:0;font-size:12px"><option value="">Todos los meses</option></select>
-            <button class="bs" onclick="exportCSV()"><i class="ti ti-download"></i> CSV</button>
+            <button class="bs" onclick="exportCSV()"> Exportar CSV</button>
           </div>
         </div>
         <div class="tw"><table>
-          <thead><tr><th style="width:72px">Fecha</th><th style="width:58px">Cat.</th><th>Modelo</th><th style="width:62px">Costo</th><th style="width:62px">Precio</th><th style="width:72px">Ganancia</th><th style="width:85px">Método</th><th style="width:32px"></th></tr></thead>
+          <thead><tr><th>Fecha</th><th>Cat.</th><th>Producto</th><th>Costo</th><th>Precio</th><th>Ganancia</th><th>Método</th><th></th></tr></thead>
           <tbody id="hist-tbody"></tbody>
         </table></div>
-        <div id="hist-emp" class="emp" style="display:none"><i class="ti ti-inbox" style="font-size:28px;display:block;margin-bottom:6px"></i>Sin ventas</div>
+        <div id="hist-emp" class="emp" style="display:none"> Sin ventas</div>
       </div>
     </div>
 
-    <!-- GASTOS -->
+    <!-- GASTOS NEGOCIO -->
     <div class="sec" id="tab-gastos">
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
           <p class="st" style="margin:0">Registrar gasto del negocio</p>
-          <div style="font-size:12px;color:#777;background:#f9f9f9;border-radius:8px;padding:6px 12px">Capital actual: <strong id="cap-en-gastos" style="color:#1d1d1f">USD 0</strong></div>
+          <div style="font-size:12px;color:#777;background:#f9f9f9;border-radius:8px;padding:6px 12px">Capital USD: <strong id="cap-en-gastos" class="tc">USD 0</strong> · Pesos: <strong id="cap-en-gastos-ars" style="color:#f57f17">$0</strong></div>
         </div>
         <div class="g2">
           <div><label>Mes</label><input type="month" id="g-mes"></div>
@@ -325,55 +333,47 @@ tr:hover td{background:#fafafa}
         </div>
         <div class="g2">
           <div><label>Descripción</label><input type="text" id="g-desc" placeholder="ej: Instagram Ads"></div>
-          <div>
-            <label>Moneda</label>
+          <div><label>Moneda</label>
             <select id="g-moneda" onchange="updateGastoLabel()">
               <option value="usd">USD (dólares)</option>
               <option value="ars">$ (pesos argentinos)</option>
             </select>
           </div>
         </div>
-        <div>
-          <label id="g-monto-label">Monto (USD)</label>
-          <input type="number" id="g-monto" placeholder="80" min="0">
-        </div>
-        <div id="g-conversion" style="display:none;font-size:12px;color:#777;margin-bottom:10px;padding:8px;background:#f9f9f9;border-radius:8px">
-          Equivalente: <strong id="g-conversion-val"></strong>
-        </div>
-        <div>
-          <label>¿Quién pagó?</label>
+        <div><label id="g-monto-label">Monto (USD)</label><input type="number" id="g-monto" placeholder="80" min="0" oninput="updateGastoConv()"></div>
+        <div id="g-conversion" style="display:none;font-size:12px;color:#777;margin-bottom:10px;padding:8px;background:#f9f9f9;border-radius:8px">Equivalente: <strong id="g-conversion-val"></strong></div>
+        <div><label>¿Quién pagó?</label>
           <select id="g-quien">
-            <option value="agustina">Agustina</option>
             <option value="amadeo">Amadeo</option>
-            <option value="negocio">El negocio</option>
+            <option value="agustina">Agustina</option>
           </select>
         </div>
-        <button class="bp" onclick="regGasto()"><i class="ti ti-plus"></i> Agregar gasto</button>
+        <button class="bp" onclick="regGasto()"> + Agregar gasto</button>
       </div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
           <p class="st" style="margin:0">Gastos registrados</p>
           <select id="fil-mes-g" onchange="renderGastos()" style="width:auto;margin:0;font-size:12px"><option value="">Todos</option></select>
         </div>
+        <div id="gas-resumen" style="display:none;margin-bottom:12px;padding:12px;background:#fff3e0;border:1px solid #ffe0b2;border-radius:8px;font-size:13px"></div>
         <div class="tw"><table>
-          <thead><tr><th style="width:85px">Mes</th><th style="width:130px">Categoría</th><th>Descripción</th><th style="width:80px">USD</th><th style="width:36px"></th></tr></thead>
+          <thead><tr><th>Mes</th><th>Categoría</th><th>Descripción</th><th>Monto</th><th>USD equiv.</th><th>Quién pagó</th><th></th></tr></thead>
           <tbody id="gas-tbody"></tbody>
         </table></div>
         <div id="gas-emp" class="emp" style="display:none">Sin gastos</div>
-        <div id="gas-resumen" style="display:none;margin-top:12px;padding:12px;background:#fff3e0;border:1px solid #ffe0b2;border-radius:8px;font-size:13px"></div>
         <div id="gas-balance" style="display:none;margin-top:12px;padding:12px;background:#f9f9f9;border-radius:8px;font-size:13px"></div>
       </div>
     </div>
 
-    <!-- HOGAR -->
+    <!-- FINANZAS HOGAR -->
     <div class="sec" id="tab-hogar">
       <div style="background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:14px;margin-bottom:14px;font-size:13px;color:#5d4037">
-        <strong>¿Cómo funciona?</strong> Registrá los gastos del hogar. El sistema los divide por 2 y muestra cuánto le corresponde aportar al negocio. Ese monto <strong>no se descuenta automáticamente</strong> — lo usás como referencia para saber cuánto retirar del negocio.
+        <strong>¿Cómo funciona?</strong> Registrá los gastos del hogar. El sistema los divide por 2 — la mitad es aporte del negocio y la otra mitad es aporte de Agus. Podés elegir descontar el 50% del negocio del capital.
       </div>
       <div class="g3" style="margin-bottom:14px">
-        <div class="met"><div class="ml">Total hogar (equiv. USD)</div><div class="mv" id="hog-total">USD 0</div><div class="ms" id="hog-total-ars">$ 0</div></div>
-        <div class="met"><div class="ml">Aporte del negocio (50%)</div><div class="mv ta" id="hog-mitad">USD 0</div><div class="ms" id="hog-mitad-ars">$ 0</div></div>
-        <div class="met"><div class="ml">Aporte de Agus (50%)</div><div class="mv" id="hog-sueldo">USD 0</div><div class="ms" id="hog-sueldo-ars">$ 0</div></div>
+        <div class="met"><div class="ml">Total hogar este mes</div><div class="mv" id="hog-total">$ 0</div></div>
+        <div class="met"><div class="ml">Aporte del negocio (50%)</div><div class="mv ta" id="hog-mitad">$ 0</div></div>
+        <div class="met"><div class="ml">Aporte de Agus (50%)</div><div class="mv" id="hog-agus">$ 0</div></div>
       </div>
       <div class="card">
         <p class="st">Registrar gasto del hogar</p>
@@ -381,27 +381,16 @@ tr:hover td{background:#fafafa}
           <div><label>Mes</label><input type="month" id="h-mes"></div>
           <div><label>Categoría</label>
             <select id="h-cat">
-              <option value="alquiler">Alquiler</option>
-              <option value="expensas">Expensas</option>
-              <option value="comida">Comida / supermercado</option>
-              <option value="tarjeta">Tarjeta de crédito</option>
-              <option value="luz">Luz</option>
-              <option value="internet">Internet</option>
-              <option value="gas">Gas</option>
-              <option value="telefonia">Telefonía / celular</option>
-              <option value="otro_hogar">Otro gasto del hogar</option>
+              <option value="alquiler">Alquiler</option><option value="expensas">Expensas</option>
+              <option value="comida">Comida / supermercado</option><option value="tarjeta">Tarjeta de crédito</option>
+              <option value="luz">Luz</option><option value="internet">Internet</option>
+              <option value="gas">Gas</option><option value="telefonia">Telefonía</option>
+              <option value="otro_hogar">Otro</option>
             </select>
           </div>
         </div>
-        <div class="g3">
+        <div class="g2">
           <div><label>Descripción</label><input type="text" id="h-desc" placeholder="ej: Expensas enero"></div>
-          <div><label>Pagó</label>
-            <select id="h-pago">
-              <option value="ambos">Ambos (50/50)</option>
-              <option value="agustina">Agustina</option>
-              <option value="amadeo">Amadeo</option>
-            </select>
-          </div>
           <div><label>Moneda</label>
             <select id="h-moneda" onchange="updateHogarLabel()">
               <option value="ars">$ (pesos argentinos)</option>
@@ -409,35 +398,28 @@ tr:hover td{background:#fafafa}
             </select>
           </div>
         </div>
-        <div>
-          <label id="h-monto-label">Monto ($ pesos argentinos)</label>
-          <input type="number" id="h-monto" placeholder="ej: 50000" min="0" oninput="updateHogarConversion()">
-        </div>
-        <div id="h-conversion" style="display:none;font-size:12px;color:#777;margin-bottom:10px;padding:8px;background:#f9f9f9;border-radius:8px">
-          Equivalente: <strong id="h-conversion-val"></strong>
-        </div>
-        <div>
-          <label>¿Quién pagó?</label>
+        <div><label id="h-monto-label">Monto ($ pesos)</label><input type="number" id="h-monto" placeholder="ej: 50000" min="0" oninput="updateHogarConv()"></div>
+        <div id="h-conversion" style="display:none;font-size:12px;color:#777;margin-bottom:10px;padding:8px;background:#f9f9f9;border-radius:8px">Equivalente: <strong id="h-conversion-val"></strong></div>
+        <div><label>¿Quién pagó?</label>
           <select id="h-quien">
             <option value="agustina">Agustina</option>
             <option value="amadeo">Amadeo</option>
-            <option value="negocio">El negocio</option>
           </select>
         </div>
-        <button class="bp" onclick="regHogar()"><i class="ti ti-plus"></i> Agregar gasto del hogar</button>
+        <button class="bp" onclick="regHogar()"> + Agregar gasto del hogar</button>
       </div>
       <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
           <p class="st" style="margin:0">Gastos del hogar</p>
           <select id="fil-mes-h" onchange="renderHogar()" style="width:auto;margin:0;font-size:12px"><option value="">Todos</option></select>
         </div>
         <div class="tw"><table>
-          <thead><tr><th style="width:85px">Mes</th><th style="width:100px">Categoría</th><th>Descripción</th><th style="width:65px">Pagó</th><th style="width:65px">Moneda</th><th style="width:85px">Total</th><th style="width:90px">Le debe</th><th style="width:36px"></th></tr></thead>
+          <thead><tr><th>Mes</th><th>Categoría</th><th>Descripción</th><th>Total</th><th>Neg. 50%</th><th>Agus 50%</th><th>Quién pagó</th><th></th></tr></thead>
           <tbody id="hog-tbody"></tbody>
         </table></div>
-        <div id="hog-emp" class="emp" style="display:none">Sin gastos del hogar registrados</div>
-        <div id="hog-balance" style="display:none;margin-top:12px;padding:12px;background:#fff8e1;border:1px solid #ffe082;border-radius:8px"></div>
-        <div id="hog-totales" style="display:none;margin-top:12px;padding:12px;background:#f9f9f9;border-radius:8px;font-size:13px"></div>
+        <div id="hog-emp" class="emp" style="display:none">Sin gastos del hogar</div>
+        <div id="hog-balance" style="display:none;margin-top:12px;padding:12px;background:#f9f9f9;border-radius:8px;font-size:13px"></div>
+        <div id="hog-totales" style="display:none;margin-top:10px"></div>
       </div>
     </div>
 
@@ -445,267 +427,180 @@ tr:hover td{background:#fafafa}
     <div class="sec" id="tab-reporte">
       <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap">
         <div><label>Mes del reporte</label><input type="month" id="r-mes" style="width:auto;margin:0"></div>
-        <button class="bp" style="width:auto;padding:10px 22px" onclick="generarReporte()"><i class="ti ti-chart-bar"></i> Generar reporte</button>
+        <button class="bp" style="width:auto;padding:10px 22px" onclick="generarReporte()"> Generar reporte</button>
       </div>
       <div id="rep-cont" style="display:none">
         <div class="g5" id="r-met" style="margin-bottom:14px"></div>
+        <div class="card" style="margin-bottom:14px"><p class="st">Ventas USD vs Pesos</p><div id="r-desglose"></div></div>
         <div class="g2" style="margin-bottom:14px">
-          <div class="card"><p class="st">Método de pago</p><div style="position:relative;height:180px"><canvas id="ch-met" role="img" aria-label="Ventas por método"></canvas></div></div>
-          <div class="card"><p class="st">Ventas por categoría</p><div style="position:relative;height:180px"><canvas id="ch-cat" role="img" aria-label="Ventas por categoría"></canvas></div></div>
+          <div class="card"><p class="st">Método de pago</p><div style="position:relative;height:180px"><canvas id="ch-met"></canvas></div></div>
+          <div class="card"><p class="st">Por categoría</p><div style="position:relative;height:180px"><canvas id="ch-cat"></canvas></div></div>
         </div>
         <div class="card" style="margin-bottom:14px"><p class="st">Productos más vendidos</p><div id="r-top"></div></div>
         <div class="g2" style="margin-bottom:14px">
-          <div class="card"><p class="st">Gastos del mes</p><div id="r-gas"></div></div>
+          <div class="card"><p class="st">Gastos del negocio</p><div id="r-gas"></div></div>
           <div class="card"><p class="st">Resultado neto</p><div id="r-res"></div></div>
         </div>
         <div class="card" style="margin-bottom:14px"><p class="st">Estado del capital</p><div id="r-cap"></div></div>
-        <div class="card"><p class="st">Cuentas corrientes activas</p><div id="r-cc"></div></div>
-      <div class="card"><p class="st">Finanzas del hogar del mes</p><div id="r-hogar"></div></div>
+        <div class="card" style="margin-bottom:14px"><p class="st">Cuentas corrientes activas</p><div id="r-cc"></div></div>
+        <div class="card"><p class="st">Finanzas del hogar del mes</p><div id="r-hogar"></div></div>
       </div>
-      <div id="rep-emp" class="emp"><i class="ti ti-calendar" style="font-size:28px;display:block;margin-bottom:6px"></i>Seleccioná un mes y generá el reporte</div>
+      <div id="rep-emp" class="emp"> Seleccioná un mes y generá el reporte</div>
     </div>
   </div>
+</div>
 
-<!-- MODAL EDITAR STOCK -->
+<!-- MODALES EDICIÓN -->
 <div class="modal-overlay" id="modal-stock" style="display:none">
   <div class="modal">
-    <p class="modal-title">✏️ Editar equipo</p>
+    <p class="modal-title"> Editar equipo</p>
     <input type="hidden" id="edit-stk-id">
-    <div class="g2">
-      <div><label>Fecha</label><input type="date" id="edit-stk-fecha"></div>
-      <div><label>Categoría</label>
-        <select id="edit-stk-cat">
-          <option value="iphone">iPhone</option><option value="macbook">MacBook</option>
-          <option value="ipad">iPad</option><option value="applewatch">Apple Watch</option>
-        </select>
-      </div>
-    </div>
-    <div><label>Modelo</label><input type="text" id="edit-stk-modelo" placeholder="ej: iPhone 16 Pro 128GB"></div>
-    <div class="g2">
-      <div><label>Costo (USD)</label><input type="number" id="edit-stk-costo" min="0"></div>
-      <div><label>Precio estimado (USD)</label><input type="number" id="edit-stk-precio" min="0"></div>
-    </div>
-    <div class="g2">
-      <div><label>Estado</label>
-        <select id="edit-stk-est">
-          <option value="nuevo">Nuevo</option><option value="usado">Usado</option><option value="reacondicionado">Reacondicionado</option>
-        </select>
-      </div>
-      <div><label>Notas / IMEI</label><input type="text" id="edit-stk-notas"></div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn-cancel" onclick="closeModal('modal-stock')">Cancelar</button>
-      <button class="bp" style="flex:1" onclick="saveEditStock()"><i class="ti ti-check"></i> Guardar cambios</button>
-    </div>
+    <div class="g2"><div><label>Fecha</label><input type="date" id="edit-stk-fecha"></div><div><label>Categoría</label><select id="edit-stk-cat"><option value="iphone">iPhone</option><option value="macbook">MacBook</option><option value="ipad">iPad</option><option value="applewatch">Apple Watch</option><option value="serviciotecnico">Serv. Técnico</option><option value="otros">Otros</option></select></div></div>
+    <div><label>Modelo</label><input type="text" id="edit-stk-modelo"></div>
+    <div class="g2"><div><label>Costo (USD)</label><input type="number" id="edit-stk-costo" min="0"></div><div><label>Precio est. (USD)</label><input type="number" id="edit-stk-precio" min="0"></div></div>
+    <div class="g2"><div><label>Estado</label><select id="edit-stk-est"><option value="nuevo">Nuevo</option><option value="usado">Usado</option><option value="reacondicionado">Reacondicionado</option></select></div><div><label>Notas</label><input type="text" id="edit-stk-notas"></div></div>
+    <div class="modal-footer"><button class="btn-cancel" onclick="closeModal('modal-stock')">Cancelar</button><button class="bp" style="flex:1" onclick="saveEditStock()"> Guardar</button></div>
   </div>
 </div>
-
-<!-- MODAL EDITAR VENTA -->
 <div class="modal-overlay" id="modal-venta" style="display:none">
   <div class="modal">
-    <p class="modal-title">✏️ Editar venta</p>
+    <p class="modal-title"> Editar venta</p>
     <input type="hidden" id="edit-v-id">
-    <div class="g2">
-      <div><label>Fecha</label><input type="date" id="edit-v-fecha"></div>
-      <div><label>Categoría</label>
-        <select id="edit-v-cat">
-          <option value="iphone">iPhone</option><option value="macbook">MacBook</option>
-          <option value="ipad">iPad</option><option value="applewatch">Apple Watch</option>
-        </select>
-      </div>
-    </div>
-    <div><label>Producto</label><input type="text" id="edit-v-producto" placeholder="ej: iPhone 16 Pro 128GB"></div>
-    <div class="g2">
-      <div><label>Costo (USD)</label><input type="number" id="edit-v-costo" min="0"></div>
-      <div><label>Precio de venta (USD)</label><input type="number" id="edit-v-precio" min="0"></div>
-    </div>
-    <div><label>Método de pago</label>
-      <select id="edit-v-met">
-        <option value="efectivo_usd">Efectivo dólares</option>
-        <option value="efectivo_pesos">Efectivo pesos</option>
-        <option value="transferencia">Transferencia bancaria</option>
-        <option value="cuenta_corriente">Cuenta corriente (cuotas USD)</option>
-      </select>
-    </div>
+    <div class="g2"><div><label>Fecha</label><input type="date" id="edit-v-fecha"></div><div><label>Categoría</label><select id="edit-v-cat"><option value="iphone">iPhone</option><option value="macbook">MacBook</option><option value="ipad">iPad</option><option value="applewatch">Apple Watch</option><option value="serviciotecnico">Serv. Técnico</option><option value="otros">Otros</option></select></div></div>
+    <div><label>Producto</label><input type="text" id="edit-v-producto"></div>
+    <div class="g2"><div><label>Costo (USD)</label><input type="number" id="edit-v-costo" min="0"></div><div><label>Precio (USD)</label><input type="number" id="edit-v-precio" min="0"></div></div>
+    <div><label>Método</label><select id="edit-v-met"><option value="efectivo_usd">Efectivo USD</option><option value="efectivo_pesos">Efectivo $</option><option value="transferencia">Transferencia</option><option value="cuenta_corriente">Cta. Cte.</option><option value="mixto">Mixto</option></select></div>
     <div><label>Notas</label><input type="text" id="edit-v-notas"></div>
-    <div class="modal-footer">
-      <button class="btn-cancel" onclick="closeModal('modal-venta')">Cancelar</button>
-      <button class="bp" style="flex:1" onclick="saveEditVenta()"><i class="ti ti-check"></i> Guardar cambios</button>
-    </div>
+    <div class="modal-footer"><button class="btn-cancel" onclick="closeModal('modal-venta')">Cancelar</button><button class="bp" style="flex:1" onclick="saveEditVenta()"> Guardar</button></div>
   </div>
 </div>
-
-<!-- MODAL EDITAR CAPITAL -->
 <div class="modal-overlay" id="modal-capital" style="display:none">
   <div class="modal">
-    <p class="modal-title">✏️ Editar movimiento</p>
+    <p class="modal-title"> Editar movimiento</p>
     <input type="hidden" id="edit-c-id">
-    <div class="g3">
-      <div><label>Fecha</label><input type="date" id="edit-c-fecha"></div>
-      <div><label>Tipo</label>
-        <select id="edit-c-tipo">
-          <option value="ingreso">Ingreso</option>
-          <option value="egreso">Egreso / retiro</option>
-          <option value="ajuste">Ajuste</option>
-        </select>
-      </div>
-      <div><label>Monto (USD)</label><input type="number" id="edit-c-monto" min="0"></div>
-    </div>
+    <div class="g3"><div><label>Fecha</label><input type="date" id="edit-c-fecha"></div><div><label>Tipo</label><select id="edit-c-tipo"><option value="ingreso">Ingreso</option><option value="egreso">Egreso</option><option value="ajuste">Ajuste</option></select></div><div><label>Monto</label><input type="number" id="edit-c-monto" min="0"></div></div>
     <div><label>Descripción</label><input type="text" id="edit-c-desc"></div>
-    <div class="modal-footer">
-      <button class="btn-cancel" onclick="closeModal('modal-capital')">Cancelar</button>
-      <button class="bp" style="flex:1" onclick="saveEditCapital()"><i class="ti ti-check"></i> Guardar cambios</button>
-    </div>
+    <div class="modal-footer"><button class="btn-cancel" onclick="closeModal('modal-capital')">Cancelar</button><button class="bp" style="flex:1" onclick="saveEditCapital()"> Guardar</button></div>
   </div>
 </div>
 
-</div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import{initializeApp}from"https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import{getFirestore,doc,setDoc,getDoc}from"https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+const firebaseConfig={apiKey:"AIzaSyDgStF7NI48LHaNiAo9V98tdmEyIbkwQKc",authDomain:"negocio-iphonestore.firebaseapp.com",projectId:"negocio-iphonestore",storageBucket:"negocio-iphonestore.firebasestorage.app",messagingSenderId:"1090833994378",appId:"1:1090833994378:web:f21a3eab514992e2f09373"};
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
+window._db=db;
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDgStF7NI48LHaNiAo9V98tdmEyIbkwQKc",
-  authDomain: "negocio-iphonestore.firebaseapp.com",
-  projectId: "negocio-iphonestore",
-  storageBucket: "negocio-iphonestore.firebasestorage.app",
-  messagingSenderId: "1090833994378",
-  appId: "1:1090833994378:web:f21a3eab514992e2f09373"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const DOC_ID = "negocio-data";
-
-const CATALOGO = {
+const CATALOGO={
   iphone:['iPhone 13 128GB','iPhone 15 128GB','iPhone 16 128GB','iPhone 16 Pro 128GB','iPhone 16 Pro 256GB','iPhone 16 Pro Max 128GB','iPhone 16 Pro Max 256GB','iPhone 17 256GB','iPhone 17 Pro 256GB','iPhone 17 Pro 512GB','iPhone 17 Pro 1TB','iPhone 17 Pro Max 256GB','iPhone 17 Pro Max 512GB','iPhone 17 Pro Max 1TB'],
   macbook:['MacBook Neo','MacBook Air','MacBook Pro'],
   ipad:['iPad A16','iPad Air','iPad Pro'],
-  applewatch:['Apple Watch SE 3','Apple Watch Serie 11','Apple Watch Ultra']
+  applewatch:['Apple Watch SE 3','Apple Watch Serie 11','Apple Watch Ultra'],
+  serviciotecnico:[],otros:[]
 };
-const CAT_LABELS={iphone:'iPhone',macbook:'MacBook',ipad:'iPad',applewatch:'Watch',otros:'Otros',serviciotecnico:'Serv. Técnico'};
-const CAT_TAGS={iphone:'t-iph',macbook:'t-mac',ipad:'t-ipad',applewatch:'t-watch',otros:'t-usd',serviciotecnico:'t-tra'};
-const CAT_COLORS={iphone:'#1976d2',macbook:'#7b1fa2',ipad:'#388e3c',applewatch:'#f57f17',otros:'#555',serviciotecnico:'#0097a7'};
-const ML={efectivo_usd:'Efectivo USD',efectivo_pesos:'Efectivo $',transferencia:'Transferencia',cuenta_corriente:'Cta.Cte.USD',mixto:'Pago mixto'};
+const CAT_LABELS={iphone:'iPhone',macbook:'MacBook',ipad:'iPad',applewatch:'Watch',serviciotecnico:'Serv.Tec.',otros:'Otros'};
+const CAT_TAGS={iphone:'t-iph',macbook:'t-mac',ipad:'t-ipad',applewatch:'t-watch',serviciotecnico:'t-tec',otros:'t-ars'};
+const CAT_COLORS={iphone:'#1976d2',macbook:'#7b1fa2',ipad:'#388e3c',applewatch:'#f57f17',serviciotecnico:'#00838f',otros:'#555'};
+const ML={efectivo_usd:'Efectivo USD',efectivo_pesos:'Efectivo $',transferencia:'Transferencia',cuenta_corriente:'Cta.Cte.',mixto:'Mixto'};
 const MT={efectivo_usd:'t-usd',efectivo_pesos:'t-ars',transferencia:'t-tra',cuenta_corriente:'t-cta',mixto:'t-watch'};
-const CL={community_manager:'Community Manager',publicidad:'Inversión publicitaria',impuestos:'Impuestos',otro:'Otros (negocio)'};
-  const CLH={alquiler:'Alquiler',expensas:'Expensas',comida:'Comida/super',tarjeta:'Tarjeta',luz:'Luz',internet:'Internet',gas:'Gas',telefonia:'Telefonía',otro_hogar:'Otro hogar'};
+const CL={community_manager:'Community Manager',publicidad:'Publicidad/Ads',impuestos:'Impuestos',otro:'Otros'};
+const CLH={alquiler:'Alquiler',expensas:'Expensas',comida:'Comida/super',tarjeta:'Tarjeta',luz:'Luz',internet:'Internet',gas:'Gas',telefonia:'Telefonía',otro_hogar:'Otro'};
+const QUIEN={agustina:'Agustina',amadeo:'Amadeo (negocio)',negocio:'Amadeo (negocio)'};
+const QUIEN_STYLE={agustina:'background:#fce4ec;color:#c2185b',amadeo:'background:#e3f2fd;color:#1565c0',negocio:'background:#e3f2fd;color:#1565c0'};
 
-let cotiz=1200, ventas=[], gastos=[], stock=[], capital=[], clientes=[];
-let chMet=null, chCat=null;
-let saveTimeout=null;
-window._db=db; window._DOC_ID=DOC_ID;
+let cotiz=1540,ventas=[],gastos=[],stock=[],capital=[],clientes=[],hogar=[];
+let chMet=null,chCat=null,saveTO=null;
 
-function setSyncStatus(st){
-  const el=document.getElementById('sync-status');
-  if(st==='ok') el.innerHTML='<span class="dot dg"></span><span>Sincronizado</span>';
-  else if(st==='saving') el.innerHTML='<span class="dot da"></span><span>Guardando...</span>';
-  else el.innerHTML='<span class="dot dr"></span><span>Error de conexión</span>';
-}
-
+function setSyncStatus(s){const el=document.getElementById('sync-status');el.innerHTML=s==='ok'?'<span class="dot dg"></span><span>Sincronizado</span>':s==='saving'?'<span class="dot da"></span><span>Guardando...</span>':'<span class="dot dr"></span><span>Error</span>';}
 async function saveData(){
   setSyncStatus('saving');
   try{
-    await setDoc(doc(db,DOC_ID,'main'),{cotiz,ventas,gastos,stock,capital,clientes,updatedAt:Date.now()});
+    await setDoc(doc(db,'negocio-data','main'),{cotiz,ventas,gastos,stock,capital,clientes,updatedAt:Date.now()});
+    await setDoc(doc(db,'negocio-data','hogar'),{items:hogar,updatedAt:Date.now()});
     setSyncStatus('ok');
   }catch(e){console.error(e);setSyncStatus('error');}
 }
-
-function scheduleSave(){
-  clearTimeout(saveTimeout);
-  saveTimeout=setTimeout(saveData,800);
-  updateBadges();
-}
+function scheduleSave(){clearTimeout(saveTO);saveTO=setTimeout(saveData,800);updateBadges();}
 
 async function loadData(){
   try{
-    const snap=await getDoc(doc(db,DOC_ID,'main'));
-    if(snap.exists()){
-      const d=snap.data();
-      cotiz=d.cotiz||1200; ventas=d.ventas||[]; gastos=d.gastos||[];
-      stock=d.stock||[]; capital=d.capital||[]; clientes=d.clientes||[];
-    }
-  }catch(e){console.error('Error cargando datos:',e);}
+    const snap=await getDoc(doc(db,'negocio-data','main'));
+    if(snap.exists()){const d=snap.data();cotiz=d.cotiz||1540;ventas=d.ventas||[];gastos=d.gastos||[];stock=d.stock||[];capital=d.capital||[];clientes=d.clientes||[];}
+    const snapH=await getDoc(doc(db,'negocio-data','hogar'));
+    hogar=snapH.exists()?(snapH.data().items||[]):[];
+  }catch(e){console.error(e);}
   document.getElementById('loading-screen').style.display='none';
   document.getElementById('main-app').style.display='block';
-  updateBadges(); buildModeloOpts(); buildStockModeloOpts();
-  document.getElementById('v-fecha').value=today();
-  agregarPagoRow();
-  document.getElementById('c-fecha').value=today();
-  document.getElementById('s-fecha').value=today();
-  document.getElementById('g-mes').value=thisMonth();
-  document.getElementById('r-mes').value=thisMonth();
-
-  try{
-    const {doc,getDoc}=await import('https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js');
-    const snapH=await getDoc(doc(db,DOC_ID,'hogar'));
-    window.hogar=snapH.exists()?(snapH.data().items||[]):JSON.parse(localStorage.getItem('ip_hogar')||'[]');
-  window.hogarDescontado=JSON.parse(localStorage.getItem('ip_hogar_desc')||'{}');
-  }catch(e){window.hogar=JSON.parse(localStorage.getItem('ip_hogar')||'[]');window.hogarDescontado=JSON.parse(localStorage.getItem('ip_hogar_desc')||'{}');}
-  document.getElementById('h-mes').value=thisMonth();
+  init();
 }
 
 function today(){return new Date().toISOString().slice(0,10);}
 function thisMonth(){return new Date().toISOString().slice(0,7);}
 function fmtMes(m){if(!m)return'';const[y,mo]=m.split('-');return['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'][parseInt(mo)-1]+' '+y;}
-function initials(n){return n.split(' ').slice(0,2).map(p=>p[0]||'').join('').toUpperCase()||'?';}
+function initials(n){return(n||'').split(' ').slice(0,2).map(p=>p[0]||'').join('').toUpperCase()||'?';}
+function fmtN(n){return Number(n||0).toLocaleString('es-AR');}
 
-window.editCotiz=function(){
-  const v=prompt('Cotización del dólar (pesos por USD):',cotiz);
-  if(v&&!isNaN(v)&&Number(v)>0){cotiz=Number(v);scheduleSave();}
-};
-
-function capTotal(){
+// CAPITAL CALCULATIONS
+function capUSD(){
   let t=0;
-  capital.forEach(c=>{if(c.moneda==='ars')return; if(c.tipo==='ingreso')t+=c.monto;else if(c.tipo==='egreso')t-=c.monto;else t=c.monto;});
-  ventas.forEach(v=>{if(v.metodo!=='cuenta_corriente'&&(!v.monedaOriginal||v.monedaOriginal==='usd'))t+=v.ganancia;});
-  gastos.forEach(g=>{if(!g.moneda||g.moneda==='usd')t-=g.monto;}); // solo gastos en USD
+  capital.forEach(c=>{if(c.moneda==='ars')return;if(c.tipo==='ingreso')t+=c.monto;else if(c.tipo==='egreso')t-=c.monto;else t=c.monto;});
+  ventas.forEach(v=>{if(v.metodo!=='cuenta_corriente'&&(!v.monedaOriginal||v.monedaOriginal==='usd'))t+=v.ganancia;if(v.pagos)v.pagos.forEach(p=>{if(!p.moneda||p.moneda==='usd')t+=(p.monto||0);});});
+  gastos.forEach(g=>{if(!g.moneda||g.moneda==='usd')t-=g.monto;});
   clientes.forEach(cl=>{cl.pagos.forEach(p=>{if(!p.moneda||p.moneda==='usd')t+=p.monto;});});
+  // Gastos del hogar pagados por el negocio o Amadeo se descuentan del capital USD
+  hogar.forEach(h=>{
+    if(h.quien==='negocio'||h.quien==='amadeo'){
+      const montoUSD=h.montoUSD||h.monto/cotiz;
+      t-=montoUSD;
+    }
+  });
+  return t;
+}
+function capARS(){
+  let t=0;
+  capital.forEach(c=>{if(c.moneda!=='ars')return;const m=c.montoOriginal||c.monto*cotiz;if(c.tipo==='ingreso')t+=m;else if(c.tipo==='egreso')t-=m;});
+  ventas.forEach(v=>{if(v.monedaOriginal==='ars'&&v.metodo!=='cuenta_corriente')t+=((v.precioOriginal||0)-(v.costoOriginal||0));if(v.pagos)v.pagos.forEach(p=>{if(p.moneda==='ars')t+=(p.montoOriginal||p.monto*cotiz);});});
+  gastos.forEach(g=>{if(g.moneda==='ars')t-=(g.montoOriginal||g.monto*cotiz);});
+  clientes.forEach(cl=>{cl.pagos.forEach(p=>{if(p.moneda==='ars')t+=(p.montoOriginal||p.monto*cotiz);});});
+  // Gastos del hogar en pesos pagados por el negocio o Amadeo
+  hogar.forEach(h=>{
+    if(h.quien==='negocio'||h.quien==='amadeo'){
+      t-=(h.monto||0); // monto siempre en ARS
+    }
+  });
   return t;
 }
 function capStock(){return stock.filter(s=>s.disponible).reduce((a,s)=>a+s.costo,0);}
-function totalPorCobrar(){return clientes.reduce((tot,cl)=>{const p=cl.pagos.reduce((s,p)=>s+p.monto,0);return tot+(cl.totalCobrar-p);},0);}
+function totalPorCobrar(){return clientes.reduce((t,cl)=>{const p=cl.pagos.reduce((s,p)=>s+p.monto,0);return t+(cl.totalCobrar-p);},0);}
 function totalCobrado(){return clientes.reduce((t,cl)=>t+cl.pagos.reduce((s,p)=>s+p.monto,0),0);}
 
 function updateBadges(){
-  document.getElementById('dolar-display').textContent=`USD 1 = $${cotiz.toLocaleString('es-AR')}`;
-  const ct=capTotal();
-  const arsT=capTotalARS();
-  const capBadge=document.getElementById('cap-badge');
-  if(arsT>0){capBadge.textContent=`USD ${ct.toFixed(0)} + $${Math.round(arsT).toLocaleString('es-AR')}`;}
-  else{capBadge.textContent=`USD ${ct.toFixed(0)}`;}
+  const cu=capUSD(),ca=capARS();
+  document.getElementById('dolar-display').textContent=`USD 1 = $${fmtN(cotiz)}`;
+  document.getElementById('cap-badge-usd').textContent=`USD ${cu.toFixed(0)}`;
+  document.getElementById('cap-badge-ars').textContent=`$${Math.round(ca).toLocaleString('es-AR')}`;
   document.getElementById('stk-badge').textContent=`${stock.filter(s=>s.disponible).length} equipos`;
   document.getElementById('cc-badge').textContent=`USD ${totalPorCobrar().toFixed(0)}`;
+  // Capital tab
   const el=document.getElementById('cap-liq');
-  if(el){
-    const arsTotal=capTotalARS();
-    el.textContent=`USD ${ct.toFixed(2)}`;
-    const el2=document.getElementById('cap-liq-ars2');
-    if(el2)el2.textContent=`$${Math.round(arsTotal).toLocaleString('es-AR')}`;
-    document.getElementById('cap-stk').textContent=`USD ${capStock().toFixed(2)}`;
-  }
-  const sn=document.getElementById('stk-n');
-  if(sn){const d=stock.filter(s=>s.disponible);sn.textContent=d.length;document.getElementById('stk-c').textContent=`USD ${d.reduce((a,s)=>a+s.costo,0).toFixed(0)}`;document.getElementById('stk-p').textContent=`USD ${d.reduce((a,s)=>a+s.precio,0).toFixed(0)}`;}
+  if(el){el.textContent=`USD ${cu.toFixed(2)}`;document.getElementById('cap-liq-ars').textContent=`$${Math.round(ca).toLocaleString('es-AR')}`;document.getElementById('cap-stk').textContent=`USD ${capStock().toFixed(2)}`;}
+  // Gastos tab indicator
+  const ceg=document.getElementById('cap-en-gastos');if(ceg)ceg.textContent=`USD ${cu.toFixed(2)}`;
+  const cegA=document.getElementById('cap-en-gastos-ars');if(cegA)cegA.textContent=`$${Math.round(ca).toLocaleString('es-AR')}`;
+  // Clientes
   const cc=document.getElementById('cli-count');
   if(cc){const a=clientes.filter(cl=>cl.pagos.reduce((s,p)=>s+p.monto,0)<cl.totalCobrar);cc.textContent=a.length;document.getElementById('cli-deuda').textContent=`USD ${totalPorCobrar().toFixed(2)}`;document.getElementById('cli-cobrado').textContent=`USD ${totalCobrado().toFixed(2)}`;}
-  const ceg=document.getElementById('cap-en-gastos');if(ceg)ceg.textContent=`USD ${capTotal().toFixed(2)}`;
+  // Stock metrics
+  const sn=document.getElementById('stk-n');
+  if(sn){const d=stock.filter(s=>s.disponible);sn.textContent=d.length;document.getElementById('stk-c').textContent=`USD ${d.reduce((a,s)=>a+s.costo,0).toFixed(0)}`;document.getElementById('stk-p').textContent=`USD ${d.reduce((a,s)=>a+s.precio,0).toFixed(0)}`;}
 }
 
-window.sw=function(t,el){
-  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+t).classList.add('active');
-  el.classList.add('active');
-  if(t==='clientes'){renderClientes();updateBadges();}
-  if(t==='historial'){populateFM();renderHist();}
-  if(t==='gastos'){populateFMG();renderGastos();}
-  if(t==='hogar'){populateFMH();renderHogar();updateHogarMetrics();}
-  if(t==='stock'){renderStock();updateBadges();}
-  if(t==='capital'){renderCapital();updateBadges();}
-  if(t==='reporte'){document.getElementById('r-mes').value=thisMonth();}
-};
+window.editCotiz=function(){const v=prompt('Cotización del dólar (pesos por USD):',cotiz);if(v&&!isNaN(v)&&Number(v)>0){cotiz=Number(v);scheduleSave();}};
+window.sw=function(t,el){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');el.classList.add('active');if(t==='clientes'){renderClientes();updateBadges();}if(t==='historial'){populateFM();renderHist();}if(t==='gastos'){populateFMG();renderGastos();}if(t==='stock'){renderStock();updateBadges();}if(t==='capital'){renderCapital();updateBadges();}if(t==='hogar'){populateFMH();renderHogar();}if(t==='reporte')document.getElementById('r-mes').value=thisMonth();};
 
+// VENTA
 window.buildModeloOpts=function(){
   const cat=document.getElementById('v-cat').value;
   const sel=document.getElementById('v-modelo');
@@ -716,151 +611,49 @@ window.buildModeloOpts=function(){
   const og2=document.createElement('optgroup');og2.label='Catálogo';
   opts.forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;og2.appendChild(o);});
   sel.appendChild(og2);
-  const om=document.createElement('option');om.value='__manual__';om.textContent='✏️ Otro (manual)';sel.appendChild(om);
+  const om=document.createElement('option');om.value='__manual__';om.textContent='✏️ Ingresar manualmente';sel.appendChild(om);
   onModeloChange();
 };
-
 window.onModeloChange=function(){
   const v=document.getElementById('v-modelo').value;
   document.getElementById('v-man-wrap').style.display=v==='__manual__'?'block':'none';
-  if(v.startsWith('stk_')){const id=parseInt(v.replace('stk_',''));const it=stock.find(s=>s.id===id);if(it){document.getElementById('v-costo').value=it.costo;calcGan();}}
+  if(v.startsWith('stk_')){const it=stock.find(s=>s.id===parseInt(v.replace('stk_','')));if(it){document.getElementById('v-costo').value=it.costo;calcGan();}}
 };
-
-window.buildStockModeloOpts=function(){
-  const cat=document.getElementById('s-cat').value;
-  const sel=document.getElementById('s-mod');
-  const opts=CATALOGO[cat]||[];
-  sel.innerHTML=opts.map(m=>`<option value="${m}">${m}</option>`).join('')+'<option value="__manual__">✏️ Otro (manual)</option>';
-};
-
-window.toggleCC=function(){
-  // Check if any payment row has cuenta_corriente
-  const rows=document.querySelectorAll('.pago-met-sel');
-  const hasCuenta=[...rows].some(r=>r.value==='cuenta_corriente');
-  document.getElementById('cc-wrap').style.display=hasCuenta?'block':'none';
-};
-
-let pagoRowCount=0;
-window.agregarPagoRow=function(){
-  pagoRowCount++;
-  const id=pagoRowCount;
-  const div=document.createElement('div');
-  div.id='pago-row-'+id;
-  div.style.cssText='display:flex;gap:6px;align-items:center;background:#f9f9f9;border-radius:8px;padding:8px;flex-wrap:wrap';
-  div.innerHTML=`
-    <select class="pago-met-sel" data-id="${id}" onchange="onPagoMetChange(${id})" style="flex:2;min-width:140px;margin:0">
-      <option value="efectivo_usd">Efectivo USD</option>
-      <option value="efectivo_pesos">Efectivo pesos</option>
-      <option value="transferencia">Transferencia</option>
-      <option value="cuenta_corriente">Cta. Cte. (cuotas)</option>
-    </select>
-    <div style="flex:1;min-width:90px;position:relative">
-      <input type="number" class="pago-monto" data-id="${id}" placeholder="Monto" min="0" style="margin:0;width:100%" oninput="updateTotalPagos()">
-    </div>
-    <select class="pago-mon-sel" data-id="${id}" style="width:70px;margin:0;font-size:12px">
-      <option value="usd">USD</option>
-      <option value="ars">$</option>
-    </select>
-    <button type="button" class="bs bd" onclick="removePagoRow(${id})" style="padding:4px 8px;flex-shrink:0"><i class="ti ti-x"></i></button>
-  `;
-  document.getElementById('pagos-lista').appendChild(div);
-  updateTotalPagos();
-  toggleCC();
-};
-
-window.removePagoRow=function(id){
-  const el=document.getElementById('pago-row-'+id);
-  if(el)el.remove();
-  updateTotalPagos();
-  toggleCC();
-};
-
-window.onPagoMetChange=function(id){
-  toggleCC();
-  updateTotalPagos();
-};
-
-window.updateTotalPagos=function(){
-  const montos=[...document.querySelectorAll('.pago-monto')];
-  const mons=[...document.querySelectorAll('.pago-mon-sel')];
-  let totalUSD=0;
-  montos.forEach((m,i)=>{
-    const v=parseFloat(m.value)||0;
-    const mon=mons[i]?mons[i].value:'usd';
-    totalUSD+=mon==='ars'?v/cotiz:v;
-  });
-  const div=document.getElementById('v-total-pagos');
-  if(montos.length>0&&totalUSD>0){
-    div.style.display='block';
-    const precio=parseFloat(document.getElementById('v-precio').value)||0;
-    const monedaV=(document.getElementById('v-moneda')||{value:'usd'}).value;
-    const precioUSD=monedaV==='ars'?precio/cotiz:precio;
-    const diff=precioUSD-totalUSD;
-    div.innerHTML=`Total ingresado: <strong>USD ${totalUSD.toFixed(2)}</strong>${Math.abs(diff)>0.01?` · <span style="color:${diff>0?'#c62828':'#2e7d32'}">${diff>0?'Faltan':'Sobran'} USD ${Math.abs(diff).toFixed(2)}</span>`:' · <span style="color:#2e7d32">✓ Exacto</span>'}`;
-  }else{div.style.display='none';}
-};
-
 window.updateVentaMonedaLabel=function(){
-  const moneda=document.getElementById('v-moneda').value;
-  const lbl=moneda==='ars'?'$ pesos':'USD';
-  document.getElementById('v-costo-label').textContent=`Costo (${lbl})`;
-  document.getElementById('v-precio-label').textContent=`Precio de venta (${lbl})`;
+  const m=document.getElementById('v-moneda').value;
+  const l=m==='ars'?'$ pesos':'USD';
+  document.getElementById('v-costo-label').textContent=`Costo (${l})`;
+  document.getElementById('v-precio-label').textContent=`Precio de venta (${l})`;
   calcGan();
 };
 window.calcGan=function(){
   const c=parseFloat(document.getElementById('v-costo').value)||0;
   const p=parseFloat(document.getElementById('v-precio').value)||0;
-  const monedaEl=document.getElementById('v-moneda');
-  const moneda=monedaEl?monedaEl.value:'usd';
-  const cUSD=moneda==='ars'?c/cotiz:c;
-  const pUSD=moneda==='ars'?p/cotiz:p;
-  const g=pUSD-cUSD;const w=document.getElementById('gan-prev');
-  if(p>0&&c>0){
-    w.style.display='block';
-    const el=document.getElementById('gan-usd');
-    el.textContent=`USD ${g.toFixed(2)}`;
-    el.style.color=g>=0?'#2e7d32':'#c62828';
-    if(moneda==='ars'){document.getElementById('gan-ars').textContent=` = $${(p-c).toLocaleString('es-AR')} ganancia en pesos`;}
-    else{document.getElementById('gan-ars').textContent=` = $${(g*cotiz).toLocaleString('es-AR')}`;}
-  }else{w.style.display='none';}
+  const m=(document.getElementById('v-moneda')||{value:'usd'}).value;
+  const cU=m==='ars'?c/cotiz:c,pU=m==='ars'?p/cotiz:p;
+  const g=pU-cU;const w=document.getElementById('gan-prev');
+  if(p>0&&c>0){w.style.display='block';const el=document.getElementById('gan-usd');el.textContent=`USD ${g.toFixed(2)}`;el.style.color=g>=0?'#2e7d32':'#c62828';document.getElementById('gan-ars').textContent=m==='ars'?` = $${fmtN(p-c)} ganancia en pesos`:` = $${fmtN(g*cotiz)}`;}
+  else w.style.display='none';
 };
 
-window.calcCuota=function(){return;// deprecated
-  /*
-  const n=parseInt(document.getElementById('cc-cuotas').value)||0;
-  const tot=parseFloat(document.getElementById('cc-total').value)||0;
-  const monedaEl=document.getElementById('cc-moneda');
-  const moneda=monedaEl?monedaEl.value:'usd';
-  // Update labels
-  const tlbl=document.getElementById('cc-total-label');
-  const vlbl=document.getElementById('cc-valor-label');
-  if(tlbl)tlbl.textContent=moneda==='ars'?'Total a cobrar ($)':'Total a cobrar (USD)';
-  if(vlbl)vlbl.textContent=moneda==='ars'?'Valor por cuota ($)':'Valor por cuota (USD)';
-  // Calculate cuota value
-  if(n>0&&tot>0){
-    const valCuota=(tot/n).toFixed(2);
-    document.getElementById('cc-valor').value=valCuota;
-    // Show conversion
-    const conv=document.getElementById('cc-conversion');
-    const convTxt=document.getElementById('cc-conversion-txt');
-    if(conv&&convTxt){
-      conv.style.display='block';
-      if(moneda==='ars'){
-        const totUSD=(tot/cotiz).toFixed(2);
-        const cuotaUSD=(tot/n/cotiz).toFixed(2);
-        convTxt.innerHTML=`Total: <strong>USD ${totUSD}</strong> · Cuota: <strong>USD ${cuotaUSD}</strong> (cotización $${cotiz.toLocaleString('es-AR')})`;
-      }else{
-        const totARS=(tot*cotiz).toLocaleString('es-AR');
-        const cuotaARS=((tot/n)*cotiz).toLocaleString('es-AR');
-        convTxt.innerHTML=`Total: <strong>$${totARS}</strong> · Cuota: <strong>$${cuotaARS}</strong>`;
-      }
-    }
-  }else{
-    const conv=document.getElementById('cc-conversion');
-    if(conv)conv.style.display='none';
-  }
-*/ };  
-window.calcCuotaManual=function(){};
+let pagoRowCount=0;
+window.agregarPagoRow=function(){
+  pagoRowCount++;const id=pagoRowCount;
+  const div=document.createElement('div');
+  div.id='pago-row-'+id;
+  div.style.cssText='display:flex;gap:6px;align-items:center;background:#f9f9f9;border-radius:8px;padding:8px;flex-wrap:wrap';
+  div.innerHTML=`<select class="pago-met-sel" onchange="toggleCC();updateTotalPagos()" style="flex:2;min-width:140px;margin:0"><option value="efectivo_usd">Efectivo USD</option><option value="efectivo_pesos">Efectivo $</option><option value="transferencia">Transferencia</option><option value="cuenta_corriente">Cta. Cte. (cuotas)</option></select><input type="number" class="pago-monto" placeholder="Monto" min="0" style="flex:1;min-width:80px;margin:0" oninput="updateTotalPagos()"><select class="pago-mon-sel" style="width:70px;margin:0;font-size:12px"><option value="usd">USD</option><option value="ars">$ pesos</option></select><button type="button" class="bs bd" onclick="document.getElementById('pago-row-${id}').remove();toggleCC();updateTotalPagos()" style="padding:4px 8px;flex-shrink:0">✕</button>`;
+  document.getElementById('pagos-lista').appendChild(div);
+  updateTotalPagos();toggleCC();
+};
+window.toggleCC=function(){const rows=document.querySelectorAll('.pago-met-sel');const has=[...rows].some(r=>r.value==='cuenta_corriente');document.getElementById('cc-wrap').style.display=has?'block':'none';};
+window.updateTotalPagos=function(){
+  const ms=[...document.querySelectorAll('.pago-monto')];const mons=[...document.querySelectorAll('.pago-mon-sel')];
+  let t=0;ms.forEach((m,i)=>{const v=parseFloat(m.value)||0;const mn=mons[i]?mons[i].value:'usd';t+=mn==='ars'?v/cotiz:v;});
+  const div=document.getElementById('v-total-pagos');
+  if(ms.length>0&&t>0){const p=parseFloat(document.getElementById('v-precio').value)||0;const mv=(document.getElementById('v-moneda')||{value:'usd'}).value;const pU=mv==='ars'?p/cotiz:p;const diff=pU-t;div.style.display='block';div.innerHTML=`Total ingresado: <strong>USD ${t.toFixed(2)}</strong>${Math.abs(diff)>0.01?` · <span style="color:${diff>0?'#c62828':'#2e7d32'}">${diff>0?'Faltan':'Sobran'} USD ${Math.abs(diff).toFixed(2)}</span>`:' · <span style="color:#2e7d32">✓ Exacto</span>'}`;}
+  else div.style.display='none';
+};
 
 window.registrarVenta=function(){
   const fecha=document.getElementById('v-fecha').value;
@@ -868,71 +661,54 @@ window.registrarVenta=function(){
   const selVal=document.getElementById('v-modelo').value;
   const extra=document.getElementById('v-man').value.trim();
   let producto='';let stockId=null;
-  if(selVal==='__manual__'){producto=extra||'Producto manual';}
-  else if(selVal.startsWith('stk_')){const id=parseInt(selVal.replace('stk_',''));const it=stock.find(s=>s.id===id);if(it){producto=it.modelo;stockId=it.id;}}
-  else{producto=selVal+(extra?' — '+extra:'');}
+  if(selVal==='__manual__')producto=extra||'Producto manual';
+  else if(selVal.startsWith('stk_')){const it=stock.find(s=>s.id===parseInt(selVal.replace('stk_','')));if(it){producto=it.modelo;stockId=it.id;}}
+  else producto=selVal+(extra?' — '+extra:'');
   const costoRaw=parseFloat(document.getElementById('v-costo').value);
   const precioRaw=parseFloat(document.getElementById('v-precio').value);
-  const monedaVenta=(document.getElementById('v-moneda')||{value:'usd'}).value;
-  // Collect payment rows
-  const pagoRows=[...document.querySelectorAll('.pago-met-sel')];
-  const pagoMontos=[...document.querySelectorAll('.pago-monto')];
-  const pagoMons=[...document.querySelectorAll('.pago-mon-sel')];
-  const pagos=pagoRows.map((r,i)=>({metodo:r.value,monto:parseFloat(pagoMontos[i]?.value)||0,moneda:pagoMons[i]?.value||'usd'})).filter(p=>p.monto>0);
+  const mv=(document.getElementById('v-moneda')||{value:'usd'}).value;
+  const metRows=[...document.querySelectorAll('.pago-met-sel')];
+  const metMontos=[...document.querySelectorAll('.pago-monto')];
+  const metMons=[...document.querySelectorAll('.pago-mon-sel')];
+  const pagos=metRows.map((r,i)=>({metodo:r.value,monto:parseFloat(metMontos[i]?.value)||0,moneda:metMons[i]?.value||'usd'})).filter(p=>p.monto>0);
   const metodo=pagos.length===1?pagos[0].metodo:pagos.some(p=>p.metodo==='cuenta_corriente')?'cuenta_corriente':pagos.length>1?'mixto':'efectivo_usd';
   const notas=document.getElementById('v-notas').value;
   if(!fecha||!producto||isNaN(costoRaw)||isNaN(precioRaw)){alert('Completá todos los campos obligatorios.');return;}
-  const costo=monedaVenta==='ars'?costoRaw/cotiz:costoRaw;
-  const precio=monedaVenta==='ars'?precioRaw/cotiz:precioRaw;
-  const venta={id:Date.now(),fecha,categoria:cat,producto,costo,precio,ganancia:precio-costo,monedaOriginal:monedaVenta,costoOriginal:costoRaw,precioOriginal:precioRaw,metodo,pagos,notas,cotiz,stockId:stockId||null};
+  const costo=mv==='ars'?costoRaw/cotiz:costoRaw;
+  const precio=mv==='ars'?precioRaw/cotiz:precioRaw;
+  const venta={id:Date.now(),fecha,categoria:cat,producto,costo,precio,ganancia:precio-costo,monedaOriginal:mv,costoOriginal:costoRaw,precioOriginal:precioRaw,metodo,pagos,notas,cotiz,stockId:stockId||null};
   if(metodo==='cuenta_corriente'){
     const nombre=document.getElementById('cc-nombre').value.trim();
-    if(!nombre){alert('Ingresá el nombre del cliente para cuenta corriente.');return;}
-    const ccMonedaEl=document.getElementById('cc-moneda');
-    const ccMoneda=ccMonedaEl?ccMonedaEl.value:'usd';
-    const totalCobrarRaw=parseFloat(document.getElementById('cc-total').value)||precio;
-    const totalCobrar=ccMoneda==='ars'?totalCobrarRaw/cotiz:totalCobrarRaw;
-    const cliente={id:Date.now()+1,ventaId:venta.id,nombre,
-      tel:document.getElementById('cc-tel').value.trim(),
-      dni:document.getElementById('cc-dni').value.trim(),
-      email:document.getElementById('cc-email').value.trim(),
-      notasCli:document.getElementById('cc-notas-cli').value.trim(),
-      producto,categoria:cat,fecha,
-      totalCobrar,totalCobrarOrig:totalCobrarRaw,monedaTotal:ccMoneda,
-      pagos:[]};
+    if(!nombre){alert('Ingresá el nombre del cliente.');return;}
+    const ccMoneda=(document.getElementById('cc-moneda')||{value:'usd'}).value;
+    const totalRaw=parseFloat(document.getElementById('cc-total').value)||precio;
+    const totalCobrar=ccMoneda==='ars'?totalRaw/cotiz:totalRaw;
+    const cliente={id:Date.now()+1,ventaId:venta.id,nombre,tel:document.getElementById('cc-tel').value.trim(),dni:document.getElementById('cc-dni').value.trim(),email:document.getElementById('cc-email').value.trim(),notasCli:document.getElementById('cc-notas-cli').value.trim(),producto,categoria:cat,fecha,totalCobrar,totalCobrarOrig:totalRaw,monedaTotal:ccMoneda,pagos:[]};
     venta.clienteId=cliente.id;venta.totalCobrar=totalCobrar;
     clientes.unshift(cliente);
   }
-  if(stockId!==null){const idx=stock.findIndex(s=>s.id===stockId);if(idx>=0)stock[idx].disponible=false;}
-  ventas.unshift(venta);
-  scheduleSave();
+  if(stockId){const idx=stock.findIndex(s=>s.id===stockId);if(idx>=0)stock[idx].disponible=false;}
+  ventas.unshift(venta);scheduleSave();
   alert('✓ Venta registrada: '+producto);
-  ['v-man','v-costo','v-precio','v-notas','cc-nombre','cc-tel','cc-dni','cc-email','cc-notas-cli','cc-cuotas','cc-total','cc-valor'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  ['v-man','v-costo','v-precio','v-notas','cc-nombre','cc-tel','cc-dni','cc-email','cc-notas-cli','cc-total'].forEach(id=>{try{document.getElementById(id).value='';}catch(e){}});
   document.getElementById('v-man-wrap').style.display='none';
   document.getElementById('cc-wrap').style.display='none';
   document.getElementById('gan-prev').style.display='none';
-  document.getElementById('v-met').value='efectivo_usd';
+  document.getElementById('v-met-placeholder')||null;
   try{document.getElementById('v-moneda').value='usd';updateVentaMonedaLabel();}catch(e){}
   try{document.getElementById('cc-moneda').value='usd';}catch(e){}
-  try{document.getElementById('cc-total').value='';}catch(e){}
   document.getElementById('pagos-lista').innerHTML='';pagoRowCount=0;updateTotalPagos();
   document.getElementById('v-fecha').value=today();
-  agregarPagoRow();
-  buildModeloOpts();
+  buildModeloOpts();agregarPagoRow();
 };
 
+// CLIENTES
 function renderClientes(){
   const list=document.getElementById('clientes-list');
   const emp=document.getElementById('cli-empty');
   if(clientes.length===0){list.innerHTML='';emp.style.display='block';updateBadges();return;}
   emp.style.display='none';
-
-  const sorted=[...clientes].sort((a,b)=>{
-    const sa=a.totalCobrar-a.pagos.reduce((s,p)=>s+p.monto,0);
-    const sb=b.totalCobrar-b.pagos.reduce((s,p)=>s+p.monto,0);
-    return sb>0&&sa<=0?1:sa>0&&sb<=0?-1:0;
-  });
-
+  const sorted=[...clientes].sort((a,b)=>{const sa=a.totalCobrar-a.pagos.reduce((s,p)=>s+p.monto,0);const sb=b.totalCobrar-b.pagos.reduce((s,p)=>s+p.monto,0);return sb>0&&sa<=0?1:sa>0&&sb<=0?-1:0;});
   list.innerHTML=sorted.map(cl=>{
     const pagado=cl.pagos.reduce((s,p)=>s+p.monto,0);
     const saldo=cl.totalCobrar-pagado;
@@ -941,84 +717,40 @@ function renderClientes(){
     const progColor=saldado?'#34a853':pct>50?'#fbbc04':'#ea4335';
     const totalOrig=cl.totalCobrarOrig||cl.totalCobrar;
     const monedaTotal=cl.monedaTotal||'usd';
-
-    // Pagos list
-    const pagosHTML=cl.pagos.length>0?`
-      <div style="margin-top:10px;border-top:1px solid #f0f0f0;padding-top:10px">
-        <div style="font-size:12px;font-weight:600;color:#555;margin-bottom:6px">Pagos recibidos</div>
-        ${cl.pagos.map((p,i)=>`
-          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;background:${p.moneda==='ars'?'#fff8e1':'#f0faf0'};border:1px solid ${p.moneda==='ars'?'#ffe082':'#c8e6c9'};margin-bottom:4px;font-size:13px">
-            <div style="width:22px;height:22px;border-radius:50%;background:#34a853;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">${i+1}</div>
-            <span style="flex:1">${p.fecha}</span>
-            <span style="font-weight:600;color:${p.moneda==='ars'?'#f57f17':'#2e7d32'}">
-              ${p.moneda==='ars'?'$'+Number(p.montoOriginal||p.monto*cotiz).toLocaleString('es-AR'):'USD '+p.monto.toFixed(2)}
-              <span style="font-size:10px;color:#aaa;font-weight:400">${p.moneda==='ars'?' = USD '+p.monto.toFixed(2):' = $'+(p.monto*cotiz).toLocaleString('es-AR')}</span>
-            </span>
-            ${p.nota?`<span style="font-size:11px;color:#aaa">${p.nota}</span>`:''}
-            <button class="bs bd" style="padding:2px 6px;font-size:10px" onclick="delPago(${cl.id},${p.id})"><i class="ti ti-x"></i></button>
-          </div>`).join('')}
-      </div>`:'' ;
-
-    return`<div class="cli-card" style="${saldado?'opacity:0.8':''}">
+    const pagosHTML=cl.pagos.length>0?`<div style="margin-top:10px;border-top:1px solid #f0f0f0;padding-top:10px"><div style="font-size:12px;font-weight:600;color:#555;margin-bottom:6px">Pagos recibidos</div>${cl.pagos.map((p,i)=>`<div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;background:${p.moneda==='ars'?'#fff8e1':'#f0faf0'};border:1px solid ${p.moneda==='ars'?'#ffe082':'#c8e6c9'};margin-bottom:4px;font-size:13px"><div style="width:22px;height:22px;border-radius:50%;background:#34a853;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">${i+1}</div><span style="flex:1">${p.fecha}</span><span style="font-weight:600;color:${p.moneda==='ars'?'#f57f17':'#2e7d32'}">${p.moneda==='ars'?'$'+fmtN(p.montoOriginal||p.monto*cotiz):'USD '+p.monto.toFixed(2)} <span style="font-size:10px;color:#aaa;font-weight:400">${p.moneda==='ars'?'= USD '+p.monto.toFixed(2):'= $'+fmtN(p.monto*cotiz)}</span></span>${p.nota?`<span style="font-size:11px;color:#aaa">${p.nota}</span>`:''}<button class="bs bd" style="padding:2px 6px;font-size:10px" onclick="delPago(${cl.id},${p.id})">✕</button></div>`).join('')}</div>`:'';
+    return`<div class="cli-card">
       <div class="cli-head">
         <div class="avatar" style="background:${saldado?'#e8f5e9':'#f3e5f5'};color:${saldado?'#2e7d32':'#6a1b9a'}">${initials(cl.nombre)}</div>
         <div class="cli-info">
-          <div class="cli-name">${cl.nombre}
-            <span class="tag ${CAT_TAGS[cl.categoria]||'t-iph'}">${CAT_LABELS[cl.categoria]||''}</span>
-            ${saldado?'<span class="tag t-ok">Saldado</span>':'<span class="tag t-pen">Con saldo</span>'}
-          </div>
+          <div class="cli-name">${cl.nombre} <span class="tag ${CAT_TAGS[cl.categoria]||'t-iph'}">${CAT_LABELS[cl.categoria]||''}</span> ${saldado?'<span class="tag t-ok">Saldado</span>':'<span class="tag t-pen">Con saldo</span>'}</div>
           <div class="cli-sub">${cl.producto} · ${cl.fecha}${cl.tel?' · '+cl.tel:''}</div>
           ${cl.dni?`<div style="font-size:11px;color:#aaa">DNI: ${cl.dni}${cl.email?' · '+cl.email:''}</div>`:''}
           ${cl.notasCli?`<div style="font-size:11px;color:#aaa">${cl.notasCli}</div>`:''}
         </div>
-        <button class="bs bd" onclick="delCliente(${cl.id})"><i class="ti ti-trash"></i></button>
+        <button class="bs bd" onclick="delCliente(${cl.id})">🗑</button>
       </div>
-
-      <!-- RESUMEN -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px">
-        <div style="background:#f9f9f9;border-radius:8px;padding:8px;text-align:center">
-          <div style="font-size:10px;color:#777;margin-bottom:2px">Total acordado</div>
-          <div style="font-size:13px;font-weight:700">${monedaTotal==='ars'?'$'+Number(totalOrig).toLocaleString('es-AR'):'USD '+cl.totalCobrar.toFixed(0)}</div>
-          <div style="font-size:10px;color:#aaa">${monedaTotal==='ars'?'USD '+cl.totalCobrar.toFixed(2):'$'+(cl.totalCobrar*cotiz).toLocaleString('es-AR')}</div>
-        </div>
-        <div style="background:#f0faf0;border-radius:8px;padding:8px;text-align:center">
-          <div style="font-size:10px;color:#777;margin-bottom:2px">Cobrado (USD)</div>
-          <div style="font-size:13px;font-weight:700;color:#2e7d32">USD ${pagado.toFixed(2)}</div>
-          <div style="font-size:10px;color:#aaa">$${(pagado*cotiz).toLocaleString('es-AR')}</div>
-        </div>
-        <div style="background:${saldo>0.01?'#fff8f8':'#f0faf0'};border-radius:8px;padding:8px;text-align:center">
-          <div style="font-size:10px;color:#777;margin-bottom:2px">Saldo</div>
-          <div style="font-size:13px;font-weight:700;color:${saldo>0.01?'#c62828':'#2e7d32'}">USD ${saldo.toFixed(2)}</div>
-          <div style="font-size:10px;color:#aaa">$${(saldo*cotiz).toLocaleString('es-AR')}</div>
-        </div>
+        <div style="background:#f9f9f9;border-radius:8px;padding:8px;text-align:center"><div style="font-size:10px;color:#777;margin-bottom:2px">Total acordado</div><div style="font-size:13px;font-weight:700">${monedaTotal==='ars'?'$'+fmtN(totalOrig):'USD '+cl.totalCobrar.toFixed(0)}</div><div style="font-size:10px;color:#aaa">${monedaTotal==='ars'?'USD '+cl.totalCobrar.toFixed(2):'$'+fmtN(cl.totalCobrar*cotiz)}</div></div>
+        <div style="background:#f0faf0;border-radius:8px;padding:8px;text-align:center"><div style="font-size:10px;color:#777;margin-bottom:2px">Cobrado</div><div style="font-size:13px;font-weight:700;color:#2e7d32">USD ${pagado.toFixed(2)}</div><div style="font-size:10px;color:#aaa">$${fmtN(pagado*cotiz)}</div></div>
+        <div style="background:${saldo>0.01?'#fff8f8':'#f0faf0'};border-radius:8px;padding:8px;text-align:center"><div style="font-size:10px;color:#777;margin-bottom:2px">Saldo</div><div style="font-size:13px;font-weight:700;color:${saldo>0.01?'#c62828':'#2e7d32'}">USD ${saldo.toFixed(2)}</div><div style="font-size:10px;color:#aaa">$${fmtN(saldo*cotiz)}</div></div>
       </div>
-
-      <!-- BARRA -->
       <div class="prog-wrap" style="height:8px;margin-bottom:4px"><div class="prog-fill" style="width:${pct.toFixed(0)}%;background:${progColor}"></div></div>
       <div style="font-size:11px;color:#aaa;margin-bottom:12px">${pct.toFixed(0)}% cobrado · ${cl.pagos.length} pago${cl.pagos.length!==1?'s':''} registrado${cl.pagos.length!==1?'s':''}</div>
-
       ${pagosHTML}
-
-      <!-- REGISTRAR PAGO LIBRE -->
       ${!saldado?`<div style="background:#f0f4ff;border:1px solid #c5cae9;border-radius:8px;padding:10px;margin-top:10px">
-        <div style="font-size:12px;font-weight:600;color:#3949ab;margin-bottom:8px"><i class="ti ti-plus" style="vertical-align:-2px"></i> Registrar pago</div>
+        <div style="font-size:12px;font-weight:600;color:#3949ab;margin-bottom:8px">+ Registrar pago</div>
         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
           <input type="date" id="pf-${cl.id}" style="width:130px;margin:0" value="${today()}">
           <input type="number" id="pm-${cl.id}" placeholder="Monto" style="width:100px;margin:0" min="0" step="0.01">
-          <select id="pm-mon-${cl.id}" style="width:70px;margin:0;font-size:12px">
-            <option value="usd">USD</option>
-            <option value="ars">$ pesos</option>
-          </select>
+          <select id="pm-mon-${cl.id}" style="width:80px;margin:0;font-size:12px"><option value="usd">USD</option><option value="ars">$ pesos</option></select>
           <input type="text" id="pn-${cl.id}" placeholder="nota (opcional)" style="flex:1;min-width:80px;margin:0">
-          <button class="bp" onclick="regPago(${cl.id})" style="width:auto;padding:8px 14px;margin:0;font-size:12px"><i class="ti ti-check"></i> Cobrar</button>
+          <button class="bp" onclick="regPago(${cl.id})" style="width:auto;padding:8px 14px;margin:0;font-size:12px"> Cobrar</button>
         </div>
-        <div id="pago-conv-${cl.id}" style="display:none;font-size:11px;color:#777;margin-top:4px"></div>
-      </div>`:`<div style="text-align:center;padding:8px;font-size:12px;color:#2e7d32;background:#f0faf0;border-radius:8px;margin-top:8px"><i class="ti ti-circle-check"></i> ¡Deuda saldada!</div>`}
+      </div>`:`<div style="text-align:center;padding:8px;font-size:12px;color:#2e7d32;background:#f0faf0;border-radius:8px;margin-top:8px"> ¡Deuda saldada!</div>`}
     </div>`;
   }).join('');
   updateBadges();
 }
-
 window.regPago=function(cid){
   const cl=clientes.find(c=>c.id===cid);if(!cl)return;
   const fecha=document.getElementById('pf-'+cid).value;
@@ -1026,39 +758,19 @@ window.regPago=function(cid){
   const monedaEl=document.getElementById('pm-mon-'+cid);
   const moneda=monedaEl?monedaEl.value:'usd';
   const nota=document.getElementById('pn-'+cid).value.trim();
-  if(!fecha||isNaN(montoRaw)||montoRaw<=0){alert('Ingresá fecha y monto del pago.');return;}
+  if(!fecha||isNaN(montoRaw)||montoRaw<=0){alert('Ingresá fecha y monto.');return;}
   const montoUSD=moneda==='ars'?montoRaw/cotiz:montoRaw;
   const saldo=cl.totalCobrar-cl.pagos.reduce((s,p)=>s+p.monto,0);
   if(montoUSD>saldo+0.01){if(!confirm(`El monto supera el saldo (USD ${saldo.toFixed(2)}). ¿Continuar?`))return;}
   cl.pagos.push({id:Date.now(),fecha,monto:montoUSD,montoOriginal:montoRaw,moneda,nota});
   scheduleSave();renderClientes();
 };
-window.delPago=function(cid,pid){
-  if(!confirm('¿Eliminar este pago?'))return;
-  const cl=clientes.find(c=>c.id===cid);if(!cl)return;
-  cl.pagos=cl.pagos.filter(p=>p.id!==pid);
-  scheduleSave();renderClientes();
-};
-window.delCliente=function(cid){
-  if(!confirm('¿Eliminar este cliente?'))return;
-  clientes=clientes.filter(c=>c.id!==cid);
-  scheduleSave();renderClientes();
-};
+window.delPago=function(cid,pid){if(!confirm('¿Eliminar pago?'))return;const cl=clientes.find(c=>c.id===cid);if(!cl)return;cl.pagos=cl.pagos.filter(p=>p.id!==pid);scheduleSave();renderClientes();};
+window.delCliente=function(cid){if(!confirm('¿Eliminar cliente?'))return;clientes=clientes.filter(c=>c.id!==cid);scheduleSave();renderClientes();};
 
-window.updateCapLabel=function(){
-  const moneda=document.getElementById('c-moneda').value;
-  document.getElementById('c-monto-label').textContent=moneda==='ars'?'Monto ($ pesos argentinos)':'Monto (USD)';
-  updateCapConversion();
-};
-window.updateCapConversion=function(){
-  const moneda=document.getElementById('c-moneda').value;
-  const monto=parseFloat(document.getElementById('c-monto').value)||0;
-  const conv=document.getElementById('c-conversion');
-  if(moneda==='ars'&&monto>0){
-    conv.style.display='block';
-    document.getElementById('c-conversion-val').textContent=`USD ${(monto/cotiz).toFixed(2)}`;
-  }else{conv.style.display='none';}
-};
+// CAPITAL
+window.updateCapLabel=function(){try{const m=document.getElementById('c-moneda').value;document.getElementById('c-monto-label').textContent=m==='ars'?'Monto ($ pesos)':'Monto (USD)';updateCapConversion();}catch(e){}};
+window.updateCapConversion=function(){try{const m=document.getElementById('c-moneda').value;const v=parseFloat(document.getElementById('c-monto').value)||0;const conv=document.getElementById('c-conversion');if(v>0){conv.style.display='block';document.getElementById('c-conversion-val').textContent=m==='ars'?`USD ${(v/cotiz).toFixed(2)}`:`$${fmtN(v*cotiz)}`;}else conv.style.display='none';}catch(e){}};
 window.regCapital=function(){
   try{
     const fecha=document.getElementById('c-fecha').value;
@@ -1071,185 +783,191 @@ window.regCapital=function(){
     const monto=moneda==='ars'?montoRaw/cotiz:montoRaw;
     capital.unshift({id:Date.now(),fecha,tipo,monto,montoOriginal:montoRaw,moneda,desc});
     scheduleSave();renderCapital();
-    document.getElementById('c-monto').value='';
-    document.getElementById('c-desc').value='';
-    try{const conv=document.getElementById('c-conversion');if(conv)conv.style.display='none';}catch(e){}
-    try{if(monedaEl)monedaEl.value='usd';}catch(e){}
-    try{const lbl=document.getElementById('c-monto-label');if(lbl)lbl.textContent='Monto (USD)';}catch(e){}
-  }catch(e){console.error('Error en regCapital:',e);alert('Error al registrar: '+e.message);}
+    document.getElementById('c-monto').value='';document.getElementById('c-desc').value='';
+    try{document.getElementById('c-conversion').style.display='none';}catch(e){}
+    try{monedaEl.value='usd';document.getElementById('c-monto-label').textContent='Monto (USD)';}catch(e){}
+  }catch(e){console.error(e);alert('Error: '+e.message);}
 };
 function renderCapital(){
-  document.getElementById('cap-emp').style.display=capital.length===0?'block':'none';
-  document.getElementById('cap-tbody').innerHTML=capital.map(c=>`<tr>
-    <td>${c.fecha}</td>
-    <td><span class="tag ${c.tipo==='ingreso'?'t-ok':c.tipo==='egreso'?'t-pen':'t-ars'}">${c.tipo==='ingreso'?'Ingreso':c.tipo==='egreso'?'Egreso':'Ajuste'}</span></td>
-    <td title="${c.desc}">${c.desc}</td>
-    <td style="font-weight:600;color:${c.tipo==='ingreso'?'#2e7d32':c.tipo==='egreso'?'#c62828':'#f57f17'}">${c.tipo==='egreso'?'-':''}USD ${c.monto.toFixed(2)}</td>
-    <td style="white-space:nowrap"><button class="be" onclick="editCap(${c.id})" style="margin-right:4px"><i class="ti ti-edit"></i></button><button class="bs bd" onclick="delCap(${c.id})"><i class="ti ti-trash"></i></button></td>
-  </tr>`).join('');
+  const capU=capital.filter(c=>!c.moneda||c.moneda==='usd');
+  const capA=capital.filter(c=>c.moneda==='ars');
+  // Auto ARS from ventas en pesos y cuotas en pesos
+  const autoARS=[];
+  ventas.forEach(v=>{
+    if(v.monedaOriginal==='ars'&&v.metodo!=='cuenta_corriente')autoARS.push({fecha:v.fecha,desc:'Venta: '+v.producto,montoOriginal:(v.precioOriginal||0)-(v.costoOriginal||0),tipo:'ingreso',auto:true});
+    if(v.pagos)v.pagos.forEach(p=>{if(p.moneda==='ars')autoARS.push({fecha:p.fecha,desc:'Pago venta: '+v.producto,montoOriginal:p.montoOriginal||p.monto*cotiz,tipo:'ingreso',auto:true});});
+  });
+  clientes.forEach(cl=>{cl.pagos.forEach(p=>{if(p.moneda==='ars')autoARS.push({fecha:p.fecha,desc:'Cuota: '+cl.nombre,montoOriginal:p.montoOriginal||p.monto*cotiz,tipo:'ingreso',auto:true});});});
+  gastos.forEach(g=>{if(g.moneda==='ars')autoARS.push({fecha:g.mes+'-01',desc:'Gasto negocio: '+g.desc,montoOriginal:g.montoOriginal||g.monto*cotiz,tipo:'egreso',auto:true});});
+  // Gastos del hogar pagados por negocio o Amadeo → descuentan del capital
+  hogar.forEach(h=>{
+    if(h.quien==='negocio'||h.quien==='amadeo'){
+      const lbl='Amadeo pagó hogar';
+      autoARS.push({fecha:h.mes+'-01',desc:lbl+': '+h.desc,montoOriginal:h.monto||0,tipo:'egreso',auto:true});
+    }
+  });
+  const allARS=[...capA,...autoARS].sort((a,b)=>b.fecha>a.fecha?1:-1);
+
+  // Auto USD: gastos del hogar en USD pagados por negocio o Amadeo
+  const autoUSD=[];
+  hogar.forEach(h=>{
+    if((h.quien==='negocio'||h.quien==='amadeo')&&h.monedaOriginal==='usd'){
+      const lbl='Amadeo pagó hogar';
+      autoUSD.push({fecha:h.mes+'-01',desc:lbl+': '+h.desc,monto:h.montoUSD||h.monto/cotiz,tipo:'egreso',auto:true});
+    }
+  });
+  const allUSD=[...capU,...autoUSD].sort((a,b)=>b.fecha>a.fecha?1:-1);
+
+  const tbU=document.getElementById('cap-tbody-usd');
+  const tbA=document.getElementById('cap-tbody-ars');
+  document.getElementById('cap-emp-usd').style.display=allUSD.length===0?'block':'none';
+  document.getElementById('cap-emp-ars').style.display=allARS.length===0?'block':'none';
+  tbU.innerHTML=allUSD.map(c=>`<tr><td>${c.fecha}</td><td><span class="tag ${c.tipo==='ingreso'?'t-ok':c.tipo==='egreso'?'t-pen':'t-ars'}">${c.tipo==='ingreso'?'Ingreso':c.tipo==='egreso'?'Egreso':'Ajuste'}</span></td><td>${c.desc}</td><td style="font-weight:600;color:${c.tipo==='ingreso'?'#2e7d32':c.tipo==='egreso'?'#c62828':'#f57f17'}">${c.tipo==='egreso'?'-':''}USD ${c.monto.toFixed(2)}</td><td style="white-space:nowrap">${!c.auto?`<button class="be" onclick="editCap(${c.id})" style="margin-right:4px">✏️</button><button class="bs bd" onclick="delCap(${c.id})">🗑</button>`:'<span style="font-size:10px;color:#aaa">auto</span>'}</td></tr>`).join('');
+  tbA.innerHTML=allARS.map(c=>`<tr><td>${c.fecha}</td><td><span class="tag ${c.tipo==='ingreso'?'t-ok':'t-pen'}">${c.tipo==='ingreso'?'Ingreso':'Egreso'}${c.auto?' <span style="font-size:9px">(auto)</span>':''}</span></td><td>${c.desc}</td><td style="font-weight:600;color:${c.tipo==='ingreso'?'#2e7d32':'#c62828'}">${c.tipo==='egreso'?'-':''}$${fmtN(c.montoOriginal||0)}</td><td>${!c.auto?`<button class="be" onclick="editCap(${c.id})" style="margin-right:4px">✏️</button><button class="bs bd" onclick="delCap(${c.id})">🗑</button>`:'<span style="font-size:10px;color:#aaa">auto</span>'}</td></tr>`).join('');
   updateBadges();
 }
 window.delCap=function(id){if(!confirm('¿Eliminar?'))return;capital=capital.filter(c=>c.id!==id);scheduleSave();renderCapital();};
+window.editCap=function(id){const c=capital.find(x=>x.id===id);if(!c)return;document.getElementById('edit-c-id').value=id;document.getElementById('edit-c-fecha').value=c.fecha;document.getElementById('edit-c-tipo').value=c.tipo;document.getElementById('edit-c-monto').value=c.montoOriginal||c.monto;document.getElementById('edit-c-desc').value=c.desc;document.getElementById('modal-capital').style.display='flex';};
+window.saveEditCapital=function(){const id=parseInt(document.getElementById('edit-c-id').value);const idx=capital.findIndex(c=>c.id===id);if(idx<0)return;const m=parseFloat(document.getElementById('edit-c-monto').value);if(isNaN(m))return;capital[idx]={...capital[idx],fecha:document.getElementById('edit-c-fecha').value,tipo:document.getElementById('edit-c-tipo').value,monto:capital[idx].moneda==='ars'?m/cotiz:m,montoOriginal:m,desc:document.getElementById('edit-c-desc').value};closeModal('modal-capital');scheduleSave();renderCapital();};
 
+// STOCK
+window.buildStockModeloOpts=function(){const cat=document.getElementById('s-cat').value;const sel=document.getElementById('s-mod');const opts=CATALOGO[cat]||[];sel.innerHTML=opts.map(m=>`<option value="${m}">${m}</option>`).join('')+'<option value="__manual__">✏️ Otro (manual)</option>';};
 window.agregarStock=function(){
-  const fecha=document.getElementById('s-fecha').value;
-  const cat=document.getElementById('s-cat').value;
+  const fecha=document.getElementById('s-fecha').value;const cat=document.getElementById('s-cat').value;
   let modelo=document.getElementById('s-mod').value;
   if(modelo==='__manual__'){modelo=prompt('Ingresá el modelo:')||'';if(!modelo)return;}
-  const costo=parseFloat(document.getElementById('s-costo').value);
-  const precio=parseFloat(document.getElementById('s-precio').value);
-  const estado=document.getElementById('s-est').value;
-  const notas=document.getElementById('s-notas').value;
+  const costo=parseFloat(document.getElementById('s-costo').value);const precio=parseFloat(document.getElementById('s-precio').value);
+  const estado=document.getElementById('s-est').value;const notas=document.getElementById('s-notas').value;
   if(!fecha||!modelo||isNaN(costo)||isNaN(precio)){alert('Completá todos los campos.');return;}
   stock.unshift({id:Date.now(),fecha,categoria:cat,modelo,costo,precio,estado,notas,disponible:true});
   scheduleSave();renderStock();buildModeloOpts();
   document.getElementById('s-costo').value='';document.getElementById('s-precio').value='';document.getElementById('s-notas').value='';
 };
 window.renderStock=function(){
-  const filCat=document.getElementById('stk-fil-cat').value;
-  const filDisp=document.getElementById('stk-fil-disp').value;
-  let d=stock;
-  if(filCat)d=d.filter(s=>s.categoria===filCat);
-  if(filDisp==='1')d=d.filter(s=>s.disponible);
-  else if(filDisp==='0')d=d.filter(s=>!s.disponible);
+  const fc=document.getElementById('stk-fil-cat').value;const fd=document.getElementById('stk-fil-disp').value;
+  let d=stock;if(fc)d=d.filter(s=>s.categoria===fc);if(fd==='1')d=d.filter(s=>s.disponible);else if(fd==='0')d=d.filter(s=>!s.disponible);
   document.getElementById('stk-emp').style.display=d.length===0?'block':'none';
-  document.getElementById('stk-tbody').innerHTML=d.map(s=>`<tr>
-    <td>${s.fecha}</td>
-    <td><span class="tag ${CAT_TAGS[s.categoria]||'t-iph'}">${CAT_LABELS[s.categoria]||s.categoria}</span></td>
-    <td title="${s.modelo}" style="font-weight:500">${s.modelo}</td>
-    <td>USD ${s.costo}</td><td>USD ${s.precio}</td>
-    <td><span class="tag" style="background:#f5f5f7;color:#555">${s.estado}</span></td>
-    <td>${s.disponible?'<span class="tag t-ok">Disponible</span>':'<span class="tag t-pen">Vendido</span>'}</td>
-    <td style="white-space:nowrap">${s.disponible?`<button class="be" onclick="editStock(${s.id})" style="margin-right:4px"><i class="ti ti-edit"></i></button><button class="bs bd" onclick="delStock(${s.id})"><i class="ti ti-trash"></i></button>`:`<button class="be" onclick="editStock(${s.id})"><i class="ti ti-edit"></i></button>`}</td>
-  </tr>`).join('');
+  document.getElementById('stk-tbody').innerHTML=d.map(s=>`<tr><td>${s.fecha}</td><td><span class="tag ${CAT_TAGS[s.categoria]||'t-iph'}">${CAT_LABELS[s.categoria]||s.categoria}</span></td><td style="font-weight:500">${s.modelo}</td><td>USD ${s.costo}</td><td>USD ${s.precio}</td><td><span class="tag" style="background:#f5f5f7;color:#555">${s.estado}</span></td><td>${s.disponible?'<span class="tag t-ok">Disponible</span>':'<span class="tag t-pen">Vendido</span>'}</td><td style="white-space:nowrap">${s.disponible?`<button class="be" onclick="editStock(${s.id})" style="margin-right:4px">✏️</button><button class="bs bd" onclick="delStock(${s.id})">🗑</button>`:`<button class="be" onclick="editStock(${s.id})">✏️</button>`}</td></tr>`).join('');
   updateBadges();
 };
 window.delStock=function(id){if(!confirm('¿Eliminar?'))return;stock=stock.filter(s=>s.id!==id);scheduleSave();renderStock();buildModeloOpts();};
+window.editStock=function(id){const s=stock.find(x=>x.id===id);if(!s)return;document.getElementById('edit-stk-id').value=id;document.getElementById('edit-stk-fecha').value=s.fecha;document.getElementById('edit-stk-cat').value=s.categoria||'iphone';document.getElementById('edit-stk-modelo').value=s.modelo;document.getElementById('edit-stk-costo').value=s.costo;document.getElementById('edit-stk-precio').value=s.precio;document.getElementById('edit-stk-est').value=s.estado||'nuevo';document.getElementById('edit-stk-notas').value=s.notas||'';document.getElementById('modal-stock').style.display='flex';};
+window.saveEditStock=function(){const id=parseInt(document.getElementById('edit-stk-id').value);const idx=stock.findIndex(s=>s.id===id);if(idx<0)return;const c=parseFloat(document.getElementById('edit-stk-costo').value);const p=parseFloat(document.getElementById('edit-stk-precio').value);if(isNaN(c)||isNaN(p))return;stock[idx]={...stock[idx],fecha:document.getElementById('edit-stk-fecha').value,categoria:document.getElementById('edit-stk-cat').value,modelo:document.getElementById('edit-stk-modelo').value,costo:c,precio:p,estado:document.getElementById('edit-stk-est').value,notas:document.getElementById('edit-stk-notas').value};closeModal('modal-stock');scheduleSave();renderStock();buildModeloOpts();};
 
-function populateFM(){
-  const ms=[...new Set(ventas.map(v=>v.fecha.slice(0,7)))].sort().reverse();
-  document.getElementById('fil-mes').innerHTML='<option value="">Todos los meses</option>'+ms.map(m=>`<option value="${m}">${fmtMes(m)}</option>`).join('');
-}
+// HISTORIAL
+function populateFM(){const ms=[...new Set(ventas.map(v=>v.fecha.slice(0,7)))].sort().reverse();document.getElementById('fil-mes').innerHTML='<option value="">Todos los meses</option>'+ms.map(m=>`<option value="${m}">${fmtMes(m)}</option>`).join('');}
 window.renderHist=function(){
   const fm=document.getElementById('fil-mes').value,fc=document.getElementById('fil-cat-h').value;
-  let d=ventas;
-  if(fm)d=d.filter(v=>v.fecha.startsWith(fm));
-  if(fc)d=d.filter(v=>v.categoria===fc);
+  let d=ventas;if(fm)d=d.filter(v=>v.fecha.startsWith(fm));if(fc)d=d.filter(v=>v.categoria===fc);
   document.getElementById('hist-emp').style.display=d.length===0?'block':'none';
-  document.getElementById('hist-tbody').innerHTML=d.map(v=>`<tr>
-    <td>${v.fecha}</td>
-    <td><span class="tag ${CAT_TAGS[v.categoria]||'t-iph'}">${CAT_LABELS[v.categoria]||'—'}</span></td>
-    <td title="${v.producto}" style="font-weight:500">${v.producto}</td>
-    <td>${v.monedaOriginal==='ars'?`$${Number(v.costoOriginal||v.costo*v.cotiz).toLocaleString('es-AR')}`:`USD ${v.costo}`}</td>
-    <td>${v.monedaOriginal==='ars'?`$${Number(v.precioOriginal||v.precio*v.cotiz).toLocaleString('es-AR')}`:`USD ${v.precio}`}</td>
-    <td style="font-weight:600;color:${v.ganancia>=0?'#2e7d32':'#c62828'}">USD ${v.ganancia.toFixed(0)}</td>
-    <td>
-      ${v.pagos&&v.pagos.length>1
-        ?v.pagos.map(p=>`<span class="tag ${MT[p.metodo]||'t-usd'}" style="display:inline-block;margin-bottom:2px">${ML[p.metodo]||p.metodo}: ${p.moneda==='ars'?'$'+Number(p.monto).toLocaleString('es-AR'):'USD '+p.monto}</span>`).join('<br>')
-        :`<span class="tag ${MT[v.metodo]||'t-usd'}">${ML[v.metodo]||v.metodo}</span>`
-      }
-    </td>
-    <td style="white-space:nowrap"><button class="be" onclick="editVenta(${v.id})" style="margin-right:4px"><i class="ti ti-edit"></i></button><button class="bs bd" onclick="delVenta(${v.id})"><i class="ti ti-trash"></i></button></td>
-  </tr>`).join('');
+  document.getElementById('hist-tbody').innerHTML=d.map(v=>`<tr><td>${v.fecha}</td><td><span class="tag ${CAT_TAGS[v.categoria]||'t-iph'}">${CAT_LABELS[v.categoria]||'—'}</span></td><td style="font-weight:500">${v.producto}</td><td>${v.monedaOriginal==='ars'?'$'+fmtN(v.costoOriginal||v.costo*cotiz):'USD '+v.costo}</td><td>${v.monedaOriginal==='ars'?'$'+fmtN(v.precioOriginal||v.precio*cotiz):'USD '+v.precio}</td><td style="font-weight:600;color:${v.ganancia>=0?'#2e7d32':'#c62828'}">USD ${v.ganancia.toFixed(0)}</td><td>${v.pagos&&v.pagos.length>1?v.pagos.map(p=>`<span class="tag ${MT[p.metodo]||'t-usd'}" style="display:inline-block;margin-bottom:2px">${ML[p.metodo]||p.metodo}: ${p.moneda==='ars'?'$'+fmtN(p.monto):'USD '+p.monto}</span>`).join('<br>'):`<span class="tag ${MT[v.metodo]||'t-usd'}">${ML[v.metodo]||v.metodo}</span>`}</td><td style="white-space:nowrap"><button class="be" onclick="editVenta(${v.id})" style="margin-right:4px">✏️</button><button class="bs bd" onclick="delVenta(${v.id})">🗑</button></td></tr>`).join('');
 };
-window.delVenta=function(id){
-  if(!confirm('¿Eliminar venta?'))return;
-  const v=ventas.find(x=>x.id===id);
-  if(v&&v.stockId){const idx=stock.findIndex(s=>s.id===v.stockId);if(idx>=0)stock[idx].disponible=true;}
-  if(v&&v.clienteId)clientes=clientes.filter(c=>c.id!==v.clienteId);
-  ventas=ventas.filter(x=>x.id!==id);
-  scheduleSave();renderHist();buildModeloOpts();
-};
+window.delVenta=function(id){if(!confirm('¿Eliminar venta?'))return;const v=ventas.find(x=>x.id===id);if(v&&v.stockId){const idx=stock.findIndex(s=>s.id===v.stockId);if(idx>=0)stock[idx].disponible=true;}if(v&&v.clienteId)clientes=clientes.filter(c=>c.id!==v.clienteId);ventas=ventas.filter(x=>x.id!==id);scheduleSave();renderHist();buildModeloOpts();};
+window.editVenta=function(id){const v=ventas.find(x=>x.id===id);if(!v)return;document.getElementById('edit-v-id').value=id;document.getElementById('edit-v-fecha').value=v.fecha;document.getElementById('edit-v-cat').value=v.categoria||'iphone';document.getElementById('edit-v-producto').value=v.producto;document.getElementById('edit-v-costo').value=v.costo;document.getElementById('edit-v-precio').value=v.precio;document.getElementById('edit-v-met').value=v.metodo;document.getElementById('edit-v-notas').value=v.notas||'';document.getElementById('modal-venta').style.display='flex';};
+window.saveEditVenta=function(){const id=parseInt(document.getElementById('edit-v-id').value);const idx=ventas.findIndex(v=>v.id===id);if(idx<0)return;const c=parseFloat(document.getElementById('edit-v-costo').value);const p=parseFloat(document.getElementById('edit-v-precio').value);if(isNaN(c)||isNaN(p))return;ventas[idx]={...ventas[idx],fecha:document.getElementById('edit-v-fecha').value,categoria:document.getElementById('edit-v-cat').value,producto:document.getElementById('edit-v-producto').value,costo:c,precio:p,ganancia:p-c,metodo:document.getElementById('edit-v-met').value,notas:document.getElementById('edit-v-notas').value};closeModal('modal-venta');scheduleSave();renderHist();};
 
-function populateFMG(){
-  const ms=[...new Set(gastos.map(g=>g.mes))].sort().reverse();
-  document.getElementById('fil-mes-g').innerHTML='<option value="">Todos</option>'+ms.map(m=>`<option value="${m}">${fmtMes(m)}</option>`).join('');
-}
+// GASTOS NEGOCIO
+window.updateGastoLabel=function(){const m=document.getElementById('g-moneda').value;document.getElementById('g-monto-label').textContent=m==='ars'?'Monto ($ pesos)':'Monto (USD)';updateGastoConv();};
+window.updateGastoConv=function(){const m=document.getElementById('g-moneda').value;const v=parseFloat(document.getElementById('g-monto').value)||0;const conv=document.getElementById('g-conversion');if(v>0){conv.style.display='block';document.getElementById('g-conversion-val').textContent=m==='ars'?`USD ${(v/cotiz).toFixed(2)}`:`$${fmtN(v*cotiz)}`;}else conv.style.display='none';};
+window.regGasto=function(){
+  const mes=document.getElementById('g-mes').value,cat=document.getElementById('g-cat').value;
+  const desc=document.getElementById('g-desc').value,montoRaw=parseFloat(document.getElementById('g-monto').value);
+  const moneda=document.getElementById('g-moneda').value;
+  const quien=(document.getElementById('g-quien')||{value:'negocio'}).value;
+  if(!mes||!desc||isNaN(montoRaw)||montoRaw<=0){alert('Completá todos los campos.');return;}
+  const montoUSD=moneda==='ars'?montoRaw/cotiz:montoRaw;
+  gastos.unshift({id:Date.now(),mes,categoria:cat,desc,monto:montoUSD,montoOriginal:montoRaw,moneda,quien});
+  scheduleSave();populateFMG();renderGastos();updateBadges();
+  document.getElementById('g-desc').value='';document.getElementById('g-monto').value='';document.getElementById('g-conversion').style.display='none';
+};
+function populateFMG(){const ms=[...new Set(gastos.map(g=>g.mes))].sort().reverse();document.getElementById('fil-mes-g').innerHTML='<option value="">Todos</option>'+ms.map(m=>`<option value="${m}">${fmtMes(m)}</option>`).join('');}
 window.renderGastos=function(){
   const f=document.getElementById('fil-mes-g').value;
   const d=f?gastos.filter(g=>g.mes===f):gastos;
   document.getElementById('gas-emp').style.display=d.length===0?'block':'none';
-  // Resumen impacto en capital
   const resDiv=document.getElementById('gas-resumen');
-  if(resDiv){
-    const totalGastosUSD=d.reduce((s,g)=>s+g.monto,0);
-    if(totalGastosUSD>0){
-      resDiv.style.display='block';
-      const capActual=capTotal();
-      resDiv.innerHTML=`<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
-        <span>💸 Total gastos del negocio: <strong style="color:#c62828">USD ${totalGastosUSD.toFixed(2)}</strong>${f?' en '+fmtMes(f):''}</span>
-        <span>💰 Capital disponible: <strong style="color:#2e7d32">USD ${capActual.toFixed(2)}</strong></span>
-      </div>`;
-    }else{resDiv.style.display='none';}
-  }
-  const quienColors={agustina:'background:#fce4ec;color:#c2185b',amadeo:'background:#e3f2fd;color:#1565c0',negocio:'background:#e8f5e9;color:#2e7d32'};
-  const quienLabel={agustina:'Agustina',amadeo:'Amadeo',negocio:'Negocio'};
-  document.getElementById('gas-tbody').innerHTML=d.map(g=>`<tr>
-    <td>${fmtMes(g.mes)}</td>
-    <td><span class="tag" style="background:#f5f5f7;color:#555">${CL[g.categoria]||g.categoria}</span></td>
-    <td title="${g.desc}">${g.desc}</td>
-    <td style="font-weight:600">${g.moneda==='ars'?`$${Number(g.montoOriginal||g.monto*cotiz).toLocaleString('es-AR')}`:`USD ${g.monto.toFixed(2)}`}</td>
-    <td style="color:#777;font-size:12px">USD ${g.monto.toFixed(2)}</td>
-    <td><span class="tag" style="${quienColors[g.quien||'negocio']}">${quienLabel[g.quien||'negocio']}</span></td>
-    <td><button class="bs bd" onclick="delGasto(${g.id})"><i class="ti ti-trash"></i></button></td>
-  </tr>`).join('');
-  // Balance por persona
-  const balG={agustina:0,amadeo:0,negocio:0};
-  d.forEach(g=>{balG[g.quien||'negocio']+=g.monto;});
+  if(d.length>0){const tU=d.filter(g=>!g.moneda||g.moneda==='usd').reduce((s,g)=>s+g.monto,0);const tA=d.filter(g=>g.moneda==='ars').reduce((s,g)=>s+(g.montoOriginal||g.monto*cotiz),0);resDiv.style.display='block';resDiv.innerHTML=`💸 Gastos USD: <strong style="color:#c62828">USD ${tU.toFixed(2)}</strong> &nbsp;|&nbsp; Gastos $: <strong style="color:#c62828">$${fmtN(Math.round(tA))}</strong> &nbsp;|&nbsp; Capital USD disponible: <strong class="tc">USD ${capUSD().toFixed(2)}</strong> &nbsp;|&nbsp; Capital $: <strong style="color:#f57f17">$${fmtN(Math.round(capARS()))}</strong>`;}else resDiv.style.display='none';
+  document.getElementById('gas-tbody').innerHTML=d.map(g=>`<tr><td>${fmtMes(g.mes)}</td><td><span class="tag" style="background:#f5f5f7;color:#555">${CL[g.categoria]||g.categoria}</span></td><td>${g.desc}</td><td style="font-weight:600">${g.moneda==='ars'?'$'+fmtN(g.montoOriginal||g.monto*cotiz):'USD '+g.monto.toFixed(2)}</td><td style="color:#777;font-size:12px">USD ${g.monto.toFixed(2)}</td><td><span class="tag" style="${QUIEN_STYLE[g.quien||'negocio']}">${QUIEN[g.quien||'negocio']}</span></td><td><button class="bs bd" onclick="delGasto(${g.id})">🗑</button></td></tr>`).join('');
+  // Balance
+  const bal={agustina:0,amadeo:0};
+  d.forEach(g=>{const q=g.quien==='negocio'?'amadeo':g.quien||'amadeo';if(bal[q]!==undefined)bal[q]+=g.monto;else bal.amadeo+=g.monto;});
   const balDiv=document.getElementById('gas-balance');
-  if(balDiv&&d.length>0){
-    balDiv.style.display='block';
-    const diff=balG.agustina-balG.amadeo;
-    balDiv.innerHTML=`<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-      <span style="font-size:13px">Agustina pagó: <strong style="color:#c2185b">USD ${balG.agustina.toFixed(2)}</strong></span>
-      <span style="font-size:13px">Amadeo pagó: <strong style="color:#1565c0">USD ${balG.amadeo.toFixed(2)}</strong></span>
-      <span style="font-size:13px">Negocio: <strong style="color:#2e7d32">USD ${balG.negocio.toFixed(2)}</strong></span>
-      ${Math.abs(diff)>0.01?`<span style="font-size:13px;padding:4px 10px;border-radius:8px;background:${diff>0?'#e3f2fd':'#fce4ec'};color:${diff>0?'#1565c0':'#c2185b'}">
-        👉 ${diff>0?'Amadeo':'Agustina'} le debe <strong>USD ${Math.abs(diff).toFixed(2)}</strong> al otro
-      </span>`:'<span style="font-size:13px;padding:4px 10px;border-radius:8px;background:#e8f5e9;color:#2e7d32">✓ Están al día</span>'}
-    </div>`;
-  } else if(balDiv){balDiv.style.display='none';}
-};
-window.updateGastoLabel=function(){
-  const moneda=document.getElementById('g-moneda').value;
-  const label=document.getElementById('g-monto-label');
-  const conv=document.getElementById('g-conversion');
-  const monto=parseFloat(document.getElementById('g-monto').value)||0;
-  if(moneda==='ars'){
-    label.textContent='Monto ($ pesos argentinos)';
-    if(monto>0){conv.style.display='block';document.getElementById('g-conversion-val').textContent=`USD ${(monto/cotiz).toFixed(2)}`;}
-    else conv.style.display='none';
-  }else{
-    label.textContent='Monto (USD)';
-    conv.style.display='none';
-  }
-};
-
-document.addEventListener('DOMContentLoaded',function(){
-  const gm=document.getElementById('g-monto');
-  if(gm)gm.addEventListener('input',function(){
-    const moneda=document.getElementById('g-moneda').value;
-    const conv=document.getElementById('g-conversion');
-    const monto=parseFloat(this.value)||0;
-    if(moneda==='ars'&&monto>0){conv.style.display='block';document.getElementById('g-conversion-val').textContent=`USD ${(monto/cotiz).toFixed(2)}`;}
-    else conv.style.display='none';
-  });
-});
-
-window.regGasto=function(){
-  const mes=document.getElementById('g-mes').value,cat=document.getElementById('g-cat').value;
-  const desc=document.getElementById('g-desc').value,monto=parseFloat(document.getElementById('g-monto').value);
-  const moneda=document.getElementById('g-moneda').value;
-  if(!mes||!desc||isNaN(monto)){alert('Completá todos los campos.');return;}
-  const montoUSD=moneda==='ars'?monto/cotiz:monto;
-  const quienG=(document.getElementById('g-quien')||{value:'negocio'}).value;
-  gastos.unshift({id:Date.now(),mes,categoria:cat,desc,monto:montoUSD,montoOriginal:monto,moneda,quien:quienG});
-  scheduleSave();populateFMG();renderGastos();updateBadges();
-  document.getElementById('g-desc').value='';document.getElementById('g-monto').value='';
-  document.getElementById('g-conversion').style.display='none';
+  const diff=bal.agustina-bal.amadeo;
+  if(d.length>0){balDiv.style.display='block';balDiv.innerHTML=`<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <span>Agustina pagó: <strong style="color:#c2185b">USD ${bal.agustina.toFixed(2)}</strong> <span style="font-size:11px;color:#aaa">(su plata — el negocio le debe la mitad)</span></span>
+      <span>Amadeo pagó: <strong style="color:#1565c0">USD ${bal.amadeo.toFixed(2)}</strong> <span style="font-size:11px;color:#aaa">(del capital del negocio)</span></span>
+      ${bal.agustina>0?`<span style="padding:4px 10px;border-radius:8px;background:#fce4ec;color:#c2185b"> El negocio le debe a Agustina: <strong>USD ${(bal.agustina/2).toFixed(2)}</strong></span>`:''}
+    </div>`;}else balDiv.style.display='none';
 };
 window.delGasto=function(id){if(!confirm('¿Eliminar?'))return;gastos=gastos.filter(g=>g.id!==id);scheduleSave();renderGastos();updateBadges();};
 
+// FINANZAS HOGAR
+window.updateHogarLabel=function(){const m=document.getElementById('h-moneda').value;document.getElementById('h-monto-label').textContent=m==='usd'?'Monto (USD)':'Monto ($ pesos)';document.getElementById('h-monto').placeholder=m==='usd'?'ej: 100':'ej: 50000';updateHogarConv();};
+window.updateHogarConv=function(){const m=document.getElementById('h-moneda').value;const v=parseFloat(document.getElementById('h-monto').value)||0;const conv=document.getElementById('h-conversion');if(v>0){conv.style.display='block';document.getElementById('h-conversion-val').textContent=m==='usd'?`$${fmtN(v*cotiz)}`:`USD ${(v/cotiz).toFixed(2)}`;}else conv.style.display='none';};
+window.regHogar=function(){
+  const mes=document.getElementById('h-mes').value,cat=document.getElementById('h-cat').value;
+  const desc=document.getElementById('h-desc').value,monto=parseFloat(document.getElementById('h-monto').value);
+  const moneda=document.getElementById('h-moneda').value;
+  const quien=(document.getElementById('h-quien')||{value:'agustina'}).value;
+  if(!mes||!desc||isNaN(monto)||monto<=0){alert('Completá todos los campos.');return;}
+  const montoARS=moneda==='usd'?monto*cotiz:monto;
+  const montoUSD=moneda==='usd'?monto:monto/cotiz;
+  hogar.unshift({id:Date.now(),mes,categoria:cat,desc,monto:montoARS,montoUSD,monedaOriginal:moneda,montoOriginal:monto,quien});
+  scheduleSave();populateFMH();renderHogar();
+  document.getElementById('h-desc').value='';document.getElementById('h-monto').value='';document.getElementById('h-conversion').style.display='none';
+};
+function populateFMH(){const ms=[...new Set(hogar.map(g=>g.mes))].sort().reverse();document.getElementById('fil-mes-h').innerHTML='<option value="">Todos</option>'+ms.map(m=>`<option value="${m}">${fmtMes(m)}</option>`).join('');}
+window.renderHogar=function(){
+  const f=document.getElementById('fil-mes-h').value;
+  const d=f?hogar.filter(g=>g.mes===f):hogar;
+  const fil=f||thisMonth();
+  const dM=hogar.filter(g=>g.mes===fil);
+  const totUSD=dM.reduce((s,g)=>s+(g.montoUSD||g.monto/cotiz),0);
+  const totARS=dM.reduce((s,g)=>s+g.monto,0);
+  document.getElementById('hog-total').textContent=`$${fmtN(Math.round(totARS))}`;
+  document.getElementById('hog-mitad').textContent=`$${fmtN(Math.round(totARS/2))}`;
+  document.getElementById('hog-agus').textContent=`$${fmtN(Math.round(totARS/2))}`;
+  document.getElementById('hog-emp').style.display=d.length===0?'block':'none';
+  document.getElementById('hog-tbody').innerHTML=d.map(g=>{
+    const esUSD=g.monedaOriginal==='usd';
+    const mUSD=g.montoUSD||g.monto/cotiz;
+    return`<tr><td>${fmtMes(g.mes)}</td><td><span class="tag" style="background:#f5f5f7;color:#555">${CLH[g.categoria]||g.categoria}</span></td><td>${g.desc}</td><td style="font-weight:600">${esUSD?`USD ${Number(g.montoOriginal).toFixed(2)}`:`$${fmtN(g.montoOriginal||g.monto)}`}<div style="font-size:10px;color:#aaa">${esUSD?`$${fmtN(mUSD*cotiz)}`:`USD ${mUSD.toFixed(2)}`}</div></td><td style="color:#854f0b">$${fmtN(Math.round(g.monto/2))}</td><td style="color:#555">$${fmtN(Math.round(g.monto/2))}</td><td><span class="tag" style="${QUIEN_STYLE[g.quien||'agustina']}">${QUIEN[g.quien||'agustina']}</span></td><td><button class="bs bd" onclick="delHogar(${g.id})">🗑</button></td></tr>`;
+  }).join('');
+  // Balance hogar
+  const bal={agustina:0,amadeo:0};
+  dM.forEach(g=>{const q=g.quien==='negocio'?'amadeo':g.quien||'agustina';if(bal[q]!==undefined)bal[q]+=(g.montoUSD||g.monto/cotiz);else bal.amadeo+=(g.montoUSD||g.monto/cotiz);});
+  const balDiv=document.getElementById('hog-balance');
+  const diff=bal.agustina-bal.amadeo;
+  if(dM.length>0){
+    balDiv.style.display='block';
+    balDiv.innerHTML=`<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+      <span>Agustina pagó: <strong style="color:#c2185b">USD ${bal.agustina.toFixed(2)}</strong> <span style="font-size:11px;color:#aaa">(su plata)</span></span>
+      <span>Amadeo pagó: <strong style="color:#1565c0">USD ${bal.amadeo.toFixed(2)}</strong> <span style="font-size:11px;color:#aaa">(del capital del negocio)</span></span>
+      ${bal.agustina>0?`<span style="padding:4px 10px;border-radius:8px;background:#fce4ec;color:#c2185b"> El negocio le debe a Agustina la mitad: <strong>USD ${(bal.agustina/2).toFixed(2)}</strong></span>`:''}
+    </div>`;
+    if(totUSD>0){
+      const yaDesc=(window._hogarDesc||{})[fil];
+      balDiv.innerHTML+=yaDesc?`<div style="background:#e8f5e9;border:1px solid #c8e6c9;border-radius:8px;padding:8px 12px;font-size:12px;color:#2e7d32;display:flex;align-items:center;gap:8px"> El 50% del hogar (USD ${(totUSD/2).toFixed(2)}) ya fue descontado del capital USD este mes. <button class="bs bd" onclick="cancelarDescHogar('${fil}')" style="margin-left:auto;font-size:11px">Deshacer</button></div>`:`<button class="bp" onclick="descontarHogar('${fil}',${(totUSD/2).toFixed(2)})" style="background:#f57f17;margin-top:0;font-size:13px"> Descontar 50% del negocio (USD ${(totUSD/2).toFixed(2)} = $${fmtN(Math.round(totARS/2))})</button>`;
+    }
+  }else balDiv.style.display='none';
+};
+window.descontarHogar=function(mes,mitadUSD){
+  if(!confirm(`¿Descontar USD ${mitadUSD} del capital del negocio como aporte al hogar de ${fmtMes(mes)}?`))return;
+  if(!window._hogarDesc)window._hogarDesc={};
+  window._hogarDesc[mes]=mitadUSD;
+  capital.unshift({id:Date.now(),fecha:mes+'-01',tipo:'egreso',monto:Number(mitadUSD),moneda:'usd',desc:`Aporte hogar ${fmtMes(mes)} (50%)`});
+  scheduleSave();renderHogar();renderCapital();
+};
+window.cancelarDescHogar=function(mes){
+  if(!confirm('¿Deshacer el descuento?'))return;
+  const desc=`Aporte hogar ${fmtMes(mes)} (50%)`;
+  capital=capital.filter(c=>!(c.desc===desc&&c.fecha.startsWith(mes)));
+  if(window._hogarDesc)delete window._hogarDesc[mes];
+  scheduleSave();renderHogar();renderCapital();
+};
+window.delHogar=function(id){if(!confirm('¿Eliminar?'))return;hogar=hogar.filter(g=>g.id!==id);scheduleSave();renderHogar();};
+
+// REPORTE
 window.generarReporte=function(){
   const mes=document.getElementById('r-mes').value;if(!mes){alert('Seleccioná un mes.');return;}
   const vm=ventas.filter(v=>v.fecha.startsWith(mes));
@@ -1259,372 +977,59 @@ window.generarReporte=function(){
   const tV=vm.length,tI=vm.reduce((s,v)=>s+v.precio,0),tG=vm.reduce((s,v)=>s+v.ganancia,0);
   const tGas=gm.reduce((s,g)=>s+g.monto,0),res=tG-tGas;
   const cobMes=clientes.reduce((t,cl)=>t+cl.pagos.filter(p=>p.fecha.startsWith(mes)).reduce((s,p)=>s+p.monto,0),0);
-  const ventasUSD=vm.filter(v=>!v.monedaOriginal||v.monedaOriginal==='usd');
-  const ventasARS=vm.filter(v=>v.monedaOriginal==='ars');
-  const ingrUSD=ventasUSD.reduce((s,v)=>s+v.precio,0);
-  const ingrARSorig=ventasARS.reduce((s,v)=>s+(v.precioOriginal||v.precio*cotiz),0);
-  const ganUSD=ventasUSD.reduce((s,v)=>s+v.ganancia,0);
-  const ganARSorig=ventasARS.reduce((s,v)=>s+((v.precioOriginal||0)-(v.costoOriginal||0)),0);
-
-  document.getElementById('r-met').innerHTML=`
-    <div class="met"><div class="ml">Total ventas</div><div class="mv">${tV}</div><div class="ms">${ventasUSD.length} USD · ${ventasARS.length} pesos</div></div>
-    <div class="met"><div class="ml">Ingresos</div><div class="mv">USD ${tI.toFixed(0)}</div><div class="ms">$${(tI*cotiz).toLocaleString('es-AR')}</div></div>
-    <div class="met"><div class="ml">Ganancia bruta</div><div class="mv tc">USD ${tG.toFixed(0)}</div><div class="ms">$${(tG*cotiz).toLocaleString('es-AR')}</div></div>
-    <div class="met"><div class="ml">Gastos negocio</div><div class="mv te">USD ${tGas.toFixed(0)}</div></div>
-    <div class="met"><div class="ml">Resultado neto</div><div class="mv" style="color:${res>=0?'#2e7d32':'#c62828'}">USD ${res.toFixed(0)}</div><div class="ms">$${(res*cotiz).toLocaleString('es-AR')}</div></div>`;
-
-  // USD vs ARS breakdown card
-  const rDesglose=document.getElementById('r-desglose');
-  if(rDesglose){
-    rDesglose.innerHTML=`
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <div style="background:#e3f2fd;border-radius:10px;padding:14px">
-          <div style="font-size:12px;font-weight:600;color:#1565c0;margin-bottom:8px">💵 Ventas en dólares (${ventasUSD.length})</div>
-          <div style="font-size:13px;margin-bottom:4px">Ingresos: <strong>USD ${ingrUSD.toFixed(2)}</strong></div>
-          <div style="font-size:13px;margin-bottom:4px">Ganancia: <strong style="color:#2e7d32">USD ${ganUSD.toFixed(2)}</strong></div>
-          <div style="font-size:11px;color:#777">= $${(ganUSD*cotiz).toLocaleString('es-AR')}</div>
-        </div>
-        <div style="background:#fff8e1;border-radius:10px;padding:14px">
-          <div style="font-size:12px;font-weight:600;color:#f57f17;margin-bottom:8px">🪙 Ventas en pesos (${ventasARS.length})</div>
-          <div style="font-size:13px;margin-bottom:4px">Ingresos: <strong>$${ingrARSorig.toLocaleString('es-AR')}</strong></div>
-          <div style="font-size:13px;margin-bottom:4px">Ganancia: <strong style="color:#2e7d32">$${ganARSorig.toLocaleString('es-AR')}</strong></div>
-          <div style="font-size:11px;color:#777">= USD ${(ganARSorig/cotiz).toFixed(2)}</div>
-        </div>
-      </div>
-    `;
-  }
+  document.getElementById('r-met').innerHTML=`<div class="met"><div class="ml">Ventas</div><div class="mv">${tV}</div></div><div class="met"><div class="ml">Ingresos</div><div class="mv">USD ${tI.toFixed(0)}</div></div><div class="met"><div class="ml">Ganancia bruta</div><div class="mv tc">USD ${tG.toFixed(0)}</div></div><div class="met"><div class="ml">Gastos</div><div class="mv te">USD ${tGas.toFixed(0)}</div></div><div class="met"><div class="ml">Resultado neto</div><div class="mv" style="color:${res>=0?'#2e7d32':'#c62828'}">USD ${res.toFixed(0)}</div></div>`;
+  const vU=vm.filter(v=>!v.monedaOriginal||v.monedaOriginal==='usd');
+  const vA=vm.filter(v=>v.monedaOriginal==='ars');
+  const iU=vU.reduce((s,v)=>s+v.precio,0),gU=vU.reduce((s,v)=>s+v.ganancia,0);
+  const iAo=vA.reduce((s,v)=>s+(v.precioOriginal||0),0),gAo=vA.reduce((s,v)=>s+((v.precioOriginal||0)-(v.costoOriginal||0)),0);
+  document.getElementById('r-desglose').innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div style="background:#e3f2fd;border-radius:10px;padding:14px"><div style="font-size:12px;font-weight:600;color:#1565c0;margin-bottom:8px">💵 En dólares (${vU.length})</div><div style="font-size:13px;margin-bottom:4px">Ingresos: <strong>USD ${iU.toFixed(2)}</strong></div><div style="font-size:13px">Ganancia: <strong style="color:#2e7d32">USD ${gU.toFixed(2)}</strong></div></div><div style="background:#fff8e1;border-radius:10px;padding:14px"><div style="font-size:12px;font-weight:600;color:#f57f17;margin-bottom:8px">🪙 En pesos (${vA.length})</div><div style="font-size:13px;margin-bottom:4px">Ingresos: <strong>$${fmtN(Math.round(iAo))}</strong></div><div style="font-size:13px">Ganancia: <strong style="color:#2e7d32">$${fmtN(Math.round(gAo))}</strong></div></div></div>`;
   const mc={};vm.forEach(v=>{mc[v.metodo]=(mc[v.metodo]||0)+1;});
   if(chMet)chMet.destroy();
-  chMet=new Chart(document.getElementById('ch-met').getContext('2d'),{type:'doughnut',data:{labels:Object.keys(mc).map(k=>ML[k]),datasets:[{data:Object.values(mc),backgroundColor:['#34a853','#fbbc04','#1a73e8','#7b1fa2'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10}}}}});
+  chMet=new Chart(document.getElementById('ch-met').getContext('2d'),{type:'doughnut',data:{labels:Object.keys(mc).map(k=>ML[k]||k),datasets:[{data:Object.values(mc),backgroundColor:['#34a853','#fbbc04','#1a73e8','#7b1fa2','#ea4335'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10}}}}});
   const cc={};vm.forEach(v=>{cc[v.categoria]=(cc[v.categoria]||0)+1;});
   if(chCat)chCat.destroy();
   chCat=new Chart(document.getElementById('ch-cat').getContext('2d'),{type:'doughnut',data:{labels:Object.keys(cc).map(k=>CAT_LABELS[k]||k),datasets:[{data:Object.values(cc),backgroundColor:Object.keys(cc).map(k=>CAT_COLORS[k]||'#888'),borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10}}}}});
   const pc={};vm.forEach(v=>{pc[v.producto]=(pc[v.producto]||0)+1;});
   const ps=Object.entries(pc).sort((a,b)=>b[1]-a[1]).slice(0,6);const mx=ps[0]?.[1]||1;
-  document.getElementById('r-top').innerHTML=ps.length===0?'<div class="emp">Sin ventas</div>':ps.map(([p,c])=>`<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"><span>${p}</span><span style="font-weight:600">${c}x</span></div><div class="prog-wrap"><div class="prog-fill" style="width:${(c/mx*100).toFixed(0)}%;background:#34a853"></div></div></div>`).join('');
+  document.getElementById('r-top').innerHTML=ps.length===0?'<div class="emp">Sin ventas</div>':ps.map(([p,c])=>`<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"><span>${p}</span><span style="font-weight:600">${c}x</span></div><div class="prog-wrap"><div class="prog-fill" style="width:${(c/mx*100).toFixed(0)}%;background:#34a853"></div></div></div>`).join('');
   const ct={};gm.forEach(g=>{ct[g.categoria]=(ct[g.categoria]||0)+g.monto;});
   const cs=Object.entries(ct).sort((a,b)=>b[1]-a[1]);
   document.getElementById('r-gas').innerHTML=cs.length===0?'<div class="emp">Sin gastos</div>':cs.map(([c,m])=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">${CL[c]||c}</span><span style="font-weight:600">USD ${m.toFixed(2)}</span></div>`).join('')+`<div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px;font-weight:700"><span>Total</span><span>USD ${tGas.toFixed(2)}</span></div>`;
-  document.getElementById('r-res').innerHTML=`
-    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">Ganancia bruta</span><span style="font-weight:600;color:#2e7d32">USD ${tG.toFixed(2)}</span></div>
-    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">Gastos</span><span style="font-weight:600;color:#c62828">− USD ${tGas.toFixed(2)}</span></div>
-    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">Cobrado en cuotas</span><span style="font-weight:600;color:#2e7d32">+ USD ${cobMes.toFixed(2)}</span></div>
-    <div style="display:flex;justify-content:space-between;padding:10px 0;font-size:16px;font-weight:700"><span>Neto</span><span style="color:${res>=0?'#2e7d32':'#c62828'}">USD ${res.toFixed(2)}</span></div>
-    <div style="font-size:12px;color:#777;margin-top:6px;padding:10px;background:#f9f9f9;border-radius:8px">En pesos: $${(res*cotiz).toLocaleString('es-AR')} · cotización USD ${cotiz}</div>`;
-  const capT=capTotal(),capS=capStock(),xC=totalPorCobrar();
-  document.getElementById('r-cap').innerHTML=`<div class="g3">
-    <div class="met"><div class="ml">Capital líquido</div><div class="mv tc">USD ${capT.toFixed(2)}</div><div class="ms">$${(capT*cotiz).toLocaleString('es-AR')}</div></div>
-    <div class="met"><div class="ml">En stock</div><div class="mv ta">USD ${capS.toFixed(2)}</div></div>
-    <div class="met"><div class="ml">Por cobrar</div><div class="mv te">USD ${xC.toFixed(2)}</div></div>
-  </div>`;
+  document.getElementById('r-res').innerHTML=`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">Ganancia bruta</span><span style="font-weight:600;color:#2e7d32">USD ${tG.toFixed(2)}</span></div><div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">Gastos</span><span style="font-weight:600;color:#c62828">− USD ${tGas.toFixed(2)}</span></div><div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">Cobrado en cuotas</span><span style="font-weight:600;color:#2e7d32">+ USD ${cobMes.toFixed(2)}</span></div><div style="display:flex;justify-content:space-between;padding:10px 0;font-size:16px;font-weight:700"><span>Neto</span><span style="color:${res>=0?'#2e7d32':'#c62828'}">USD ${res.toFixed(2)}</span></div><div style="font-size:12px;color:#777;padding:8px;background:#f9f9f9;border-radius:8px">En pesos: $${fmtN(Math.round(res*cotiz))} · cotización USD ${cotiz}</div>`;
+  const cu=capUSD(),ca=capARS();
+  document.getElementById('r-cap').innerHTML=`<div class="g3"><div class="met"><div class="ml">Capital USD</div><div class="mv tc">USD ${cu.toFixed(2)}</div></div><div class="met"><div class="ml">Capital pesos</div><div class="mv ta">$${fmtN(Math.round(ca))}</div></div><div class="met"><div class="ml">En stock</div><div class="mv" style="color:#854f0b">USD ${capStock().toFixed(2)}</div></div></div>`;
   const cliAct=clientes.filter(cl=>cl.pagos.reduce((s,p)=>s+p.monto,0)<cl.totalCobrar);
-  const hogarMes=(window.hogar||[]).filter(h=>h.mes===mes);
+  document.getElementById('r-cc').innerHTML=cliAct.length===0?'<div class="emp">Sin cuentas pendientes</div>':cliAct.map(cl=>{const pag=cl.pagos.reduce((s,p)=>s+p.monto,0);const sal=cl.totalCobrar-pag;const pct=(pag/cl.totalCobrar*100).toFixed(0);return`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f0f0f0"><div class="avatar" style="width:30px;height:30px;font-size:11px">${initials(cl.nombre)}</div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${cl.nombre} — ${cl.producto}</div><div class="prog-wrap" style="margin-top:4px"><div class="prog-fill" style="width:${pct}%;background:#fbbc04"></div></div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:13px;font-weight:700;color:#c62828">USD ${sal.toFixed(2)}</div><div style="font-size:11px;color:#aaa">${pct}% cobrado</div></div></div>`;}).join('');
+  const hogarMes=hogar.filter(h=>h.mes===mes);
   const totHogar=hogarMes.reduce((s,h)=>s+h.monto,0);
-  const elRH=document.getElementById('r-hogar');
-  if(elRH){
-    if(hogarMes.length===0){elRH.innerHTML='<div class="emp">Sin gastos del hogar registrados este mes</div>';}
-    else{
-      const bycat={};hogarMes.forEach(h=>{bycat[h.categoria]=(bycat[h.categoria]||0)+h.monto;});
-      elRH.innerHTML=Object.entries(bycat).sort((a,b)=>b[1]-a[1]).map(([c,m])=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">${CLH[c]||c}</span><span>$${Number(m).toLocaleString('es-AR')} <span style="color:#854f0b;font-size:11px">(negocio: $${(m/2).toLocaleString('es-AR')} = USD ${(m/2/cotiz).toFixed(2)})</span></span></div>`).join('')+
-      `<div style="display:flex;justify-content:space-between;padding:10px;flex-wrap:wrap;gap:8px;margin-top:8px;background:#fff8e1;border-radius:8px">
-        <span style="font-size:13px;color:#555">Total hogar: <strong>$${totHogar.toLocaleString('es-AR')}</strong></span>
-        <span style="font-size:13px;color:#854f0b">Aporte negocio (50%): <strong>$${(totHogar/2).toLocaleString('es-AR')} = USD ${(totHogar/2/cotiz).toFixed(2)}</strong></span>
-        <span style="font-size:13px;color:#555">Aporte de Agus (50%): <strong>$${(totHogar/2).toLocaleString('es-AR')}</strong></span>
-      </div>`;
-    }
-  }
-  document.getElementById('r-cc').innerHTML=cliAct.length===0?'<div class="emp">Sin cuentas pendientes</div>':cliAct.map(cl=>{
-    const pag=cl.pagos.reduce((s,p)=>s+p.monto,0),sal=cl.totalCobrar-pag,pct=(pag/cl.totalCobrar*100).toFixed(0);
-    return`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f0f0f0">
-      <div class="avatar" style="width:30px;height:30px;font-size:11px">${initials(cl.nombre)}</div>
-      <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${cl.nombre} <span style="font-weight:400;color:#777">— ${cl.producto}</span></div>
-      <div class="prog-wrap" style="margin-top:4px"><div class="prog-fill" style="width:${pct}%;background:#fbbc04"></div></div></div>
-      <div style="text-align:right;flex-shrink:0"><div style="font-size:13px;font-weight:700;color:#c62828">USD ${sal.toFixed(2)}</div><div style="font-size:11px;color:#aaa">${pct}% cobrado</div></div>
-    </div>`;}).join('');
+  const totHogarUSD=hogarMes.reduce((s,h)=>s+(h.montoUSD||h.monto/cotiz),0);
+  document.getElementById('r-hogar').innerHTML=hogarMes.length===0?'<div class="emp">Sin gastos del hogar este mes</div>':Object.entries(hogarMes.reduce((o,h)=>{o[h.categoria]=(o[h.categoria]||0)+h.monto;return o;},{})).map(([c,m])=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px"><span style="color:#777">${CLH[c]||c}</span><span>$${fmtN(Math.round(m))} <span style="font-size:10px;color:#aaa">(neg: $${fmtN(Math.round(m/2))})</span></span></div>`).join('')+`<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-top:8px;padding:10px;background:#fff8e1;border-radius:8px"><span style="font-size:13px">Total: <strong>$${fmtN(Math.round(totHogar))}</strong></span><span style="font-size:13px;color:#854f0b">Aporte negocio (50%): <strong>$${fmtN(Math.round(totHogar/2))} = USD ${(totHogarUSD/2).toFixed(2)}</strong></span><span style="font-size:13px">Aporte Agus (50%): <strong>$${fmtN(Math.round(totHogar/2))}</strong></span></div>`;
 };
 
 window.exportCSV=function(){
   const fm=document.getElementById('fil-mes').value,fc=document.getElementById('fil-cat-h').value;
   let d=ventas;if(fm)d=d.filter(v=>v.fecha.startsWith(fm));if(fc)d=d.filter(v=>v.categoria===fc);
-  const rows=[['Fecha','Categoría','Producto','Costo USD','Precio USD','Ganancia USD','Método','Cliente','Cuotas','Total cobrar','Notas']];
-  d.forEach(v=>{const cl=v.clienteId?clientes.find(c=>c.id===v.clienteId):null;rows.push([v.fecha,CAT_LABELS[v.categoria]||'',v.producto,v.costo,v.precio,v.ganancia.toFixed(2),ML[v.metodo],cl?cl.nombre:'',v.nCuotas||'',v.totalCobrar||'',v.notas||'']);});
+  const rows=[['Fecha','Categoría','Producto','Costo','Precio','Ganancia USD','Método','Notas']];
+  d.forEach(v=>rows.push([v.fecha,CAT_LABELS[v.categoria]||'',v.producto,v.costo,v.precio,v.ganancia.toFixed(2),ML[v.metodo]||v.metodo,v.notas||'']));
   const csv=rows.map(r=>r.map(c=>`"${c}"`).join(',')).join('\n');
   const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent('\uFEFF'+csv);a.download=`ventas_${fm||'todas'}.csv`;a.click();
 };
 
-const Chart = (await import('https://cdn.jsdelivr.net/npm/chart.js@4.4.1/+esm')).Chart;
-Chart.register(...(await import('https://cdn.jsdelivr.net/npm/chart.js@4.4.1/+esm')).registerables);
-window.Chart = Chart;
-
-
-const CAT_LABELS_LOCAL={iphone:'iPhone',macbook:'MacBook',ipad:'iPad',applewatch:'Watch'};
-
-
-window.updateHogarLabel=function(){
-  try{
-    const moneda=document.getElementById('h-moneda').value;
-    document.getElementById('h-monto-label').textContent=moneda==='usd'?'Monto (USD)':'Monto ($ pesos argentinos)';
-    document.getElementById('h-monto').placeholder=moneda==='usd'?'ej: 100':'ej: 50000';
-    updateHogarConversion();
-  }catch(e){}
-};
-window.updateHogarConversion=function(){
-  try{
-    const moneda=document.getElementById('h-moneda').value;
-    const monto=parseFloat(document.getElementById('h-monto').value)||0;
-    const conv=document.getElementById('h-conversion');
-    if(monto>0){
-      conv.style.display='block';
-      if(moneda==='ars'){document.getElementById('h-conversion-val').textContent=`USD ${(monto/cotiz).toFixed(2)}`;}
-      else{document.getElementById('h-conversion-val').textContent=`$${(monto*cotiz).toLocaleString('es-AR')}`;}
-    }else{conv.style.display='none';}
-  }catch(e){}
-};
-window.regHogar=function(){
-  const mes=document.getElementById('h-mes').value,cat=document.getElementById('h-cat').value;
-  const desc=document.getElementById('h-desc').value,monto=parseFloat(document.getElementById('h-monto').value);
-  const monedaEl=document.getElementById('h-moneda');
-  const moneda=monedaEl?monedaEl.value:'ars';
-  if(!mes||!desc||isNaN(monto)||monto<=0){alert('Completá todos los campos.');return;}
-  if(!window.hogar)window.hogar=[];
-  // Store monto in ARS equivalent for consistency, keep original
-  const montoARS=moneda==='usd'?monto*cotiz:monto;
-  const montoUSD=moneda==='usd'?monto:monto/cotiz;
-  const pagoEl=document.getElementById('h-pago');
-  const pago=pagoEl?pagoEl.value:'ambos';
-  window.hogar.unshift({id:Date.now(),mes,categoria:cat,desc,monto:montoARS,montoUSD,monedaOriginal:moneda,montoOriginal:monto,pago});
-  localStorage.setItem('ip_hogar',JSON.stringify(window.hogar));
-  saveHogar();populateFMH();renderHogar();updateHogarMetrics();
-  document.getElementById('h-desc').value='';document.getElementById('h-monto').value='';
-  try{document.getElementById('h-pago').value='ambos';}catch(e){}
-  try{document.getElementById('h-conversion').style.display='none';}catch(e){}
-};
-
-async function saveHogar(){
-  try{
-    const {doc,setDoc}=await import('https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js');
-    await setDoc(doc(window._db,window._DOC_ID,'hogar'),{items:window.hogar||[],updatedAt:Date.now()});
-  }catch(e){console.error(e);}
-}
-
-function populateFMH(){
-  if(!window.hogar)window.hogar=[];
-  const ms=[...new Set(window.hogar.map(g=>g.mes))].sort().reverse();
-  document.getElementById('fil-mes-h').innerHTML='<option value="">Todos</option>'+ms.map(m=>`<option value="${m}">${fmtMes(m)}</option>`).join('');
-}
-
-function updateHogarMetrics(){
-  const mes=new Date().toISOString().slice(0,7);
-  const fil=document.getElementById('fil-mes-h')?document.getElementById('fil-mes-h').value||mes:mes;
-  if(!window.hogar)window.hogar=[];
-  const d=window.hogar.filter(g=>g.mes===fil);
-  // Total en USD (todos convertidos)
-  const totUSD=d.reduce((s,g)=>s+(g.montoUSD||g.monto/cotiz),0);
-  const totARS=totUSD*cotiz;
-  const el1=document.getElementById('hog-total');
-  const el2=document.getElementById('hog-mitad');
-  const el3=document.getElementById('hog-sueldo');
-  if(el1){
-    el1.textContent=`USD ${totUSD.toFixed(2)}`;
-    const el1b=document.getElementById('hog-total-ars');if(el1b)el1b.textContent=`$${totARS.toLocaleString('es-AR')}`;
-    el2.textContent=`USD ${(totUSD/2).toFixed(2)}`;
-    const el2b=document.getElementById('hog-mitad-ars');if(el2b)el2b.textContent=`$${(totARS/2).toLocaleString('es-AR')}`;
-    el3.textContent=`USD ${(totUSD/2).toFixed(2)}`;
-    const el3b=document.getElementById('hog-sueldo-ars');if(el3b)el3b.textContent=`$${(totARS/2).toLocaleString('es-AR')}`;
-  }
-}
-
-window.renderHogar=function(){
-  if(!window.hogar)window.hogar=[];
-  const f=document.getElementById('fil-mes-h').value;
-  const d=f?window.hogar.filter(g=>g.mes===f):window.hogar;
-  document.getElementById('hog-emp').style.display=d.length===0?'block':'none';
-  const tot=d.reduce((s,g)=>s+g.monto,0);
-  const totDiv=document.getElementById('hog-totales');
-  if(d.length>0){
-    totDiv.style.display='block';
-    const mesActivo=f||new Date().toISOString().slice(0,7);
-    const yaDescontado=(window.hogarDescontado||{})[mesActivo];
-    const totUSDd=d.reduce((s,g)=>s+(g.montoUSD||g.monto/cotiz),0);
-    const totARSd=totUSDd*cotiz;
-    totDiv.innerHTML=`<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">
-      <span style="color:#777">Total del hogar: <strong>USD ${totUSDd.toFixed(2)}</strong> <span style="font-size:11px;color:#aaa">($${totARSd.toLocaleString('es-AR')})</span></span>
-      <span style="color:#854f0b">Aporte negocio (50%): <strong>USD ${(totUSDd/2).toFixed(2)}</strong> <span style="font-size:11px;color:#aaa">($${(totARSd/2).toLocaleString('es-AR')})</span></span>
-      <span style="color:#555">Aporte de Agus (50%): <strong>USD ${(totUSDd/2).toFixed(2)}</strong> <span style="font-size:11px;color:#aaa">($${(totARSd/2).toLocaleString('es-AR')})</span></span>
-    </div>
-    ${yaDescontado
-      ? `<div style="display:flex;align-items:center;gap:8px;background:#e8f5e9;border:1px solid #c8e6c9;border-radius:8px;padding:10px 14px;font-size:13px;color:#2e7d32">
-          <i class="ti ti-circle-check" style="font-size:18px"></i>
-          <span>El 50% del hogar (<strong>$${(tot/2).toLocaleString('es-AR')} = USD ${(tot/2/cotiz).toFixed(2)}</strong>) ya fue descontado del capital del negocio este mes.</span>
-          <button class="bs bd" onclick="cancelarDescuentoHogar('${mesActivo}')" style="margin-left:auto;font-size:11px">Deshacer</button>
-        </div>`
-      : `<button class="bp" onclick="descontarHogar('${mesActivo}',${totUSDd.toFixed(2)}/2,${(totARSd/2).toFixed(0)})" style="background:#f57f17;margin-top:0">
-          <i class="ti ti-arrow-down-circle"></i> Descontar 50% del negocio (USD ${(totUSDd/2).toFixed(2)} = $${(totARSd/2).toLocaleString('es-AR')})
-        </button>`
-    }`;
-  }else{totDiv.style.display='none';}
-  document.getElementById('hog-tbody').innerHTML=d.map(g=>{
-    const esUSD=g.monedaOriginal==='usd';
-    const montoUSD=g.montoUSD||g.monto/cotiz;
-    const montoARS=esUSD?g.monto*cotiz:g.monto;
-    const pago=g.pago||'ambos';
-    const pagoLabel=pago==='agustina'?'<span class="tag t-mac">Agustina</span>':pago==='amadeo'?'<span class="tag t-tra">Amadeo</span>':'<span class="tag" style="background:#f5f5f7;color:#555">50/50</span>';
-    // Si pago uno solo, el otro le debe la mitad
-    let debeLabel='—';
-    if(pago==='agustina'){debeLabel=`<span style="color:#185fa5;font-size:12px">Amadeo debe<br><strong>USD ${(montoUSD/2).toFixed(2)}</strong><div style="font-size:10px;color:#aaa">$${(montoARS/2).toLocaleString('es-AR')}</div></span>`;}
-    else if(pago==='amadeo'){debeLabel=`<span style="color:#6a1b9a;font-size:12px">Agustina debe<br><strong>USD ${(montoUSD/2).toFixed(2)}</strong><div style="font-size:10px;color:#aaa">$${(montoARS/2).toLocaleString('es-AR')}</div></span>`;}
-    return`<tr>
-      <td>${fmtMes(g.mes)}</td>
-      <td><span class="tag" style="background:#f5f5f7;color:#555">${CLH[g.categoria]||g.categoria}</span></td>
-      <td title="${g.desc}">${g.desc}</td>
-      <td>${pagoLabel}</td>
-      <td><span class="tag ${esUSD?'t-usd':'t-ars'}">${esUSD?'USD':'$'}</span></td>
-      <td style="font-weight:600">${esUSD?`USD ${Number(g.montoOriginal||montoUSD).toFixed(2)}`:`$${Number(g.montoOriginal||montoARS).toLocaleString('es-AR')}`}
-        <div style="font-size:10px;color:#aaa">${esUSD?`$${(montoUSD*cotiz).toLocaleString('es-AR')}`:`USD ${montoUSD.toFixed(2)}`}</div>
-      </td>
-      <td>${debeLabel}</td>
-      <td><span class="tag" style="${{agustina:'background:#fce4ec;color:#c2185b',amadeo:'background:#e3f2fd;color:#1565c0',negocio:'background:#e8f5e9;color:#2e7d32'}[g.quien||'agustina']}">${{agustina:'Agustina',amadeo:'Amadeo',negocio:'Negocio'}[g.quien||'agustina']}</span></td>
-      <td><button class="bs bd" onclick="delHogar(${g.id})"><i class="ti ti-trash"></i></button></td>
-    </tr>`;
-  }).join('');
-  // Balance hogar
-  const balHDiv=document.getElementById('hog-balance');
-  if(balHDiv&&d.length>0){
-    balHDiv.style.display='block';
-    const balH={agustina:0,amadeo:0,negocio:0};
-    d.forEach(g=>{const uid=g.montoUSD||g.monto/cotiz;balH[g.quien||'agustina']+=uid;});
-    const diffH=balH.agustina-balH.amadeo;
-    balHDiv.innerHTML=`<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-      <span style="font-size:13px">Agustina pagó: <strong style="color:#c2185b">USD ${balH.agustina.toFixed(2)}</strong></span>
-      <span style="font-size:13px">Amadeo pagó: <strong style="color:#1565c0">USD ${balH.amadeo.toFixed(2)}</strong></span>
-      ${Math.abs(diffH)>0.01?`<span style="font-size:13px;padding:4px 10px;border-radius:8px;background:${diffH>0?'#e3f2fd':'#fce4ec'};color:${diffH>0?'#1565c0':'#c2185b'}">
-        👉 ${diffH>0?'Amadeo':'Agustina'} le debe <strong>USD ${Math.abs(diffH).toFixed(2)}</strong> al otro
-      </span>`:'<span style="font-size:13px;padding:4px 10px;border-radius:8px;background:#e8f5e9;color:#2e7d32">✓ Están al día</span>'}
-    </div>`;
-  } else if(balHDiv){balHDiv.style.display='none';}
-  updateHogarMetrics();
-};
-
-
-window.descontarHogar=function(mes, mitadUSD, mitadARS){
-  if(!confirm(`¿Descontar $${Number(mitadARS).toLocaleString('es-AR')} (USD ${mitadUSD}) del capital del negocio como aporte al hogar de ${fmtMes(mes)}?`))return;
-  if(!window.hogarDescontado)window.hogarDescontado={};
-  window.hogarDescontado[mes]=mitadUSD;
-  localStorage.setItem('ip_hogar_desc',JSON.stringify(window.hogarDescontado));
-  capital.unshift({id:Date.now(),fecha:mes+'-01',tipo:'egreso',monto:Number(mitadUSD),desc:`Aporte hogar ${fmtMes(mes)} (50%) = $${Number(mitadARS).toLocaleString('es-AR')}`});
-  scheduleSave();
-  renderHogar();
-  renderCapital();
-  alert(`✓ USD ${mitadUSD} descontados del capital del negocio ($${Number(mitadARS).toLocaleString('es-AR')}).`);
-};
-
-window.cancelarDescuentoHogar=function(mes){
-  if(!confirm('¿Deshacer el descuento? Se eliminará el movimiento de capital correspondiente.'))return;
-  if(!window.hogarDescontado)return;
-  const desc=`Aporte hogar ${fmtMes(mes)} (50%)`;
-  capital=capital.filter(c=>!(c.desc===desc&&c.fecha.startsWith(mes)));
-  delete window.hogarDescontado[mes];
-  localStorage.setItem('ip_hogar_desc',JSON.stringify(window.hogarDescontado));
-  scheduleSave();renderHogar();renderCapital();
-};
-
-window.delHogar=function(id){
-  if(!confirm('¿Eliminar este gasto?'))return;
-  window.hogar=window.hogar.filter(g=>g.id!==id);
-  localStorage.setItem('ip_hogar',JSON.stringify(window.hogar));
-  saveHogar();renderHogar();
-};
-
 window.closeModal=function(id){document.getElementById(id).style.display='none';};
-document.addEventListener('click',function(e){
-  ['modal-stock','modal-venta','modal-capital'].forEach(id=>{
-    const el=document.getElementById(id);
-    if(el&&e.target===el)el.style.display='none';
-  });
-});
+document.addEventListener('click',function(e){['modal-stock','modal-venta','modal-capital'].forEach(id=>{const el=document.getElementById(id);if(el&&e.target===el)el.style.display='none';});});
 
-window.editStock=function(id){
-  const s=stock.find(x=>x.id===id);if(!s)return;
-  document.getElementById('edit-stk-id').value=id;
-  document.getElementById('edit-stk-fecha').value=s.fecha;
-  document.getElementById('edit-stk-cat').value=s.categoria||'iphone';
-  document.getElementById('edit-stk-modelo').value=s.modelo;
-  document.getElementById('edit-stk-costo').value=s.costo;
-  document.getElementById('edit-stk-precio').value=s.precio;
-  document.getElementById('edit-stk-est').value=s.estado||'nuevo';
-  document.getElementById('edit-stk-notas').value=s.notas||'';
-  document.getElementById('modal-stock').style.display='flex';
-};
-window.saveEditStock=function(){
-  const id=parseInt(document.getElementById('edit-stk-id').value);
-  const idx=stock.findIndex(s=>s.id===id);if(idx<0)return;
-  const costo=parseFloat(document.getElementById('edit-stk-costo').value);
-  const precio=parseFloat(document.getElementById('edit-stk-precio').value);
-  if(isNaN(costo)||isNaN(precio)){alert('Verificá los montos.');return;}
-  stock[idx]={...stock[idx],
-    fecha:document.getElementById('edit-stk-fecha').value,
-    categoria:document.getElementById('edit-stk-cat').value,
-    modelo:document.getElementById('edit-stk-modelo').value,
-    costo,precio,
-    estado:document.getElementById('edit-stk-est').value,
-    notas:document.getElementById('edit-stk-notas').value
-  };
-  closeModal('modal-stock');scheduleSave();renderStock();buildModeloOpts();
-};
+function init(){
+  updateBadges();buildModeloOpts();buildStockModeloOpts();
+  document.getElementById('v-fecha').value=today();
+  document.getElementById('c-fecha').value=today();
+  document.getElementById('s-fecha').value=today();
+  document.getElementById('g-mes').value=thisMonth();
+  document.getElementById('h-mes').value=thisMonth();
+  document.getElementById('r-mes').value=thisMonth();
+  agregarPagoRow();
+}
 
-window.editVenta=function(id){
-  const v=ventas.find(x=>x.id===id);if(!v)return;
-  document.getElementById('edit-v-id').value=id;
-  document.getElementById('edit-v-fecha').value=v.fecha;
-  document.getElementById('edit-v-cat').value=v.categoria||'iphone';
-  document.getElementById('edit-v-producto').value=v.producto;
-  document.getElementById('edit-v-costo').value=v.costo;
-  document.getElementById('edit-v-precio').value=v.precio;
-  document.getElementById('edit-v-met').value=v.metodo;
-  document.getElementById('edit-v-notas').value=v.notas||'';
-  document.getElementById('modal-venta').style.display='flex';
-};
-window.saveEditVenta=function(){
-  const id=parseInt(document.getElementById('edit-v-id').value);
-  const idx=ventas.findIndex(v=>v.id===id);if(idx<0)return;
-  const costo=parseFloat(document.getElementById('edit-v-costo').value);
-  const precio=parseFloat(document.getElementById('edit-v-precio').value);
-  if(isNaN(costo)||isNaN(precio)){alert('Verificá los montos.');return;}
-  ventas[idx]={...ventas[idx],
-    fecha:document.getElementById('edit-v-fecha').value,
-    categoria:document.getElementById('edit-v-cat').value,
-    producto:document.getElementById('edit-v-producto').value,
-    costo,precio,ganancia:precio-costo,
-    metodo:document.getElementById('edit-v-met').value,
-    notas:document.getElementById('edit-v-notas').value
-  };
-  closeModal('modal-venta');scheduleSave();renderHist();
-};
-
-window.editCap=function(id){
-  const c=capital.find(x=>x.id===id);if(!c)return;
-  document.getElementById('edit-c-id').value=id;
-  document.getElementById('edit-c-fecha').value=c.fecha;
-  document.getElementById('edit-c-tipo').value=c.tipo;
-  document.getElementById('edit-c-monto').value=c.monto;
-  document.getElementById('edit-c-desc').value=c.desc;
-  document.getElementById('modal-capital').style.display='flex';
-};
-window.saveEditCapital=function(){
-  const id=parseInt(document.getElementById('edit-c-id').value);
-  const idx=capital.findIndex(c=>c.id===id);if(idx<0)return;
-  const monto=parseFloat(document.getElementById('edit-c-monto').value);
-  if(isNaN(monto)){alert('Verificá el monto.');return;}
-  capital[idx]={...capital[idx],
-    fecha:document.getElementById('edit-c-fecha').value,
-    tipo:document.getElementById('edit-c-tipo').value,
-    monto,
-    desc:document.getElementById('edit-c-desc').value
-  };
-  closeModal('modal-capital');scheduleSave();renderCapital();
-};
-
-await loadData();
+loadData();
 </script>
 </body>
 </html>
